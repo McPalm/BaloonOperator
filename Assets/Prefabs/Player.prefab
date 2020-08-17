@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   immobile: 0
-  radius: 1
+  radius: 0.5
   Gravity: 18
   wallStop: 0.8
   Properties: {fileID: 11400000, guid: f07a035867eacfb4998818edccc8067a, type: 2}
