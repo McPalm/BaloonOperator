@@ -82,7 +82,7 @@ public class Mobile : MonoBehaviour
         set => transform.localEulerAngles = new Vector3(0f, value ? 0f : 180f);
     }
 
-    public int Forward => FaceRight ? -1 : 1;
+    public int Forward => FaceRight ? 1 : -1;
 
     protected void FixedUpdate()
     {
