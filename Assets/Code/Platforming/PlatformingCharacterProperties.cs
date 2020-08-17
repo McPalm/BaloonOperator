@@ -17,6 +17,7 @@ public class PlatformingCharacterProperties : ScriptableObject
     public float Gravity = 19f;
     public float JumpForce = 9f;
     public float WalljumpForce = 0f;
+    public float WallpushForce = 0f;
     public float HeadBonkForce = 9f;
     [Range(0f, 1f)]
     public float PeakJumpGravity = .5f;

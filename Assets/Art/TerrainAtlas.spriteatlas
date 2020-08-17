@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TerrainAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: b2caa6cb7ee1e264aa06179a4c46ebde, type: 3}
+    totalSpriteSurfaceArea: 4096
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 6527952443591430980, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: -1644569121288067293, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: 7731962002123196093, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: -8881554066780571003, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: 7366239895454268825, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: 6542463241233584505, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: 6891291990819933713, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: -7225024495296347961, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: 4914814092441660236, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: 2240672386249684405, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: -2439759595472060525, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: 3590221946268213432, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: 2903344839269952752, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: 3700883606535427162, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: -4790908730115963414, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: 8977284450834130336, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - SandStoneTiles_15
+  - SandStoneTiles_14
+  - SandStoneTiles_11
+  - SandStoneTiles_10
+  - SandStoneTiles_13
+  - SandStoneTiles_12
+  - SandStoneTiles_8
+  - SandStoneTiles_9
+  - SandStoneTiles_6
+  - SandStoneTiles_7
+  - SandStoneTiles_4
+  - SandStoneTiles_5
+  - SandStoneTiles_2
+  - SandStoneTiles_3
+  - SandStoneTiles_0
+  - SandStoneTiles_1
+  m_Tag: TerrainAtlas
+  m_IsVariant: 0
