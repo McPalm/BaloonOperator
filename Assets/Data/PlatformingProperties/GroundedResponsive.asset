@@ -42,7 +42,7 @@ MonoBehaviour:
   PeakAirControl: 0.69
   Gravity: 40
   JumpForce: 15
-  WalljumpForce: 0
+  WalljumpForce: 10
   HeadBonkForce: 9
   PeakJumpGravity: 0.533
   JumpCap: 0.812
@@ -50,5 +50,5 @@ MonoBehaviour:
   slowfallTrottle: 0
   slowfallSpeed: 30
   MaxFallSpeed: 28.94
-  MaxWallslideSpeed: 30
+  MaxWallslideSpeed: 1
   CyoteTime: 5
