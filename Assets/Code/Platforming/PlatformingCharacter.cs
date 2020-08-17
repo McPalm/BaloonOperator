@@ -114,7 +114,7 @@ public class PlatformingCharacter : Mobile
             if(TouchingWall)
                 FaceRight = TouchingWallDirection < 0;
             VMomentum = Properties.WalljumpForce;
-            HMomentum = Properties.WallpushForce * -Forward;
+            HMomentum = Properties.WallpushForce * Forward;
             
             OnJump?.Invoke();
             wallSlideTime = 0;
