@@ -38,6 +38,8 @@ public class NetworkControls : NetworkBehaviour
             PlatformingCharacter.OnJump += () => jumped = true;
             FindObjectOfType<CameraFollow>().Follow = new Mobile[] { PlatformingCharacter };
             PlatformingCharacter.OnStomp += PlatformingCharacter_OnStomp;
+            GameManager game = FindObjectOfType<GameManager>();
+            game.RegisterPlayer(gameObject);
         }
         else
         {
