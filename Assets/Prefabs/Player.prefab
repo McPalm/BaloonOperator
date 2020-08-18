@@ -187,6 +187,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b07ce04a-e280-4e59-977e-69105198a1cd
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4f539984-2573-419b-a2c1-ac1745648707
+    m_ActionName: Player/Climb[/XInputControllerWindows/rightShoulder,/Keyboard/ctrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -234,7 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  interpolation: {fileID: 0}
+  interpolation: {fileID: 3011320248621275233}
 --- !u!1 &7160744774408102427
 GameObject:
   m_ObjectHideFlags: 0
