@@ -12,7 +12,12 @@ public class GameManager : NetworkBehaviour
     public SceneLoader SceneLoader { get; set; }
     public GameObject Player { get; set; }
     public List<GameObject> AllPlayers { get; set; }
-    
+
+    private void Awake()
+    {
+        AllPlayers = new List<GameObject>();
+    }
+
     // Start is called before the first frame update
     [Server]
     void Start()
