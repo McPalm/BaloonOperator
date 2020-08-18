@@ -27,18 +27,17 @@ public class NetworkControls : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager game = FindObjectOfType<GameManager>();
         PlayerInput = GetComponent<PlayerInput>();
         PlatformingCharacter = GetComponent<PlatformingCharacter>();
 
         OutputToken = new InputToken();
-
         if (isLocalPlayer)
         {
             InputToken = PlayerInput.InputToken;
             PlatformingCharacter.OnJump += () => jumped = true;
             FindObjectOfType<CameraFollow>().Follow = new Mobile[] { PlatformingCharacter };
             PlatformingCharacter.OnStomp += PlatformingCharacter_OnStomp;
-            GameManager game = FindObjectOfType<GameManager>();
             game.RegisterPlayer(gameObject);
         }
         else
@@ -46,6 +45,11 @@ public class NetworkControls : NetworkBehaviour
             PlatformingCharacter.InputToken = OutputToken;
             PlayerInput.enabled = false;
             interpolation.enabled = true;
+        }
+
+        if (isServerOnly)
+        {
+            game.RegisterAllPlayers(gameObject);
         }
     }
 
