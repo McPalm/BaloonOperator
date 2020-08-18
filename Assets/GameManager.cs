@@ -21,12 +21,6 @@ public class GameManager : NetworkBehaviour
         ///Move character to the right position
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ResetScene()
     {
         SceneLoader.ReloadScene();
