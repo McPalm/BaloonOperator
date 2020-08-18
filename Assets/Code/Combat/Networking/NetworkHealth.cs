@@ -10,6 +10,8 @@ public class NetworkHealth : NetworkBehaviour
     double lastUpdate; // discard health updates that happened before this.
     int trueDamage; // maintained by the server, ths the anbsolute source of healthLoss;
 
+    bool serverObject;
+
     private void Start()
     {
         Health = GetComponent<Health>();
@@ -19,9 +21,15 @@ public class NetworkHealth : NetworkBehaviour
         bool isPlayer = GetComponent<NetworkControls>();
 
         if (isPlayer)
+        {
             Health.blockTriggers = !hasAuthority;
+            serverObject = false;
+        }
         else
+        {
             Health.blockTriggers = !isServer;
+            serverObject = true;
+        }
         Debug.Log($"Health.blockTriggers: {Health.blockTriggers}");
 
         FindObjectOfType<MyNetworkManager>().E_OnServerReady += NetworkHealth_E_OnServerReady;
@@ -32,15 +40,33 @@ public class NetworkHealth : NetworkBehaviour
         FindObjectOfType<MyNetworkManager>().E_OnServerReady -= NetworkHealth_E_OnServerReady;
     }
 
-    private void Health_OnHurt(int damage) => CmdChangeHealth(damage);
-    private void Health_OnHeal(int damage) => CmdChangeHealth(-damage);
+    private void Health_OnHurt(int damage)
+    {
+        if(serverObject)
+            ServerChangeHealth(damage);
+        else
+            CmdChangeHealth(damage);
+    }
+    private void Health_OnHeal(int damage)
+    {
+        if (serverObject)
+            ServerChangeHealth(-damage);
+        else
+            CmdChangeHealth(-damage);
+    }
 
     [Command(channel = Channels.DefaultReliable)]
     void CmdChangeHealth(int change)
     {
+        ServerChangeHealth(change);
+    }
+
+    void ServerChangeHealth(int change)
+    {
         trueDamage += change;
         trueDamage = Mathf.Max(trueDamage, 0);
         RpcSetHealth(change, trueDamage, NetworkTime.time);
+
     }
 
 
