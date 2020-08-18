@@ -13,6 +13,7 @@ public class GameManager : NetworkBehaviour
     public GameObject Player { get; set; }
     
     // Start is called before the first frame update
+    [Server]
     void Start()
     {
         SceneLoader = GetComponent<SceneLoader>();
@@ -21,6 +22,7 @@ public class GameManager : NetworkBehaviour
         ///Move character to the right position
     }
 
+    [Server]
     public void ResetScene()
     {
         SceneLoader.ReloadScene();
