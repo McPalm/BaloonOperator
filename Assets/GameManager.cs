@@ -41,9 +41,21 @@ public class GameManager : NetworkBehaviour
             }
             if (isGameOver)
             {
-                ResetScene();
+                TriggerLoss();
             }
         }
+    }
+
+    public void TriggerLoss()
+    {
+        Debug.Log("You LOSE!");
+        ResetScene();
+    }
+
+    public void TriggerWin()
+    {
+        Debug.Log("You WIN!");
+        ResetScene();
     }
 
     [Server]
