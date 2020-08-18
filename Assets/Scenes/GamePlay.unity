@@ -289,7 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  startLevel: Assets/Scenes/SampleScene.unity
+  startLevel: Assets/Scenes/TerrainButOnline.unity
 --- !u!4 &1837832007
 Transform:
   m_ObjectHideFlags: 0

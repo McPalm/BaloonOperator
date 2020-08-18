@@ -18,37 +18,50 @@ public class Health : MonoBehaviour
 
     public UnityEvent<float> OnChangeHealth;
 
+    /// <summary>
+    /// make it so that this isntance does not accept Hurt or Heal messages. Intended to manage authority over networking
+    /// Can be overriden in health or hurt if appropiate.
+    /// </summary>
+    public bool blockTriggers = false;
+
     private void Start()
     {
-        OnChangeHealth.Invoke((float)CurrentHealth / (float)MaxHealth);
+        NotifyChangeHealthObservers();
     }
 
-    public void Hurt(int damage)
+    public void Hurt(int damage, bool overrideAuthority = false)
     {
+        if (blockTriggers && !overrideAuthority)
+            return;
         if (damage < 1)
             return;
-        HealthLost -= damage;
-        OnHurt(damage);
+        HealthLost += damage;
+        OnHurt?.Invoke(damage);
         OnChange?.Invoke(CurrentHealth, MaxHealth);
         if (HealthLost >= MaxHealth)
             OnZeroHealth?.Invoke();
-        OnChangeHealth.Invoke(CurrentHealth);
+        NotifyChangeHealthObservers();
     }
 
-    public void Heal(int damage)
+    public void Heal(int damage, bool overrideAuthority = false)
     {
-        OnHeal(damage);
+        if (blockTriggers && !overrideAuthority)
+            return;
+        OnHeal?.Invoke(damage);
         if (damage > HealthLost)
             damage = HealthLost;
         if (damage < 1)
             return;
+        HealthLost -= damage;
         OnChange?.Invoke(CurrentHealth, MaxHealth);
-        OnChangeHealth.Invoke(CurrentHealth);
+        NotifyChangeHealthObservers();
     }
 
     public void SetHealth(int lost, int change)
     {
         HealthLost = lost;
-        OnChangeHealth.Invoke((float)CurrentHealth / (float) MaxHealth);
+        NotifyChangeHealthObservers();
     }
+
+    void NotifyChangeHealthObservers() => OnChangeHealth.Invoke((float)CurrentHealth / (float)MaxHealth);
 }
