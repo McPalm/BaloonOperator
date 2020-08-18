@@ -15,6 +15,13 @@ public class PlatformingCharacter : Mobile
     public event System.Action OnJump;
     public event System.Action<PlatformingCharacter> OnStomp;
     public bool WallSliding => VMomentum < 0f && wallSlideTime > 0;
+    public bool Climbing { get; set; }
+    int ForceJumpFrames = 0;
+    Vector2 ForceMove;
+    int ForceMoveFrames = 0;
+
+    bool CanWallJump => Properties.WalljumpForce > 0f && !Grounded && wallSlideTime > 0;
+
     // Update is called once per frame
     new protected void FixedUpdate()
     {
@@ -59,11 +66,16 @@ public class PlatformingCharacter : Mobile
     public (bool jumpConsumed, int cyoteTime) SimulateFrame(InputSnapshot input, int cyoteTime)
     {
         bool jumpConsumed = false;
+        ForceJumpFrames--;
+        ForceMoveFrames--;
 
         // useful variables
         var peakJump = (VMomentum < 1f && VMomentum > -1f) && !Grounded;
         var x = input.direction.x;
         var currentSpeed = Mathf.Abs(HMomentum);
+        bool jumpHeld = ForceJumpFrames > 0 || input.jumpHeld;
+        if (ForceMoveFrames > 0)
+            x = ForceMove.x;
 
         // facing
         if (x < .25f && x > -.25f)
@@ -92,15 +104,40 @@ public class PlatformingCharacter : Mobile
             cyoteTime = Properties.CyoteTime + 1;
         else
             cyoteTime--;
-
-        if (Properties.WalljumpForce > 0f && !Grounded && TouchingWall && TouchingWallDirection == System.Math.Sign(input.direction.x))
+        if(InputToken.ClimbHeld && Properties.ClimbSpeed > 0f && !Grounded && TouchingWall)
+        {
+            if(input.direction.y < 0f && Properties.ClimbSpeed < Properties.MaxWallslideSpeed)
+                VMomentum = VMomentum * .5f + Properties.MaxWallslideSpeed * .5f * input.direction.y;
+            else
+                VMomentum = VMomentum * .5f + Properties.ClimbSpeed * .5f * input.direction.y;
+            HMomentum = TouchingWallDirection * 3f;
+            FaceRight = TouchingWallDirection < 0;
+            wallSlideTime = Properties.CyoteTime + 1;
+            Climbing = true;
+            ForceMove = new Vector2(TouchingWallDirection, 0f);
+        }
+        else if (Properties.WalljumpForce > 0f && !Grounded && TouchingWall && TouchingWallDirection == System.Math.Sign(input.direction.x))
         {
             if(WallSliding)
                 FaceRight = TouchingWallDirection < 0;
             wallSlideTime = Properties.CyoteTime + 1;
+            Climbing = false;
         }
         else
+        {
+            if(Climbing == true)
+            {
+                if (input.direction.y > .5f && InputToken.ClimbHeld)
+                {
+                    VMomentum = 10f;
+                    ForceJumpFrames = 15;
+                    ForceMoveFrames = 10;
+                    FaceRight = ForceMove.x > 0f;
+                }
+            }
             wallSlideTime--;
+            Climbing = false;
+        }
 
         if (cyoteTime > 0 && input.jumpBufferTimer >= 0f)
         {
@@ -109,16 +146,18 @@ public class PlatformingCharacter : Mobile
             cyoteTime = 0;
             jumpConsumed = true;
         }
-        else if(Properties.WalljumpForce > 0f && !Grounded && input.jumpBufferTimer >= 0f && wallSlideTime > 0)
+        else if(input.jumpBufferTimer >= 0f && CanWallJump)
         {
             if(TouchingWall)
                 FaceRight = TouchingWallDirection < 0;
             VMomentum = Properties.WalljumpForce;
-            HMomentum = Properties.WallpushForce * -Forward;
+            HMomentum = Properties.WallpushForce * Forward;
             
             OnJump?.Invoke();
             wallSlideTime = 0;
             jumpConsumed = true;
+            ForceMove = new Vector2(-TouchingWallDirection, 0f);
+            ForceMoveFrames = 5;
         }
         else if (!Grounded && VMomentum < 0f && Properties.HeadBonkForce > 0f)
         {
@@ -148,21 +187,25 @@ public class PlatformingCharacter : Mobile
             }
         }
 
-        if (Grounded == false && input.jumpHeld == false && VMomentum > 0f)
+        if (Grounded == false && jumpHeld == false && VMomentum > 0f)
         {
             VMomentum *= Properties.JumpCap;
         }
 
         // Gravity Manipulation
-        if (peakJump && input.jumpHeld)
+        if (Climbing)
+        {
+            Gravity = 0f;
+        }
+        else if (peakJump && jumpHeld)
         {
             Gravity = Properties.Gravity * Properties.PeakJumpGravity;
         }
-        else if (!Grounded && Properties.slowfallTrottle > 0f && input.jumpHeld && VMomentum < -Properties.slowfallSpeed)
+        else if (!Grounded && Properties.slowfallTrottle > 0f && jumpHeld && VMomentum < -Properties.slowfallSpeed)
         {
             VMomentum += (1f - Properties.slowfallTrottle) * (-VMomentum - Properties.slowfallSpeed);
         }
-        else if (TouchingWall && WallSliding )
+        else if (TouchingWall && WallSliding)
         {
             VMomentum += .2f * (-VMomentum - Properties.MaxWallslideSpeed);
             Gravity = 0f;

@@ -10,6 +10,7 @@ public class InputToken
     public Vector2 Direction { get; set; }
     public bool JumpHeld { get; set; }
     public bool UseHeld { get; set; }
+    public bool ClimbHeld { get; set; }
 
 
     // from client
