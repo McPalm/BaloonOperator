@@ -47,7 +47,7 @@ public class NetworkControls : NetworkBehaviour
             interpolation.enabled = true;
         }
 
-        if (isServerOnly)
+        if (isServer)
         {
             game.RegisterAllPlayers(gameObject);
         }
