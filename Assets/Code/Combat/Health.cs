@@ -29,10 +29,8 @@ public class Health : MonoBehaviour
         NotifyChangeHealthObservers();
     }
 
-    public void Hurt(int damage, bool overrideAuthority = false)
+    public void Hurt(int damage)
     {
-        if (blockTriggers && !overrideAuthority)
-            return;
         if (damage < 1)
             return;
         Debug.Log("Was hurt!", gameObject);
@@ -46,8 +44,6 @@ public class Health : MonoBehaviour
 
     public void Heal(int damage, bool overrideAuthority = false)
     {
-        if (blockTriggers && !overrideAuthority)
-            return;
         OnHeal?.Invoke(damage);
         if (damage > HealthLost)
             damage = HealthLost;

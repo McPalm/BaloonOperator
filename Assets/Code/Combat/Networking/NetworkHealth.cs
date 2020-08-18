@@ -7,7 +7,8 @@ using UnityEngine;
 public class NetworkHealth : NetworkBehaviour
 {
     Health Health { get; set; }
-    double lastUpdate;
+    double lastUpdate; // discard health updates that happened before this.
+    int trueDamage; // maintained by the server, ths the anbsolute source of healthLoss;
 
     private void Start()
     {
@@ -31,50 +32,21 @@ public class NetworkHealth : NetworkBehaviour
         FindObjectOfType<MyNetworkManager>().E_OnServerReady -= NetworkHealth_E_OnServerReady;
     }
 
-    private void NetworkHealth_E_OnServerReady(NetworkConnection obj)
+    private void Health_OnHurt(int damage) => CmdChangeHealth(damage);
+    private void Health_OnHeal(int damage) => CmdChangeHealth(-damage);
+
+    [Command(channel = Channels.DefaultReliable)]
+    void CmdChangeHealth(int change)
     {
-        TargetStartupSync(obj, Health.HealthLost);
+        trueDamage += change;
+        trueDamage = Mathf.Max(trueDamage, 0);
+        RpcSetHealth(change, trueDamage, NetworkTime.time);
     }
 
-    private void Health_OnHeal(int damage)
-    {
-        if(isServer)
-        {
-            RpcHealthUpdate(damage, Health.HealthLost, NetworkTime.time);
-        }
-        else
-        {
-            CmdHealthUpdate(damage);
-        }
-    }
 
-    private void Health_OnHurt(int damage)
-    {
-        if(isServer)
-        {
-            RpcHealthUpdate(-damage, Health.HealthLost, NetworkTime.time);
-        }
-        else
-        {
-            CmdHealthUpdate(-damage);
-        }
-    }
-
-    [Command(channel = Channels.DefaultReliable, ignoreAuthority = true)]
-    void CmdHealthUpdate(int change)
-    { 
-        if(change < 0)
-        {
-            Health.Hurt(-change);
-        }
-        else
-        {
-            Health.Heal(change);
-        }
-    }
-
+    // sends update from the server to all clients
     [ClientRpc(channel = Channels.DefaultReliable)]
-    void RpcHealthUpdate(int change, int lostHealth, double time)
+    void RpcSetHealth(int change, int lostHealth, double time)
     {
         if(time < lastUpdate)
         {
@@ -87,8 +59,7 @@ public class NetworkHealth : NetworkBehaviour
         }
     }
 
-    [TargetRpc]void TargetStartupSync(NetworkConnection target, int lostHealth)
-    {
-        Health.SetHealth(lostHealth, 0);
-    }
+    // sync health when a new player is connecting // TODO, doesn't actually work
+    private void NetworkHealth_E_OnServerReady(NetworkConnection obj) => TargetStartupSync(obj, Health.HealthLost);
+    [TargetRpc]void TargetStartupSync(NetworkConnection target, int lostHealth) => Health.SetHealth(lostHealth, 0);
 }
