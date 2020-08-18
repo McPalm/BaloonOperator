@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GamePlay.unity
     guid: 5018dda924af1ab4fb40b3d91921a234
+  - enabled: 1
+    path: Assets/Scenes/TerrainButOnline.unity
+    guid: b9b56465911cea143b0e801e3d065065
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9a8865553ba39dc4d95375352be30905, type: 2}

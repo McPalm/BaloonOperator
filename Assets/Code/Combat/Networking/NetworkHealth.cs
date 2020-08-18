@@ -14,6 +14,8 @@ public class NetworkHealth : NetworkBehaviour
         Health = GetComponent<Health>();
         Health.OnHurt += Health_OnHurt;
         Health.OnHeal += Health_OnHeal;
+        Health.blockTriggers = !hasAuthority;
+        Debug.Log($"hasAuthority: {hasAuthority}");
     }
 
     private void Health_OnHeal(int damage)
