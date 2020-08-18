@@ -30,16 +30,19 @@ public class GameManager : NetworkBehaviour
     public void Update()
     {
         bool isGameOver = true;
-        foreach (GameObject go in AllPlayers)
+        if (AllPlayers.Count > 0 )
         {
-            if (go.GetComponent<Health>().CurrentHealth > 0)
+            foreach (GameObject go in AllPlayers)
             {
-                isGameOver = false;
+                if (go.GetComponent<Health>().CurrentHealth > 0)
+                {
+                    isGameOver = false;
+                }
             }
-        }
-        if (isGameOver)
-        {
-            ResetScene();
+            if (isGameOver)
+            {
+                ResetScene();
+            }
         }
     }
 
