@@ -49,7 +49,7 @@ public class GameManager : NetworkBehaviour
         SceneLoader.ReloadScene();
         foreach (GameObject go in AllPlayers)
         {
-            go.GetComponent<Health>().HealthLost = 0;
+            go.GetComponent<Health>().Heal(999, true);
         }
         ///Probably add reset health to character since they aren't a part of the scene.
     }

@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
 {
     public int MaxHealth = 1;
 
-    public int HealthLost { get; set; }
+    public int HealthLost { get; private set; }
     public int CurrentHealth => MaxHealth - HealthLost;
 
     public event System.Action<int, int> OnChange;
