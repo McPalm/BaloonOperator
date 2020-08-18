@@ -6,7 +6,6 @@ public class SpikesHurtYou : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Spikes!");
         var mobile = collision.GetComponent<Mobile>();
         var health = collision.GetComponent<Health>();
         if (mobile && health)

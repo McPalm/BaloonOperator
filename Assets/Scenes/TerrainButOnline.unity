@@ -130,13 +130,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1811609250282791800, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 3848449929065423287, guid: 9fe02bf2f570d0f4084d29ff425b5e50, type: 3}
     - target: {fileID: 2096783588992573122, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
       propertyPath: sceneId
-      value: 1717529474
+      value: 3269537668
       objectReference: {fileID: 0}
     - target: {fileID: 7293224593479539135, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -186,13 +182,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 9053982422635548911, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
-      propertyPath: radius
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4401371387146103038, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
-    - {fileID: 2096783588992573122, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
 --- !u!1 &520260756
 GameObject:
@@ -289,13 +279,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1811609250282791800, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 3848449929065423287, guid: 9fe02bf2f570d0f4084d29ff425b5e50, type: 3}
     - target: {fileID: 2096783588992573122, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
       propertyPath: sceneId
-      value: 4186800210
+      value: 788966683
       objectReference: {fileID: 0}
     - target: {fileID: 7293224593479539135, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -345,13 +331,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 9053982422635548911, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
-      propertyPath: radius
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4401371387146103038, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
-    - {fileID: 2096783588992573122, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
 --- !u!1 &1206905199
 GameObject:
@@ -712,13 +692,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1811609250282791800, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 3848449929065423287, guid: 9fe02bf2f570d0f4084d29ff425b5e50, type: 3}
     - target: {fileID: 2096783588992573122, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
       propertyPath: sceneId
-      value: 2731372484
+      value: 2606853537
       objectReference: {fileID: 0}
     - target: {fileID: 7293224593479539135, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -768,13 +744,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 9053982422635548911, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
-      propertyPath: radius
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4401371387146103038, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
-    - {fileID: 2096783588992573122, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
 --- !u!1 &1354055113
 GameObject:
@@ -46160,13 +46130,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1811609250282791800, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 3848449929065423287, guid: 9fe02bf2f570d0f4084d29ff425b5e50, type: 3}
     - target: {fileID: 2096783588992573122, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
       propertyPath: sceneId
-      value: 1524024555
+      value: 3145969758
       objectReference: {fileID: 0}
     - target: {fileID: 7293224593479539135, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -46216,11 +46182,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 9053982422635548911, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
-      propertyPath: radius
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4401371387146103038, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
-    - {fileID: 2096783588992573122, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}

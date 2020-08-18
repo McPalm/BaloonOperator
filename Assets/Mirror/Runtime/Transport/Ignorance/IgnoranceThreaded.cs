@@ -90,7 +90,7 @@ namespace Mirror
         // Standard things
         public void Awake()
         {
-            print("Thanks for using Ignorance Threaded Edition! If you experience bugs with this version, please file a GitHub support ticket. https://github.com/SoftwareGuy/Ignorance");
+            // print("Thanks for using Ignorance Threaded Edition! If you experience bugs with this version, please file a GitHub support ticket. https://github.com/SoftwareGuy/Ignorance");
 
             if (MaximumPeerCCU > 4095)
             {

@@ -35,6 +35,7 @@ public class Health : MonoBehaviour
             return;
         if (damage < 1)
             return;
+        Debug.Log("Was hurt!", gameObject);
         HealthLost += damage;
         OnHurt?.Invoke(damage);
         OnChange?.Invoke(CurrentHealth, MaxHealth);

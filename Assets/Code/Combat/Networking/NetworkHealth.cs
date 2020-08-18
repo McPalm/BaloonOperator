@@ -14,8 +14,26 @@ public class NetworkHealth : NetworkBehaviour
         Health = GetComponent<Health>();
         Health.OnHurt += Health_OnHurt;
         Health.OnHeal += Health_OnHeal;
-        Health.blockTriggers = !hasAuthority;
-        Debug.Log($"hasAuthority: {hasAuthority}");
+
+        bool isPlayer = GetComponent<NetworkControls>();
+
+        if (isPlayer)
+            Health.blockTriggers = !hasAuthority;
+        else
+            Health.blockTriggers = !isServer;
+        Debug.Log($"Health.blockTriggers: {Health.blockTriggers}");
+
+        FindObjectOfType<MyNetworkManager>().E_OnServerReady += NetworkHealth_E_OnServerReady;
+    }
+
+    private void OnDestroy()
+    {
+        FindObjectOfType<MyNetworkManager>().E_OnServerReady -= NetworkHealth_E_OnServerReady;
+    }
+
+    private void NetworkHealth_E_OnServerReady(NetworkConnection obj)
+    {
+        TargetStartupSync(obj, Health.HealthLost);
     }
 
     private void Health_OnHeal(int damage)
@@ -67,5 +85,10 @@ public class NetworkHealth : NetworkBehaviour
             Health.SetHealth(lostHealth, change);
             lastUpdate = time;
         }
+    }
+
+    [TargetRpc]void TargetStartupSync(NetworkConnection target, int lostHealth)
+    {
+        Health.SetHealth(lostHealth, 0);
     }
 }
