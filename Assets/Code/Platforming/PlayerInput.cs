@@ -52,4 +52,12 @@ public class PlayerInput : MonoBehaviour
             InputToken.JumpHeld = false;
         }
     }
+
+    public void OnClimb(InputAction.CallbackContext e)
+    {
+        if (e.started)
+            InputToken.ClimbHeld = true;
+        else if(e.canceled)
+            InputToken.ClimbHeld = false;
+    }
 }

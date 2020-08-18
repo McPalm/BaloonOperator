@@ -30,4 +30,5 @@ public class PlatformingCharacterProperties : ScriptableObject
     public float MaxFallSpeed = 10f;
     public float MaxWallslideSpeed = 30f;
     public int CyoteTime = 5;
+    public float ClimbSpeed = 0f;
 }

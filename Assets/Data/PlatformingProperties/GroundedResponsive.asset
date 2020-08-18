@@ -51,5 +51,6 @@ MonoBehaviour:
   slowfallTrottle: 0
   slowfallSpeed: 30
   MaxFallSpeed: 28.94
-  MaxWallslideSpeed: 1
+  MaxWallslideSpeed: 4.5
   CyoteTime: 2
+  ClimbSpeed: 3
