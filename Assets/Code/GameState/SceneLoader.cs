@@ -8,6 +8,9 @@ public class SceneLoader : NetworkBehaviour
 {
     string activeScene;
 
+    [Scene]
+    public string nextScene;
+
     private void Start()
     {
         FindObjectOfType<MyNetworkManager>().E_OnServerReady += SceneLoader_E_OnServerReady;
@@ -57,6 +60,11 @@ public class SceneLoader : NetworkBehaviour
         {
             connection.Value.Send(message);
         }
+    }
+
+    public void LoadNextScene()
+    {
+        LoadScene(nextScene);
     }
 
     public void ReloadScene()

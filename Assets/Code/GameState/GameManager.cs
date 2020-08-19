@@ -61,7 +61,7 @@ public class GameManager : NetworkBehaviour
         if (isServer)
         {
             Debug.Log("You WIN!");
-            ResetScene();
+            SceneLoader.LoadNextScene();
         }
     }
 
