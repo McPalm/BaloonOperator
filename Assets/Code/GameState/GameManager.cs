@@ -26,26 +26,38 @@ public class GameManager : NetworkBehaviour
     {
         SceneLoader = GetComponent<SceneLoader>();
         SceneLoader.LoadScene(startLevel);
+        StartCoroutine(StateMachine());
     }
 
-    [Server]
-    public void Update()
+    bool IsGameOver()
     {
-        bool isGameOver = true;
-        if (AllPlayers.Count > 0 )
+        if (AllPlayers.Count > 0)
         {
             foreach (GameObject go in AllPlayers)
             {
                 if (go.GetComponent<Health>().CurrentHealth > 0)
                 {
-                    isGameOver = false;
+                    return false;
                 }
             }
-            if (isGameOver)
-            {
-                TriggerLoss();
-            }
         }
+        return true;
+    }
+
+    IEnumerator StateMachine()
+    {
+        yield return new WaitForSeconds(1f);
+    playState:
+        for (; ; )
+        {
+            yield return null;
+            if (IsGameOver())
+                goto gameOverState;
+        }
+    gameOverState:
+        yield return new WaitForSeconds(3f);
+        TriggerLoss();
+        goto playState;
     }
 
     [Server]
