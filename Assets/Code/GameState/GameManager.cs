@@ -78,6 +78,7 @@ public class GameManager : NetworkBehaviour
             {
                 damage = 999,
                 source = gameObject,
+                authorative = true,
             });
         }
         ///Probably add reset health to character since they aren't a part of the scene.

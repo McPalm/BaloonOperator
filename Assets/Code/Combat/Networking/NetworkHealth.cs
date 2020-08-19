@@ -46,6 +46,13 @@ public class NetworkHealth : NetworkBehaviour
     private void Apply(DamageData data, bool heal)
     {
         int change = heal ? -data.damage : data.damage;
+        if(data.authorative)
+        {
+            if (!isServer)
+                throw new System.Exception("Only server is allowed to do authorative heal and damage");
+            CmdChangeHealth(change);
+            return;
+        }
         var source = data.source.GetComponent<NetworkIdentity>();
 
         bool sourceIsPlayer = false;

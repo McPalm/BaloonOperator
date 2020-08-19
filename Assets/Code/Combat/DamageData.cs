@@ -7,4 +7,6 @@ public class DamageData
 {
     public int damage;
     public GameObject source;
+    public bool authorative;
+         
 }
