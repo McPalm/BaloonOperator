@@ -23,12 +23,20 @@ public class PlatformingCharacter : Mobile, IInputReader
 
     bool CanWallJump => Properties.WalljumpForce > 0f && !Grounded && wallSlideTime > 0;
 
+    public bool Disabled { get; set; }
+
     // Update is called once per frame
     new protected void FixedUpdate()
     {
         if (InputToken == null)
         {
             base.FixedUpdate();
+            return;
+        }
+        if(Disabled)
+        {
+            base.FixedUpdate();
+            HMomentum *= .8f;
             return;
         }
 

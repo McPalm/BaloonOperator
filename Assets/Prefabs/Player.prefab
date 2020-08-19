@@ -411,6 +411,7 @@ GameObject:
   - component: {fileID: 1250611769}
   - component: {fileID: 539727597621919533}
   - component: {fileID: 5401594573457135009}
+  - component: {fileID: 1798536383502569831}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -752,6 +753,76 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5415466755468457898}
+  attackDuration: 15
+--- !u!114 &1798536383502569831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3602800873068193666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee24b92b1b1f694b98df02bd33e8972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeadScripts: []
+  AliveScripts: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1209720722372671022}
+        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+        m_MethodName: set_flipY
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3602800873068193665}
+        m_TargetAssemblyTypeName: PlatformingCharacter, Assembly-CSharp
+        m_MethodName: set_Disabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  OnRessurect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1209720722372671022}
+        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+        m_MethodName: set_flipY
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3602800873068193665}
+        m_TargetAssemblyTypeName: PlatformingCharacter, Assembly-CSharp
+        m_MethodName: set_Disabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Health: {fileID: 0}
 --- !u!1 &7160744774408102427
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,13 +1000,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
---- !u!95 &5415466755468457898 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1922948091, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
-  m_PrefabInstance: {fileID: 5415466754690231377}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3867314823048557616 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9118922853219489889, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
+  m_PrefabInstance: {fileID: 5415466754690231377}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5415466755468457898 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1922948091, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
   m_PrefabInstance: {fileID: 5415466754690231377}
   m_PrefabAsset: {fileID: 0}
