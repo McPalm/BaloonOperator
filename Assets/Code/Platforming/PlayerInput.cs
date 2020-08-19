@@ -11,9 +11,8 @@ public class PlayerInput : MonoBehaviour
     void Start()
     {
         InputToken = new InputToken();
-        var pc = GetComponent<PlatformingCharacter>();
-        if(pc)
-            pc.InputToken = InputToken;
+        foreach (var ir in GetComponents<IInputReader>())
+            ir.InputToken = InputToken;
     }
 
     void Update()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformingCharacter : Mobile
+public class PlatformingCharacter : Mobile, IInputReader
 {
     public InputToken InputToken { get; set; }
 
@@ -19,6 +19,7 @@ public class PlatformingCharacter : Mobile
     int ForceJumpFrames = 0;
     Vector2 ForceMove;
     int ForceMoveFrames = 0;
+    int rootDuration = 0;
 
     bool CanWallJump => Properties.WalljumpForce > 0f && !Grounded && wallSlideTime > 0;
 
@@ -68,6 +69,7 @@ public class PlatformingCharacter : Mobile
         bool jumpConsumed = false;
         ForceJumpFrames--;
         ForceMoveFrames--;
+        rootDuration--;
 
         // useful variables
         var peakJump = (VMomentum < 1f && VMomentum > -1f) && !Grounded;
@@ -84,11 +86,13 @@ public class PlatformingCharacter : Mobile
             x = 1f;
         if (x < -.75f)
             x = -1f;
-        if (x != 0f && (Grounded || Properties.airTurn))
+        if (x != 0f && (Grounded || Properties.airTurn) && rootDuration < 0)
             FaceRight = x > 0f;
 
         // horiontal movement
         var desiredSpeed = x * Properties.MaxSpeed;
+        if (Grounded && rootDuration > 0)
+            desiredSpeed = 0f;
         bool breaking = (Mathf.Abs(desiredSpeed) < Mathf.Abs(HMomentum) || Mathf.Sign(desiredSpeed) != Mathf.Sign(HMomentum));
         var accel = Properties.AccelerationCurve.Evaluate(breaking ? -currentSpeed : currentSpeed);
         if (peakJump)
@@ -220,6 +224,11 @@ public class PlatformingCharacter : Mobile
         base.FixedUpdate();
 
         return (jumpConsumed, cyoteTime);
+    }
+
+    public void Root(int duration)
+    {
+        rootDuration = Mathf.Max(rootDuration, duration);
     }
 
     PlatformingCharacterSnapshot[] history = new PlatformingCharacterSnapshot[60];

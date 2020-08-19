@@ -410,6 +410,7 @@ GameObject:
   - component: {fileID: 1250611771}
   - component: {fileID: 1250611769}
   - component: {fileID: 539727597621919533}
+  - component: {fileID: 5401594573457135009}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -522,18 +523,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5415466755468457898}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Slash
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 6b21093e-4182-4d97-b5dd-31489232c980
@@ -750,6 +739,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+--- !u!114 &5401594573457135009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3602800873068193666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e2691bc82ebd24eae6342020667bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5415466755468457898}
 --- !u!1 &7160744774408102427
 GameObject:
   m_ObjectHideFlags: 0

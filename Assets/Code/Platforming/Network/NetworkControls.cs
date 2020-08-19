@@ -21,6 +21,7 @@ public class NetworkControls : NetworkBehaviour
     // private float nextForcedUpdate = 0f;
     double lastUpdate;
     bool jumped = false;
+    bool attacked = false;
 
     double lastBoost;
 
@@ -28,6 +29,7 @@ public class NetworkControls : NetworkBehaviour
     void Start()
     {
         GameManager game = FindObjectOfType<GameManager>();
+
         PlayerInput = GetComponent<PlayerInput>();
         PlatformingCharacter = GetComponent<PlatformingCharacter>();
 
@@ -38,11 +40,16 @@ public class NetworkControls : NetworkBehaviour
             PlatformingCharacter.OnJump += () => jumped = true;
             FindObjectOfType<CameraFollow>().Follow = new Mobile[] { PlatformingCharacter };
             PlatformingCharacter.OnStomp += PlatformingCharacter_OnStomp;
+            var attack = GetComponent<Attack>();
+            if (attack)
+                attack.OnAttack += () => attacked = true;
+
             game.RegisterPlayer(gameObject);
         }
         else
         {
-            PlatformingCharacter.InputToken = OutputToken;
+            foreach (var inputReaders in GetComponents<IInputReader>())
+                inputReaders.InputToken = OutputToken;
             PlayerInput.enabled = false;
             interpolation.enabled = true;
         }
@@ -73,14 +80,14 @@ public class NetworkControls : NetworkBehaviour
     {
         moveX = InputToken.Direction.x;
         holdJump = InputToken.JumpHeld;
-        CmdSyncInput(moveX, holdJump, transform.position, new Vector2(PlatformingCharacter.HMomentum, PlatformingCharacter.VMomentum), NetworkTime.time, jumped);
+        CmdSyncInput(moveX, holdJump, transform.position, new Vector2(PlatformingCharacter.HMomentum, PlatformingCharacter.VMomentum), NetworkTime.time, jumped, attacked);
         jumped = false;
         // nextForcedUpdate = Time.realtimeSinceStartup + MIN_REFRESH_DELAY;
     }
 
 
-    [Command(channel = Channels.DefaultUnreliable)] private void CmdSyncInput(float moveX, bool holdJump, Vector2 pos, Vector2 force, double time, bool jump) => RpcSyncInput(moveX, holdJump, pos, force, time, jump);
-    [ClientRpc(channel = Channels.DefaultUnreliable)] private void RpcSyncInput(float moveX, bool holdJump, Vector2 pos, Vector2 force, double time, bool jump)
+    [Command(channel = Channels.DefaultUnreliable)] private void CmdSyncInput(float moveX, bool holdJump, Vector2 pos, Vector2 force, double time, bool jump, bool attack) => RpcSyncInput(moveX, holdJump, pos, force, time, jump, attack);
+    [ClientRpc(channel = Channels.DefaultUnreliable)] private void RpcSyncInput(float moveX, bool holdJump, Vector2 pos, Vector2 force, double time, bool jump, bool attack)
     {
         if (isLocalPlayer)
             return;
@@ -95,6 +102,8 @@ public class NetworkControls : NetworkBehaviour
         PlatformingCharacter.VMomentum = force.y;
         if(jump)
             OutputToken.PressJump();
+        if (attack)
+            OutputToken.PressUse();
     }
 
     [Command(channel = 2, ignoreAuthority = true)] private void CmdStomp(double time, Vector2 at) => RpcStomp(time, at);
