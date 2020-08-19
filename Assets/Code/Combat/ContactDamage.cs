@@ -16,7 +16,7 @@ public class ContactDamage : MonoBehaviour
             health.Hurt(new DamageData()
             {
                 damage = damage,
-                source = source ?? gameObject,
+                source = source == null ? gameObject : source,
             });
     }
     
