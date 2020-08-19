@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ContactDamage : MonoBehaviour
 {
-
+    public GameObject source;
     public int damage = 1;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -16,7 +16,7 @@ public class ContactDamage : MonoBehaviour
             health.Hurt(new DamageData()
             {
                 damage = damage,
-                source = gameObject
+                source = source ?? gameObject,
             });
     }
     
