@@ -53,6 +53,12 @@ TextureImporter:
   - first:
       213: 1451949974572217151
     second: SandStoneTiles_16
+  - first:
+      213: 1742083488928710622
+    second: SandStoneTiles_17
+  - first:
+      213: 2124303153266113190
+    second: SandStoneTiles_18
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -508,6 +514,48 @@ TextureImporter:
       bones: []
       spriteID: f33b3022fcc562410800000000000000
       internalID: 1451949974572217151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandStoneTiles_17
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edf3ba604bf1d2810800000000000000
+      internalID: 1742083488928710622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandStoneTiles_18
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aa3bad767a0b7d10800000000000000
+      internalID: 2124303153266113190
       vertices: []
       indices: 
       edges: []

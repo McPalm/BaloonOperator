@@ -43,14 +43,16 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: b2caa6cb7ee1e264aa06179a4c46ebde, type: 3}
-    totalSpriteSurfaceArea: 4352
+    totalSpriteSurfaceArea: 6400
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 2124303153266113190, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
   - {fileID: 6527952443591430980, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
   - {fileID: -1644569121288067293, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: 1742083488928710622, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
   - {fileID: 1451949974572217151, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
   - {fileID: 7731962002123196093, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
   - {fileID: -8881554066780571003, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
@@ -67,8 +69,10 @@ SpriteAtlas:
   - {fileID: -4790908730115963414, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
   - {fileID: 8977284450834130336, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
   m_PackedSpriteNamesToIndex:
+  - SandStoneTiles_18
   - SandStoneTiles_15
   - SandStoneTiles_14
+  - SandStoneTiles_17
   - SandStoneTiles_16
   - SandStoneTiles_11
   - SandStoneTiles_10
