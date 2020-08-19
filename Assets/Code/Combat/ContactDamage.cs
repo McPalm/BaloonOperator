@@ -9,6 +9,8 @@ public class ContactDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!enabled)
+            return;
         var health = collision.GetComponent<Health>();
         if (health)
             health.Hurt(new DamageData()
