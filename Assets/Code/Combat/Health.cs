@@ -32,7 +32,6 @@ public class Health : MonoBehaviour
     {
         if (data.damage < 1)
             return;
-        Debug.Log("Was hurt!", gameObject);
         HealthLost += data.damage;
         OnHurt?.Invoke(data);
         if (HealthLost >= MaxHealth)

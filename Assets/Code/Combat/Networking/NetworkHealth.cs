@@ -31,7 +31,6 @@ public class NetworkHealth : NetworkBehaviour
             Health.blockTriggers = !isServer;
             serverObject = true;
         }
-        Debug.Log($"Health.blockTriggers: {Health.blockTriggers}");
 
         FindObjectOfType<MyNetworkManager>().E_OnServerReady += NetworkHealth_E_OnServerReady;
     }
@@ -64,8 +63,6 @@ public class NetworkHealth : NetworkBehaviour
                 sourceIsPlayer = true;
         }
 
-        Debug.Log($"Heal or hurt! source is...  player{sourceIsPlayer} enviroment{sourceIsEnvorment} enemy{sourceIsEnemy}", gameObject);
-
         if (isLocalPlayer)
         {
             if (sourceIsEnvorment)
@@ -90,7 +87,6 @@ public class NetworkHealth : NetworkBehaviour
     [Command(channel = Channels.DefaultReliable, ignoreAuthority = true)]
     void CmdChangeHealth(int change)
     {
-        Debug.Log($"Healh change incomming {change}", gameObject);
         ServerChangeHealth(change);
     }
 
