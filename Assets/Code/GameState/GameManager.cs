@@ -86,7 +86,7 @@ public class GameManager : NetworkBehaviour
     Win:
         EventWin?.Invoke();
         yield return new WaitForSeconds(1f);
-        ResetScene();
+        SceneLoader.LoadNextScene();
         win = false;
         lose = false;
         goto Play;
