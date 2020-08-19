@@ -82,6 +82,7 @@ public class NetworkControls : NetworkBehaviour
         holdJump = InputToken.JumpHeld;
         CmdSyncInput(moveX, holdJump, transform.position, new Vector2(PlatformingCharacter.HMomentum, PlatformingCharacter.VMomentum), NetworkTime.time, jumped, attacked);
         jumped = false;
+        attacked = false;
         // nextForcedUpdate = Time.realtimeSinceStartup + MIN_REFRESH_DELAY;
     }
 
