@@ -11,9 +11,8 @@ public class Health : MonoBehaviour
     public int HealthLost { get; private set; }
     public int CurrentHealth => MaxHealth - HealthLost;
 
-    public event System.Action<int, int> OnChange;
-    public event System.Action<int> OnHurt;
-    public event System.Action<int> OnHeal;
+    public event System.Action<DamageData> OnHurt;
+    public event System.Action<DamageData> OnHeal;
     public event System.Action OnZeroHealth;
 
     public UnityEvent<float> OnChangeHealth;
@@ -29,28 +28,25 @@ public class Health : MonoBehaviour
         NotifyChangeHealthObservers();
     }
 
-    public void Hurt(int damage)
+    public void Hurt(DamageData data)
     {
-        if (damage < 1)
+        if (data.damage < 1)
             return;
         Debug.Log("Was hurt!", gameObject);
-        HealthLost += damage;
-        OnHurt?.Invoke(damage);
-        OnChange?.Invoke(CurrentHealth, MaxHealth);
+        HealthLost += data.damage;
+        OnHurt?.Invoke(data);
         if (HealthLost >= MaxHealth)
             OnZeroHealth?.Invoke();
         NotifyChangeHealthObservers();
     }
 
-    public void Heal(int damage, bool overrideAuthority = false)
+    public void Heal(DamageData data)
     {
-        OnHeal?.Invoke(damage);
-        if (damage > HealthLost)
-            damage = HealthLost;
-        if (damage < 1)
+        if (data.damage < 1)
             return;
-        HealthLost -= damage;
-        OnChange?.Invoke(CurrentHealth, MaxHealth);
+        HealthLost -= data.damage;
+        HealthLost = Mathf.Max(HealthLost, 0);
+        OnHeal?.Invoke(data);
         NotifyChangeHealthObservers();
     }
 

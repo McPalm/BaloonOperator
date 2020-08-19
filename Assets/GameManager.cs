@@ -13,6 +13,8 @@ public class GameManager : NetworkBehaviour
     public GameObject Player { get; set; }
     public List<GameObject> AllPlayers { get; set; }
 
+    float resetCooldown = 0f;
+
     private void Awake()
     {
         AllPlayers = new List<GameObject>();
@@ -61,10 +63,17 @@ public class GameManager : NetworkBehaviour
     [Server]
     public void ResetScene()
     {
+        if(resetCooldown > Time.time)
+            throw new System.Exception("Your reloading the stage to quickly");
+        resetCooldown = Time.time + 1f;
         SceneLoader.ReloadScene();
         foreach (GameObject go in AllPlayers)
         {
-            go.GetComponent<Health>().Heal(999, true);
+            go.GetComponent<Health>().Heal(new DamageData()
+            {
+                damage = 999,
+                source = gameObject,
+            });
         }
         ///Probably add reset health to character since they aren't a part of the scene.
     }

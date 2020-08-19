@@ -11,12 +11,15 @@ public class SpikesHurtYou : MonoBehaviour
         if (mobile && health)
         {
             if (mobile.VMomentum < -16f)
-                health.Hurt(3);
+                Hurt(health, 3);
             else if (mobile.VMomentum < -8f)
-                health.Hurt(2);
+                Hurt(health, 2);
             else if (mobile.VMomentum < -3f)
-                health.Hurt(1);
+                Hurt(health, 1);
 
         }
     }
+
+    void Hurt(Health target, int ammount) => target.Hurt(new DamageData() { damage = ammount, source = gameObject });
+
 }
