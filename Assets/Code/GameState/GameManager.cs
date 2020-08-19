@@ -48,16 +48,21 @@ public class GameManager : NetworkBehaviour
         }
     }
 
+    [Server]
     public void TriggerLoss()
     {
         Debug.Log("You LOSE!");
         ResetScene();
     }
 
+    [Server]
     public void TriggerWin()
     {
-        Debug.Log("You WIN!");
-        ResetScene();
+        if (isServer)
+        {
+            Debug.Log("You WIN!");
+            ResetScene();
+        }
     }
 
     [Server]
