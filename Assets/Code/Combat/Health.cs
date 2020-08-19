@@ -34,8 +34,6 @@ public class Health : MonoBehaviour
             return;
         HealthLost += data.damage;
         OnHurt?.Invoke(data);
-        if (HealthLost >= MaxHealth)
-            OnZeroHealth?.Invoke();
         NotifyChangeHealthObservers();
     }
 
@@ -53,6 +51,8 @@ public class Health : MonoBehaviour
     {
         HealthLost = lost;
         NotifyChangeHealthObservers();
+        if (HealthLost >= MaxHealth)
+            OnZeroHealth?.Invoke();
     }
 
     void NotifyChangeHealthObservers() => OnChangeHealth.Invoke((float)CurrentHealth / (float)MaxHealth);
