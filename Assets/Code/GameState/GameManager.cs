@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameManager : NetworkBehaviour
 {
@@ -15,18 +16,34 @@ public class GameManager : NetworkBehaviour
 
     float resetCooldown = 0f;
 
+    [SyncEvent] event System.Action EventWin;
+    [SyncEvent] event System.Action EventGameOver;
+    [SyncEvent] event System.Action EventPlayState;
+
+    public UnityEvent OnWinEvent;
+    public UnityEvent OnGameOverEvent;
+    public UnityEvent OnPlayStateEvent;
+
     private void Awake()
     {
         AllPlayers = new List<GameObject>();
     }
 
+    bool lose = false;
+    bool win = false;
+
     // Start is called before the first frame update
-    [Server]
     void Start()
     {
-        SceneLoader = GetComponent<SceneLoader>();
-        SceneLoader.LoadScene(startLevel);
-        StartCoroutine(StateMachine());
+        EventWin += () => OnWinEvent.Invoke();
+        EventGameOver += () => OnGameOverEvent.Invoke();
+        EventPlayState += () => OnPlayStateEvent.Invoke();
+        if (isServer)
+        {
+            SceneLoader = GetComponent<SceneLoader>();
+            SceneLoader.LoadScene(startLevel);
+            StartCoroutine(StateMachine());
+        }
     }
 
     bool IsGameOver()
@@ -47,24 +64,39 @@ public class GameManager : NetworkBehaviour
     IEnumerator StateMachine()
     {
         yield return new WaitForSeconds(1f);
-    playState:
+    Play:
+        EventPlayState?.Invoke();
         for (; ; )
         {
             yield return null;
             if (IsGameOver())
-                goto gameOverState;
+                goto GameOver;
+            if (win)
+                goto Win;
+            if (lose)
+                goto GameOver;
         }
-    gameOverState:
+    GameOver:
+        EventGameOver?.Invoke();
         yield return new WaitForSeconds(3f);
-        TriggerLoss();
-        goto playState;
+        lose = false;
+        win = false;
+        ResetScene();
+        goto Play;
+    Win:
+        EventWin?.Invoke();
+        yield return new WaitForSeconds(1f);
+        ResetScene();
+        win = false;
+        lose = false;
+        goto Play;
     }
 
     [Server]
     public void TriggerLoss()
     {
         Debug.Log("You LOSE!");
-        ResetScene();
+        lose = true;
     }
 
     [Server]
@@ -73,7 +105,7 @@ public class GameManager : NetworkBehaviour
         if (isServer)
         {
             Debug.Log("You WIN!");
-            ResetScene();
+            win = true;
         }
     }
 
