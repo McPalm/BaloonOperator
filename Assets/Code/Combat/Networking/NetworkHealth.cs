@@ -58,7 +58,7 @@ public class NetworkHealth : NetworkBehaviour
         bool sourceIsPlayer = false;
         bool sourceIsEnvorment = false;
         bool sourceIsEnemy = false;
-
+        bool accept = false;
 
         if (source == null)
             sourceIsEnvorment = true;
@@ -72,23 +72,24 @@ public class NetworkHealth : NetworkBehaviour
 
         if (isLocalPlayer)
         {
-            if (sourceIsEnvorment)
-                CmdChangeHealth(change);
-            else if (sourceIsPlayer && source.isLocalPlayer)
-                CmdChangeHealth(change);
-            else if (sourceIsEnemy)
-                CmdChangeHealth(change);
+            if (sourceIsEnvorment || sourceIsEnemy)
+                accept = true;
+            if (sourceIsPlayer && source.isLocalPlayer)
+                accept = true;
         }
         else
         {
-            if(serverObject && isServer)
+            if (serverObject && isServer)
             {
                 if (sourceIsEnemy || sourceIsEnvorment)
-                    CmdChangeHealth(change);
+                    accept = true;
             }
             if (sourceIsPlayer && source.isLocalPlayer)
-                CmdChangeHealth(change);
+                accept = true;
         }
+        if (accept)
+            CmdChangeHealth(change);
+        data.reject = !accept;
     }
 
     [Command(channel = Channels.DefaultReliable, ignoreAuthority = true)]

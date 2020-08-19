@@ -32,8 +32,10 @@ public class Health : MonoBehaviour
     {
         if (data.damage < 1)
             return;
-        HealthLost += data.damage;
         OnHurt?.Invoke(data);
+        if (data.reject)
+            return;
+        HealthLost += data.damage;
         NotifyChangeHealthObservers();
     }
 
@@ -41,9 +43,11 @@ public class Health : MonoBehaviour
     {
         if (data.damage < 1)
             return;
+        OnHeal?.Invoke(data);
+        if (data.reject)
+            return;
         HealthLost -= data.damage;
         HealthLost = Mathf.Max(HealthLost, 0);
-        OnHeal?.Invoke(data);
         NotifyChangeHealthObservers();
     }
 
