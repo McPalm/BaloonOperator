@@ -16,9 +16,6 @@ public class GameManager : NetworkBehaviour
 
     float resetCooldown = 0f;
 
-    [SyncEvent] event System.Action EventWin;
-    [SyncEvent] event System.Action EventGameOver;
-    [SyncEvent] event System.Action EventPlayState;
 
     public UnityEvent OnWinEvent;
     public UnityEvent OnGameOverEvent;
@@ -35,9 +32,6 @@ public class GameManager : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EventWin += () => OnWinEvent.Invoke();
-        EventGameOver += () => OnGameOverEvent.Invoke();
-        EventPlayState += () => OnPlayStateEvent.Invoke();
         if (isServer)
         {
             SceneLoader = GetComponent<SceneLoader>();
@@ -65,7 +59,7 @@ public class GameManager : NetworkBehaviour
     {
         yield return new WaitForSeconds(1f);
     Play:
-        EventPlayState?.Invoke();
+        RpcOnPlayState();
         for (; ; )
         {
             yield return null;
@@ -77,14 +71,14 @@ public class GameManager : NetworkBehaviour
                 goto GameOver;
         }
     GameOver:
-        EventGameOver?.Invoke();
+        RpcOnGameOver();
         yield return new WaitForSeconds(3f);
         lose = false;
         win = false;
         ResetScene();
         goto Play;
     Win:
-        EventWin?.Invoke();
+        RpcOnWin();
         yield return new WaitForSeconds(1f);
         SceneLoader.LoadNextScene();
         win = false;
@@ -138,4 +132,8 @@ public class GameManager : NetworkBehaviour
         AllPlayers.Add(player);
     }
 
+    [ClientRpc] void RpcOnWin() => OnWinEvent.Invoke();
+    [ClientRpc] void RpcOnGameOver() => OnGameOverEvent.Invoke();
+    [ClientRpc] void RpcOnPlayState() => OnPlayStateEvent.Invoke();
+    
 }
