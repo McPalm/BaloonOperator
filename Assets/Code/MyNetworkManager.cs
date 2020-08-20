@@ -9,6 +9,7 @@ public class MyNetworkManager : NetworkManager
 
     public override void OnServerReady(NetworkConnection conn)
     {
+        Debug.Log("New player connected!");
         base.OnServerReady(conn);
         E_OnServerReady?.Invoke(conn);
     }
