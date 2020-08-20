@@ -6,21 +6,18 @@ using UnityEngine.Tilemaps;
 public class MapPainter : MonoBehaviour
 {
     public Tilemap Tilemap;
-    public MapModuleSample[] Modules;
 
-    void Start()
-    {
-        Paint(Modules);
-    }
-
-    void Paint(MapModuleSample[] modules)
+    public void Paint(MapModule[] modules)
     {
         int i = 0;
         for (int y = 0; y < 4; y++)
         {
             for (int x = 0; x < 4; x++)
             {
-                modules[i++].PaintTo(Tilemap, x * 13, y * 13, x == 0);
+                Debug.Log(i);
+                Debug.Log(modules[i]);
+                Debug.Log(Tilemap);
+                modules[i++].PaintTo(Tilemap, x * 13, y * 13);
             }
         }
     }    

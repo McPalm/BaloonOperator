@@ -42,8 +42,5 @@ public class MapModuleSample : ScriptableObject
             }
         }
         tilemap.SetTiles(pos, tiles);
-    }
-
-
-         
+    }    
 }

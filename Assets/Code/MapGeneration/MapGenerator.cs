@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Linq;
 
-public class MapGenerator : MonoBehaviour
+public class MapGenerator
 {
-    MapModuleSample[] modules;
+    public MapModuleSample[] modules;
 
     public MapModule[] GenerateMap()
     {
@@ -16,7 +14,7 @@ public class MapGenerator : MonoBehaviour
         bool haveGoal = false;
         bool isOnSide = true;
         bool isOpenTop = false;
-        for (int y = 3; y < 0; y-- )
+        for (int y = 3; y >= 0; y-- )
         {
             bool haveDowns = false;
             for (int x = 0; x < 4; x++ )
@@ -26,7 +24,6 @@ public class MapGenerator : MonoBehaviour
                 {
                     flip = true;
                     isOnSide = true;
-
                 }
                 else if (x == 3)
                 {
@@ -36,11 +33,11 @@ public class MapGenerator : MonoBehaviour
                     {
 
                     }
-                    if (y == 0 && haveStart == false)
+                    if (y == 3 && haveStart == false)
                     {
                         ValidTiles = ValidTiles.Where(m => m.MapModuleFlag == MapModuleFlag.start).ToArray();
                     }
-                    if (y == 3 && haveGoal == false)
+                    if (y == 0 && haveGoal == false)
                     {
                         ValidTiles = ValidTiles.Where(m => m.MapModuleFlag == MapModuleFlag.goal).ToArray();
                     }
@@ -51,14 +48,7 @@ public class MapGenerator : MonoBehaviour
                     isOnSide = true;
                 }
 
-                if (y > 0 && map[(x + y * 4) - 4 ].MapModuleSample.OpenBottom)
-                {
-                    isOpenTop = true;
-                }
-                else
-                {
-                    isOpenTop = false;
-                }
+                isOpenTop = (y < 3 && map[(x + y * 4) + 4].MapModuleSample.OpenBottom);
 
                 ValidTiles = ValidTiles.Where(m => m.OpenBothSides == !isOnSide && m.OpenTop == isOpenTop ).ToArray();
                 map[x + y * 4] = new MapModule( ValidTiles[ Random.Range( 0, ValidTiles.Length-1 ) ], flip);

@@ -154,23 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tilemap: {fileID: 1345791307}
-  Modules:
-  - {fileID: 11400000, guid: 519764fef8661cf42b560c8df084676c, type: 2}
-  - {fileID: 11400000, guid: e4102f9a5187a6548b55a97cd6687c37, type: 2}
-  - {fileID: 11400000, guid: 302b772be1b30cf4a9bc654a2687d851, type: 2}
-  - {fileID: 11400000, guid: ad2286295c5840941942cf72cbf96bf2, type: 2}
-  - {fileID: 11400000, guid: e4102f9a5187a6548b55a97cd6687c37, type: 2}
-  - {fileID: 11400000, guid: ad2286295c5840941942cf72cbf96bf2, type: 2}
-  - {fileID: 11400000, guid: 302b772be1b30cf4a9bc654a2687d851, type: 2}
-  - {fileID: 11400000, guid: e4102f9a5187a6548b55a97cd6687c37, type: 2}
-  - {fileID: 11400000, guid: 860ec26334dc8644c9a6e42321b96593, type: 2}
-  - {fileID: 11400000, guid: e4102f9a5187a6548b55a97cd6687c37, type: 2}
-  - {fileID: 11400000, guid: e4102f9a5187a6548b55a97cd6687c37, type: 2}
-  - {fileID: 11400000, guid: 860ec26334dc8644c9a6e42321b96593, type: 2}
-  - {fileID: 11400000, guid: f46ec08c0afcc8c469c2aa68b0cef59b, type: 2}
-  - {fileID: 11400000, guid: 302b772be1b30cf4a9bc654a2687d851, type: 2}
-  - {fileID: 11400000, guid: e4102f9a5187a6548b55a97cd6687c37, type: 2}
-  - {fileID: 11400000, guid: cb9dfb0c80bc2d24fb7a9892bb10bd18, type: 2}
 --- !u!156049354 &744718371
 Grid:
   m_ObjectHideFlags: 0
@@ -26129,3 +26112,61 @@ Transform:
   m_Father: {fileID: 744718372}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1661858972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1661858973}
+  - component: {fileID: 1661858974}
+  m_Layer: 0
+  m_Name: Map Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1661858973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661858972}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 37.5216, y: 26.414507, z: -130.02097}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1661858974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661858972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953d41dea32ca3d4f9c500ad302e590a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapModuleSamples:
+  - {fileID: 11400000, guid: f1ef8f88a409e994a9ab1811feb8adbc, type: 2}
+  - {fileID: 11400000, guid: 95f6b31e9c8dad0429f6c8d2b561380e, type: 2}
+  - {fileID: 11400000, guid: f46ec08c0afcc8c469c2aa68b0cef59b, type: 2}
+  - {fileID: 11400000, guid: 5ddc7532b9a2f714cb8dba0da1d02045, type: 2}
+  - {fileID: 11400000, guid: 519764fef8661cf42b560c8df084676c, type: 2}
+  - {fileID: 11400000, guid: e4102f9a5187a6548b55a97cd6687c37, type: 2}
+  - {fileID: 11400000, guid: ad2286295c5840941942cf72cbf96bf2, type: 2}
+  - {fileID: 11400000, guid: 302b772be1b30cf4a9bc654a2687d851, type: 2}
+  - {fileID: 11400000, guid: cb9dfb0c80bc2d24fb7a9892bb10bd18, type: 2}
+  - {fileID: 11400000, guid: 4946f636e1490f74e9008813d5b14299, type: 2}
+  - {fileID: 11400000, guid: 024589fd2a7ecdd41a51b783d46f0037, type: 2}
+  - {fileID: 11400000, guid: 860ec26334dc8644c9a6e42321b96593, type: 2}
+  - {fileID: 11400000, guid: d5e338d97b9e4bb448f2bf8adb300dd0, type: 2}
+  MapPainter: {fileID: 744718370}
