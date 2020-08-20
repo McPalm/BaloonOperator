@@ -14,9 +14,6 @@ public class MapPainter : MonoBehaviour
         {
             for (int x = 0; x < 4; x++)
             {
-                Debug.Log(i);
-                Debug.Log(modules[i]);
-                Debug.Log(Tilemap);
                 modules[i++].PaintTo(Tilemap, x * 13, y * 13);
             }
         }

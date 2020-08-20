@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TerrainButOnline.unity
     guid: b9b56465911cea143b0e801e3d065065
+  - enabled: 1
+    path: Assets/Scenes/MapPaintTest.unity
+    guid: 9f5653e34ede5114eb22c4bdb916e99c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9a8865553ba39dc4d95375352be30905, type: 2}

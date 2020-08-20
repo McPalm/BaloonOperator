@@ -20,7 +20,20 @@ public class MapLoader : MonoBehaviour
         {
             modules = mapModuleSamples
         };
-        var generatedMap = generator.GenerateMap();
+        MapModule[] generatedMap = null;
+        for(int i = 0; i < 100; i++)
+        {
+            try
+            {
+                generatedMap = generator.GenerateMap();
+                break;
+            }
+            catch
+            {
+                Debug.Log($"Failed Attempt {i}");
+            }
+
+        }
 
         MapPainter.Paint(generatedMap);
 

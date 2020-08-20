@@ -596,7 +596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  startLevel: Assets/Scenes/TerrainButOnline.unity
+  startLevel: Assets/Scenes/MapPaintTest.unity
   OnWinEvent:
     m_PersistentCalls:
       m_Calls:
@@ -670,7 +670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  nextScene: Assets/Scenes/SampleScene.unity
+  nextScene: Assets/Scenes/MapPaintTest.unity
 --- !u!114 &1837832009
 MonoBehaviour:
   m_ObjectHideFlags: 0
