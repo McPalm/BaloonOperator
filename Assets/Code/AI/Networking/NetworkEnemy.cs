@@ -17,7 +17,7 @@ public class NetworkEnemy : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        if (isServerOnly)
+        if (isServer)
         {
             RpcSyncInput(transform.position, new Vector2(Mobile.HMomentum, Mobile.VMomentum), NetworkTime.time);
         }
