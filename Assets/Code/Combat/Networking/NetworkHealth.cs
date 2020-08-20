@@ -119,5 +119,5 @@ public class NetworkHealth : NetworkBehaviour
     }
 
 
-    [Command]private void CmdSyncHealth() => RpcSetHealth(0, trueDamage, NetworkTime.time);
+    [Command(channel = Channels.DefaultReliable, ignoreAuthority = true)]private void CmdSyncHealth() => RpcSetHealth(0, trueDamage, NetworkTime.time);
 }
