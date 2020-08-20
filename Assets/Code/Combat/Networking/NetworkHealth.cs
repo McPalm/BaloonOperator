@@ -121,11 +121,16 @@ public class NetworkHealth : NetworkBehaviour
         }
     }
 
-    
-    private void NetworkHealth_E_OnServerReady(NetworkConnection obj) => TargetStartupSync(obj, trueDamage);
-    [TargetRpc]
+
+    private void NetworkHealth_E_OnServerReady(NetworkConnection obj)
+    {
+        TargetStartupSync(obj, trueDamage);
+    }
+
+    [TargetRpc(channel = Channels.DefaultReliable)]
     void TargetStartupSync(NetworkConnection target, int lostHealth)
     {
+        Debug.Log("This should actually work tho wtf");
         Health.SetHealth(lostHealth, 0);
     }
 }
