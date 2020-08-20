@@ -1,4 +1,5 @@
 ﻿using Mirror;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,12 +33,8 @@ public class NetworkHealth : NetworkBehaviour
             serverObject = true;
         }
 
-        FindObjectOfType<MyNetworkManager>().E_OnServerReady += NetworkHealth_E_OnServerReady;
-    }
-
-    private void OnDestroy()
-    {
-        FindObjectOfType<MyNetworkManager>().E_OnServerReady -= NetworkHealth_E_OnServerReady;
+        if(!isServer)
+            CmdSyncHealth();
     }
 
     private void Health_OnHurt(DamageData data) => Apply(data, false);
@@ -122,15 +119,5 @@ public class NetworkHealth : NetworkBehaviour
     }
 
 
-    private void NetworkHealth_E_OnServerReady(NetworkConnection obj)
-    {
-        TargetStartupSync(obj, trueDamage);
-    }
-
-    [TargetRpc(channel = Channels.DefaultReliable)]
-    void TargetStartupSync(NetworkConnection target, int lostHealth)
-    {
-        Debug.Log("This should actually work tho wtf");
-        Health.SetHealth(lostHealth, 0);
-    }
+    [Command]private void CmdSyncHealth() => RpcSetHealth(0, trueDamage, NetworkTime.time);
 }
