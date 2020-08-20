@@ -121,7 +121,11 @@ public class NetworkHealth : NetworkBehaviour
         }
     }
 
-    // sync health when a new player is connecting // TODO, doesn't actually work
-    private void NetworkHealth_E_OnServerReady(NetworkConnection obj) => TargetStartupSync(obj, Health.HealthLost);
-    [TargetRpc]void TargetStartupSync(NetworkConnection target, int lostHealth) => Health.SetHealth(lostHealth, 0);
+    
+    private void NetworkHealth_E_OnServerReady(NetworkConnection obj) => TargetStartupSync(obj, trueDamage);
+    [TargetRpc]
+    void TargetStartupSync(NetworkConnection target, int lostHealth)
+    {
+        Health.SetHealth(lostHealth, 0);
+    }
 }

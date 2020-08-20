@@ -54,6 +54,7 @@ public class Health : MonoBehaviour
 
     public void SetHealth(int lost, int change)
     {
+        Debug.Log("Health set", gameObject);
         HealthLost = lost;
         NotifyChangeHealthObservers();
         if (HealthLost >= MaxHealth)
