@@ -22,9 +22,28 @@ public class MapModuleSample : ScriptableObject
         tiles = tilemap.GetTilesBlock(new BoundsInt(new Vector3Int(x, y, 0), new Vector3Int(sizeX, sizeY, 1)));
     }
 
-    public void PaintTo(Tilemap tilemap, int x, int y)
+    public void PaintTo(Tilemap tilemap, int x, int y, bool flipped = false)
     {
-        tilemap.SetTilesBlock(new BoundsInt(new Vector3Int(x, y, 0), new Vector3Int(sizeX, sizeY, 1)), tiles);
+        if (flipped)
+            PaintFlipped(tilemap, x, y);
+        else
+            tilemap.SetTilesBlock(new BoundsInt(new Vector3Int(x, y, 0), new Vector3Int(sizeX, sizeY, 1)), tiles);
     }
 
+    public void PaintFlipped(Tilemap tilemap, int startX, int startY)
+    {
+        var pos = new Vector3Int[tiles.Length];
+        int i = 0;
+        for(int y = startY; y < startY + sizeY; y++)
+        {
+            for(int x = startX + sizeX - 1 ; x >= startX; x--)
+            {
+                pos[i++] = new Vector3Int(x, y, 0);
+            }
+        }
+        tilemap.SetTiles(pos, tiles);
+    }
+
+
+         
 }

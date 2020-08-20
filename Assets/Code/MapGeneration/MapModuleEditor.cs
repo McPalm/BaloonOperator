@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Linq;
 
-public class MapModulePainter : MonoBehaviour
+public class MapModuleEditor : MonoBehaviour
 {
     public bool save;
     public bool load;
