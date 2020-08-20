@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using System.Linq;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class MapModuleEditor : MonoBehaviour
 {
@@ -18,6 +20,9 @@ public class MapModuleEditor : MonoBehaviour
         {
             currentSample.CopyFrom(tilemap, 0, 0);
             save = false;
+#if UNITY_EDITOR
+            EditorUtility.SetDirty(currentSample);
+#endif
         }
         else if(load)
         {
