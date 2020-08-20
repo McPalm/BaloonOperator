@@ -767,7 +767,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeadScripts: []
-  AliveScripts: []
+  AliveScripts:
+  - {fileID: 5401594573457135009}
   OnDeath:
     m_PersistentCalls:
       m_Calls:
