@@ -83,6 +83,7 @@ public class GameManager : NetworkBehaviour
         SceneLoader.LoadNextScene();
         win = false;
         lose = false;
+        HealAllPlayersOne();
         goto Play;
     }
 
@@ -130,6 +131,19 @@ public class GameManager : NetworkBehaviour
     public void RegisterAllPlayers(GameObject player)
     {
         AllPlayers.Add(player);
+    }
+
+    void HealAllPlayersOne()
+    {
+        foreach (var player in AllPlayers)
+        {
+            var health = player.GetComponent<Health>();
+            health.Heal(new DamageData()
+            {
+                damage = 1 - Mathf.Min(health.CurrentHealth, 0),
+                authorative = true,
+            });
+        }
     }
 
     [ClientRpc] void RpcOnWin() => OnWinEvent.Invoke();
