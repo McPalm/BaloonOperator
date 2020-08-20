@@ -15,4 +15,5 @@ MonoBehaviour:
   OpenTop: 0
   OpenBottom: 0
   OpenBothSides: 0
+  MapModuleFlag: 2
   tiles: []

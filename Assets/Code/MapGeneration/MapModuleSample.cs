@@ -12,6 +12,7 @@ public class MapModuleSample : ScriptableObject
     public bool OpenTop;
     public bool OpenBottom;
     public bool OpenBothSides;
+    public MapModuleFlag MapModuleFlag;
 
 
     public TileBase[] tiles;
