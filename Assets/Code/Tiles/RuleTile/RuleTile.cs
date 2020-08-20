@@ -614,8 +614,8 @@ namespace UnityEngine
                 */
             switch (neighbor)
             {
-                case TilingRule.Neighbor.This: return other != null;
-                case TilingRule.Neighbor.NotThis: return other == null;
+                case TilingRule.Neighbor.This: return other == this;
+                case TilingRule.Neighbor.NotThis: return other != this;
             }
             return true;
         }
