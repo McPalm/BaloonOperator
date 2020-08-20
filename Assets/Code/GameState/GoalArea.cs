@@ -22,14 +22,24 @@ public class GoalArea : MonoBehaviour
     void Update()
     {
         int count=0;
+        int alive = 0;
+        if (GameManager.AllPlayers.Count == 0)
+        {
+            return;
+        }
+
         foreach (GameObject go in GameManager.AllPlayers)
         {
             if (Vector3.Distance(go.transform.position, transform.position) < radius)
             {
                 count++;
             }
+            if (go.GetComponent<Health>().CurrentHealth > 0)
+            {
+                alive++;
+            }
         }
-        if (count >= GameManager.AllPlayers.Count)
+        if (count >= alive)
         {
             GameManager.TriggerWin();
         }
