@@ -7,6 +7,10 @@ using Mirror;
 public class Health : MonoBehaviour
 {
     public int MaxHealth = 1;
+    public int iFrames = 0;
+
+    float IFrameTime = 0f;
+    public bool HasIFrames => Time.timeSinceLevelLoad < IFrameTime;
 
     public int HealthLost { get; private set; }
     public int CurrentHealth => MaxHealth - HealthLost;
@@ -33,9 +37,13 @@ public class Health : MonoBehaviour
     {
         if (data.damage < 1)
             return;
+        if (HasIFrames)
+            return;
         OnHurt?.Invoke(data);
         if (data.reject)
             return;
+        if (iFrames > 0)
+            IFrameTime = Time.timeSinceLevelLoad + Time.fixedDeltaTime * iFrames;
         HealthLost += data.damage;
         NotifyChangeHealthObservers();
     }

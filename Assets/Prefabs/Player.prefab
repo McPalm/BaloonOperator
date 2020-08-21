@@ -860,6 +860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 3
+  iFrames: 30
   OnChangeHealth:
     m_PersistentCalls:
       m_Calls:
