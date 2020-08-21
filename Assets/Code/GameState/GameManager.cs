@@ -128,10 +128,12 @@ public class GameManager : NetworkBehaviour
         Player = player;
     }
 
+
     public void RegisterAllPlayers(GameObject player)
     {
         AllPlayers.Add(player);
     }
+    public void UnRegisterPlayer(GameObject player) => AllPlayers.Remove(player);
 
     void HealAllPlayersOne()
     {

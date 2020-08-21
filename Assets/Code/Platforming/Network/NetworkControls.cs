@@ -60,6 +60,14 @@ public class NetworkControls : NetworkBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        if(isServer)
+        {
+            FindObjectOfType<GameManager>().UnRegisterPlayer(gameObject);
+        }
+    }
+
     private void PlatformingCharacter_OnStomp(PlatformingCharacter obj)
     {
         lastBoost = NetworkTime.time;
