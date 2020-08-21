@@ -13,9 +13,13 @@ public class EnemyController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Mobile.TouchingWallDirection == Mobile.Forward)
+        {
+            Mobile.FaceRight = !Mobile.FaceRight;
+        }
+        else if(Mobile.OnEdge)
         {
             Mobile.FaceRight = !Mobile.FaceRight;
         }
