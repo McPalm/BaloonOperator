@@ -15,8 +15,8 @@ public class ObjectSpawner : MonoBehaviour
             var obj = Instantiate(GameObject, transform.position, Quaternion.identity);
             obj.transform.parent = transform;
             obj.transform.parent = null;
-            GetComponent<SpriteRenderer>().enabled = false;
             NetworkServer.Spawn(obj);
         }
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 }
