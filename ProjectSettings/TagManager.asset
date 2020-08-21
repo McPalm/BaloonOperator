@@ -15,11 +15,11 @@ TagManager:
   - 
   - Solid
   - Semisolid
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - AttackVsPlayer
+  - AttackVsEnemy
+  - AttackVsAll
   - 
   - 
   - 

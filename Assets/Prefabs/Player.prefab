@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 5401594573457135009}
   - component: {fileID: 1798536383502569831}
   - component: {fileID: -2206682927358067043}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1294,6 +1294,10 @@ PrefabInstance:
       propertyPath: source
       value: 
       objectReference: {fileID: 3602800873068193666}
+    - target: {fileID: 5916968199985556096, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 7389731376565558285, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_Name
       value: Sword
