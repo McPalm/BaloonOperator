@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
     public event System.Action<DamageData> OnHurt;
     public event System.Action<DamageData> OnHeal;
     public event System.Action OnZeroHealth;
-    public event System.Action<int> OnChangeTrueHealth;
+    public event System.Action<int, int> OnChangeTrueHealth;
 
     public UnityEvent<float> OnChangeHealth;
 
@@ -66,7 +66,7 @@ public class Health : MonoBehaviour
         NotifyChangeHealthObservers();
         if (HealthLost >= MaxHealth)
             OnZeroHealth?.Invoke();
-        OnChangeTrueHealth?.Invoke(CurrentHealth);
+        OnChangeTrueHealth?.Invoke(CurrentHealth, change);
     }
 
     void NotifyChangeHealthObservers() => OnChangeHealth.Invoke((float)CurrentHealth / (float)MaxHealth);
