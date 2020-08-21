@@ -17,15 +17,18 @@ public class MapModuleSample : ScriptableObject
 
     public TileBase[] tiles;
 
-    public void CopyFrom(Tilemap tilemap, int x, int y)
+    public void CopyFrom(Tilemap tilemap, int x, int y, bool flipped = false)
     {
-        tiles = tilemap.GetTilesBlock(new BoundsInt(new Vector3Int(x, y, 0), new Vector3Int(sizeX, sizeY, 1)));
+        if(flipped)
+            tiles = ToFlipped(tilemap.GetTilesBlock(new BoundsInt(new Vector3Int(x, y, 0), new Vector3Int(sizeX, sizeY, 1))));
+        else
+            tiles = tilemap.GetTilesBlock(new BoundsInt(new Vector3Int(x, y, 0), new Vector3Int(sizeX, sizeY, 1)));
     }
 
     public void PaintTo(Tilemap tilemap, int x, int y, bool flipped = false)
     {
         if (flipped)
-            PaintFlipped(tilemap, x, y);
+            tilemap.SetTilesBlock(new BoundsInt(new Vector3Int(x, y, 0), new Vector3Int(sizeX, sizeY, 1)), ToFlipped(tiles));
         else
             tilemap.SetTilesBlock(new BoundsInt(new Vector3Int(x, y, 0), new Vector3Int(sizeX, sizeY, 1)), tiles);
     }
@@ -43,4 +46,16 @@ public class MapModuleSample : ScriptableObject
         }
         tilemap.SetTiles(pos, tiles);
     }    
+
+    static public TileBase[] ToFlipped(TileBase[] from)
+    {
+        var to = new TileBase[from.Length];
+
+        for(int i = 0; i < to.Length; i++)
+        {
+            to[i] = from[sizeX - 1 - i % sizeX + (i / sizeX) * sizeX];
+        }
+
+        return to;
+    }
 }

@@ -26103,4 +26103,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 024589fd2a7ecdd41a51b783d46f0037, type: 2}
   - {fileID: 11400000, guid: 860ec26334dc8644c9a6e42321b96593, type: 2}
   - {fileID: 11400000, guid: d5e338d97b9e4bb448f2bf8adb300dd0, type: 2}
+  mapModuleSets:
+  - {fileID: 11400000, guid: 5c4e6537d8ee5f24da81e122dd4accca, type: 2}
+  - {fileID: 11400000, guid: fda531dc30a002b4a99d08e148b4ae41, type: 2}
   MapPainter: {fileID: 744718370}

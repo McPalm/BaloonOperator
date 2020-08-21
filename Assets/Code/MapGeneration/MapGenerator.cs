@@ -48,7 +48,7 @@ public class MapGenerator
 
 
                 ValidTiles = ValidTiles.Where(m => m.OpenBothSides == !isSide && m.OpenTop == isOpenTop ).ToArray();
-                map[IndexFor(x, y)] = new MapModule( ValidTiles[ Random.Range( 0, ValidTiles.Length-1 ) ], flip);
+                map[IndexFor(x, y)] = new MapModule( ValidTiles[ Random.Range( 0, ValidTiles.Length) ], flip);
 
                 if ( map[IndexFor(x, y)].MapModuleSample.MapModuleFlag == MapModuleFlag.start)
                 {
