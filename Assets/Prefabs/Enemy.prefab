@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4759699862995804535}
   - component: {fileID: 9081628442160617954}
   - component: {fileID: 3602352106967200758}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Contact Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28383edcc0f901a41a4fd3c4514fec68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  source: {fileID: 0}
   damage: 1
 --- !u!1 &4037480144309179411
 GameObject:
@@ -186,7 +187,7 @@ GameObject:
   - component: {fileID: 6075042076981661390}
   - component: {fileID: 8835014643308938125}
   - component: {fileID: 4570247837489766683}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,6 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 2
+  iFrames: 0
   OnChangeHealth:
     m_PersistentCalls:
       m_Calls: []
