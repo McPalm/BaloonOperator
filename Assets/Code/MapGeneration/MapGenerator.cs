@@ -34,22 +34,33 @@ public class MapGenerator
                     {
                         ValidTiles = ValidTiles.Where(m => m.MapModuleFlag == MapModuleFlag.goal).ToArray();
                     }
-                    if(!haveDowns)
+                    if(!haveDowns && y != 0)
                     {
                         ValidTiles = ValidTiles.Where(m => m.OpenBottom == true).ToArray();
                     }
                 }
                 if(y == 0)
+                {
+                    ValidTiles = ValidTiles.Where(m => m.OpenBottom == false).ToArray();
+                }
+                if(y == 0||haveStart)
                     ValidTiles = ValidTiles.Where(m => m.MapModuleFlag != MapModuleFlag.start).ToArray();
                 if (y == 1 || y == 2)
                     ValidTiles = ValidTiles.Where(m => m.MapModuleFlag == MapModuleFlag.none).ToArray();
-                if(y == 3)
+                if(y == 3||haveGoal)
                     ValidTiles = ValidTiles.Where(m => m.MapModuleFlag != MapModuleFlag.goal).ToArray();
 
 
                 ValidTiles = ValidTiles.Where(m => m.OpenBothSides == !isSide && m.OpenTop == isOpenTop ).ToArray();
                 map[IndexFor(x, y)] = new MapModule( ValidTiles[ Random.Range( 0, ValidTiles.Length) ], flip);
 
+                if (map[IndexFor(x, y)].MapModuleSample.OpenBothSides == true)
+                {
+                    if (Random.Range(0, 2) == 1)
+                    {
+                        map[IndexFor(x, y)].flip = true;
+                    }
+                }
                 if ( map[IndexFor(x, y)].MapModuleSample.MapModuleFlag == MapModuleFlag.start)
                 {
                     haveStart = true;

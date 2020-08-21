@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class MapModule
 {
     public MapModuleSample MapModuleSample { get; set; }
-    bool flip;
+    public bool flip;
 
     public MapModule(MapModuleSample sample, bool flip)
     {
