@@ -9,11 +9,14 @@ public class ObjectSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var obj = Instantiate(GameObject, transform.position, Quaternion.identity);
-        obj.transform.parent = transform;
-        obj.transform.parent = null;
-        GetComponent<SpriteRenderer>().enabled = false;
-        NetworkServer.Spawn(obj);
-    }
+        if (MyNetworkManager.isServer)
+        {
 
+            var obj = Instantiate(GameObject, transform.position, Quaternion.identity);
+            obj.transform.parent = transform;
+            obj.transform.parent = null;
+            GetComponent<SpriteRenderer>().enabled = false;
+            NetworkServer.Spawn(obj);
+        }
+    }
 }
