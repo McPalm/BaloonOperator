@@ -13,6 +13,7 @@ public class PlatformingCharacter : Mobile, IInputReader
     int cyoteTime = 5;
     int wallSlideTime = 5;
     public event System.Action OnJump;
+    public event System.Action OnWallJump;
     public event System.Action<PlatformingCharacter> OnStomp;
     public bool WallSliding => VMomentum < 0f && wallSlideTime > 0;
     public bool Climbing { get; set; }
@@ -21,7 +22,10 @@ public class PlatformingCharacter : Mobile, IInputReader
     int ForceMoveFrames = 0;
     int rootDuration = 0;
 
-    bool CanWallJump => Properties.WalljumpForce > 0f && !Grounded && wallSlideTime > 0;
+    bool CanWallJump => Properties.WalljumpForce > 0f && !Grounded && wallSlideTime > 0 && allowWallJump;
+
+    public bool allowWallJump = true;
+    public bool allowClimb = true;
 
     public bool Disabled { get; set; }
 
@@ -116,7 +120,7 @@ public class PlatformingCharacter : Mobile, IInputReader
             cyoteTime = Properties.CyoteTime + 1;
         else
             cyoteTime--;
-        if(InputToken.ClimbHeld && Properties.ClimbSpeed > 0f && !Grounded && TouchingWall)
+        if(allowClimb && InputToken.ClimbHeld && Properties.ClimbSpeed > 0f && !Grounded && TouchingWall)
         {
             if(input.direction.y < 0f && Properties.ClimbSpeed < Properties.MaxWallslideSpeed)
                 VMomentum = VMomentum * .5f + Properties.MaxWallslideSpeed * .5f * input.direction.y;
@@ -164,8 +168,8 @@ public class PlatformingCharacter : Mobile, IInputReader
                 FaceRight = TouchingWallDirection < 0;
             VMomentum = Properties.WalljumpForce;
             HMomentum = Properties.WallpushForce * Forward;
-            
-            OnJump?.Invoke();
+
+            OnWallJump?.Invoke();
             wallSlideTime = 0;
             jumpConsumed = true;
             ForceMove = new Vector2(-TouchingWallDirection, 0f);

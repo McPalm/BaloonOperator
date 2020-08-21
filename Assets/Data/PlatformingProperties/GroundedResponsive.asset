@@ -42,7 +42,7 @@ MonoBehaviour:
   PeakAirControl: 0.69
   Gravity: 40
   JumpForce: 15
-  WalljumpForce: 10
+  WalljumpForce: 14
   WallpushForce: 6
   HeadBonkForce: 9
   PeakJumpGravity: 0.533
