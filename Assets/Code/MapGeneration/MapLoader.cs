@@ -12,14 +12,15 @@ public class MapLoader : NetworkBehaviour
         public bool flip;
     }
 
+    bool generated = false;
 
     public MapModuleSample[] mapModuleSamples;
     public MapModuleSet[] mapModuleSets;
-
     public MapPainter MapPainter;
 
-    List<MapModuleSample> modules = new List<MapModuleSample>();
+    SerializedMapModule[] serializedArray;
 
+    List<MapModuleSample> modules = new List<MapModuleSample>();
     MapGenerator generator;
 
     private void Awake()
@@ -52,7 +53,7 @@ public class MapLoader : NetworkBehaviour
                 }
 
             }
-            SerializedMapModule[] serializedArray = new SerializedMapModule[16];
+            serializedArray = new SerializedMapModule[16];
             for(int i = 0; i < 16; i++)
             {
                 serializedArray[i].index = modules.IndexOf(generatedMap[i].MapModuleSample);
@@ -60,18 +61,31 @@ public class MapLoader : NetworkBehaviour
             }
             MapPainter.Paint(generatedMap);
             RpcPaintMap(serializedArray);
+            generated = true;
         }
+        else
+        {
+            CmdRequestSync();
+        }
+    }
 
+    [Command(channel = Channels.DefaultReliable, ignoreAuthority = true)]
+    void CmdRequestSync()
+    {
+        RpcPaintMap(serializedArray);
     }
 
     [ClientRpc(channel = Channels.DefaultReliable)]
     private void RpcPaintMap(SerializedMapModule[] serializedMap)
     {
+        if (generated)
+            return;
         MapModule[] generatedMap = new MapModule[16];
         for (int i = 0; i < 16; i++)
         {
             generatedMap[i] = new MapModule(modules[serializedMap[i].index], serializedMap[i].flip);
         }
         MapPainter.Paint(generatedMap);
+        generated = true;
     }
 }
