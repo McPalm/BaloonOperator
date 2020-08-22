@@ -9,15 +9,16 @@ public class MapModuleEditor : MonoBehaviour
     public Tilemap tilemap;
     public MapModuleSet MapModuleSet;
 
-    const int gridSize = 13;
+    const int sizeX = 17;
+    const int sizeY = 13;
 
     private void OnDrawGizmos()
     {
         for (int i = 0; i < 5; i++)
         {
             Gizmos.color = Color.magenta;
-            Gizmos.DrawLine(new Vector3(i * gridSize, 0f), new Vector3(i * gridSize, 4 * gridSize));
-            Gizmos.DrawLine(new Vector3(0f, i * gridSize), new Vector3(4 * gridSize, i * gridSize));
+            Gizmos.DrawLine(new Vector3(i * sizeX, 0f), new Vector3(i * sizeX, 4 * sizeY));
+            Gizmos.DrawLine(new Vector3(0f, i * sizeY), new Vector3(4 * sizeX, i * sizeY));
         }
         for(int i = 0; i < 16; i++)
         {
@@ -31,17 +32,17 @@ public class MapModuleEditor : MonoBehaviour
     void PaintProps(int x, int y, MapModuleSample sample)
     {
         Gizmos.color = Color.white;
-        x *= gridSize;
-        y *= gridSize;
+        x *= sizeX;
+        y *= sizeY;
         if (sample.OpenBothSides)
         {
-            Gizmos.DrawLine(new Vector3(x + gridSize - .5f, y + 3f), new Vector3(x + gridSize, y + 3f));
+            Gizmos.DrawLine(new Vector3(x + sizeX - .5f, y + 3f), new Vector3(x + sizeX, y + 3f));
             Gizmos.DrawLine(new Vector3(x, y + 3f), new Vector3(x + .5f, y + 3f));
         }
         if(sample.OpenBottom)
-            Gizmos.DrawLine(new Vector3(x + gridSize / 2f, y), new Vector3(x + gridSize / 2f, y + .5f));
+            Gizmos.DrawLine(new Vector3(x + sizeX / 2f, y), new Vector3(x + sizeX / 2f, y + .5f));
         if (sample.OpenTop)
-            Gizmos.DrawLine(new Vector3(x + gridSize / 2f, y+gridSize), new Vector3(x + gridSize / 2f, y + gridSize - .5f));
+            Gizmos.DrawLine(new Vector3(x + sizeX / 2f, y+ sizeY), new Vector3(x + sizeX / 2f, y + sizeY - .5f));
         switch(sample.MapModuleFlag)
         {
             case MapModuleFlag.goal:
@@ -59,7 +60,7 @@ public class MapModuleEditor : MonoBehaviour
     {
         for(int i = 0; i < 16; i++)
         {
-            MapModuleSet.MapModules[i].PaintTo(tilemap, (i % 4) * gridSize, (i / 4) * gridSize, i % 4 == 0);
+            MapModuleSet.MapModules[i].PaintTo(tilemap, (i % 4) * sizeX, (i / 4) * sizeY, i % 4 == 0);
         }
     }
 
@@ -67,7 +68,7 @@ public class MapModuleEditor : MonoBehaviour
     {
         for (int i = 0; i < 16; i++)
         {
-            MapModuleSet.MapModules[i].CopyFrom(tilemap, (i % 4) * gridSize, (i / 4) * gridSize, i % 4 == 0);
+            MapModuleSet.MapModules[i].CopyFrom(tilemap, (i % 4) * sizeX, (i / 4) * sizeY, i % 4 == 0);
             EditorUtility.SetDirty(MapModuleSet.MapModules[i]);
         }
     }
