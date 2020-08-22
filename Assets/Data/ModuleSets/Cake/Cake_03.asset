@@ -229,8 +229,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: ec1ecdefc8186e74e8a721295129e818, type: 2}
+  - {fileID: 11400000, guid: ec1ecdefc8186e74e8a721295129e818, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
