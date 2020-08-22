@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4f55140a2b374438d549a61bb7abb3, type: 3}
+  m_Name: CrampedSpikes
+  m_EditorClassIdentifier: 
+  MapModules:
+  - {fileID: 11400000, guid: 331fff8d4c5b3f946b69925c16b8df3d, type: 2}
+  - {fileID: 11400000, guid: 0e7fe560336b1e44eb3e81940db2fcda, type: 2}
+  - {fileID: 11400000, guid: eef3f28a680904040b5deb78d83a0c8c, type: 2}
+  - {fileID: 11400000, guid: 61adbc295455d4141b26900371616ba9, type: 2}
+  - {fileID: 11400000, guid: 4d3a24a22482d2146a2180f21060f635, type: 2}
+  - {fileID: 11400000, guid: f5e7551fc95a6fd49a3c8576ab496d33, type: 2}
+  - {fileID: 11400000, guid: 8432540479a1056459804d8eb5e47baf, type: 2}
+  - {fileID: 11400000, guid: a528550f56a4d8548a75ec63d3a8d654, type: 2}
+  - {fileID: 11400000, guid: ca53d7ff7c3b8ac46813d5e70e134ae2, type: 2}
+  - {fileID: 11400000, guid: a28a5caad2b74084996c6fbb72a3b8a9, type: 2}
+  - {fileID: 11400000, guid: 9d412d997e5ae404f966b0e149274b68, type: 2}
+  - {fileID: 11400000, guid: 001db3e3e1e052e45bbb945c1d2b8e4a, type: 2}
+  - {fileID: 11400000, guid: 52b2a2ff4e77a8047bcee79caa74dcb2, type: 2}
+  - {fileID: 11400000, guid: 76949e1629684af4f9d0712ea635c340, type: 2}
+  - {fileID: 11400000, guid: 309f412f9cdc83a48b49e5a59d71e24c, type: 2}
+  - {fileID: 11400000, guid: fee1c97f941dd594882cf038b479e071, type: 2}

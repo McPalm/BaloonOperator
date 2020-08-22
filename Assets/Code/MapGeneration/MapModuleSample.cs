@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 [CreateAssetMenu(fileName = "New Map Module", menuName = "Map Module", order = 11)]
 public class MapModuleSample : ScriptableObject
 {
-    const int sizeX = 13;
+    const int sizeX = 17;
     const int sizeY = 13;
 
     public bool OpenTop;

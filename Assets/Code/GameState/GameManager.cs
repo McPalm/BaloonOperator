@@ -16,6 +16,8 @@ public class GameManager : NetworkBehaviour
 
     float resetCooldown = 0f;
 
+    static public int StageDifficulty = 0;
+
 
     public UnityEvent OnWinEvent;
     public UnityEvent OnGameOverEvent;
@@ -72,13 +74,15 @@ public class GameManager : NetworkBehaviour
         }
     GameOver:
         RpcOnGameOver();
+        StageDifficulty = 0;
         yield return new WaitForSeconds(3f);
         lose = false;
         win = false;
         ResetScene();
         goto Play;
     Win:
-        RpcOnWin();
+        StageDifficulty++;
+        RpcOnWin(StageDifficulty);
         yield return new WaitForSeconds(1f);
         SceneLoader.LoadNextScene();
         win = false;
@@ -107,7 +111,7 @@ public class GameManager : NetworkBehaviour
     [Server]
     public void ResetScene()
     {
-        if(resetCooldown > Time.time)
+        if (resetCooldown > Time.time)
             throw new System.Exception("Your reloading the stage to quickly");
         resetCooldown = Time.time + 1f;
         SceneLoader.ReloadScene();
@@ -148,7 +152,12 @@ public class GameManager : NetworkBehaviour
         }
     }
 
-    [ClientRpc] void RpcOnWin() => OnWinEvent.Invoke();
+    [ClientRpc]
+    void RpcOnWin(int stage)
+    {
+        StageDifficulty = stage;
+        OnWinEvent.Invoke();
+    }
     [ClientRpc] void RpcOnGameOver() => OnGameOverEvent.Invoke();
     [ClientRpc] void RpcOnPlayState() => OnPlayStateEvent.Invoke();
     

@@ -7,6 +7,9 @@ public class MapPainter : MonoBehaviour
 {
     public Tilemap Tilemap;
 
+    const int sizeX = 17;
+    const int sizeY = 13;
+
     public void Paint(MapModule[] modules)
     {
         int i = 0;
@@ -14,7 +17,7 @@ public class MapPainter : MonoBehaviour
         {
             for (int x = 0; x < 4; x++)
             {
-                modules[i++].PaintTo(Tilemap, x * 13, y * 13);
+                modules[i++].PaintTo(Tilemap, x * sizeX, y * sizeY);
             }
         }
     }    

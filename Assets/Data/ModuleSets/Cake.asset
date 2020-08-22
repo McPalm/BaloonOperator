@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4f55140a2b374438d549a61bb7abb3, type: 3}
+  m_Name: Cake
+  m_EditorClassIdentifier: 
+  MapModules:
+  - {fileID: 11400000, guid: 9174a3c49aba70d49b0ba121fb022ff7, type: 2}
+  - {fileID: 11400000, guid: 88a8522560b46c147bfea6647e9e2f10, type: 2}
+  - {fileID: 11400000, guid: eeadc80f72139c14aa0cb424284e224a, type: 2}
+  - {fileID: 11400000, guid: a421e30aa13e2bb4b973346744cfcef3, type: 2}
+  - {fileID: 11400000, guid: 69b2497745f28ea4c92bf7458108afe3, type: 2}
+  - {fileID: 11400000, guid: 95824955877e0eb4cbcbb5bd5206428e, type: 2}
+  - {fileID: 11400000, guid: 4febe5a8b72bc8c4585ab98d85993b9f, type: 2}
+  - {fileID: 11400000, guid: 1a478230590926748aba2f895c049b87, type: 2}
+  - {fileID: 11400000, guid: c86cefd3b4962124f8704b6865e4a659, type: 2}
+  - {fileID: 11400000, guid: 260488fee7575f04abc1f5442e2a1607, type: 2}
+  - {fileID: 11400000, guid: 76aee3f4e6930fc4e9fb6f7780c6a41f, type: 2}
+  - {fileID: 11400000, guid: fefac55de299f824ab835d8a767d29c5, type: 2}
+  - {fileID: 11400000, guid: e2507a9a67018754d8d07145e6d08e62, type: 2}
+  - {fileID: 11400000, guid: f224c861350bcd548be3d138d475f67d, type: 2}
+  - {fileID: 11400000, guid: bd0ba2e122b935c4883120bc4ec51258, type: 2}
+  - {fileID: 11400000, guid: 568766ed9acc2be4bb1f8bc494cc6713, type: 2}
