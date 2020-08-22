@@ -128,7 +128,7 @@ public class PlatformingCharacter : Mobile, IInputReader
                 VMomentum = VMomentum * .5f + Properties.ClimbSpeed * .5f * input.direction.y;
             HMomentum = TouchingWallDirection * 3f;
             FaceRight = TouchingWallDirection < 0;
-            wallSlideTime = Properties.CyoteTime + 1;
+            wallSlideTime = 6;
             Climbing = true;
             ForceMove = new Vector2(TouchingWallDirection, 0f);
         }
@@ -136,7 +136,7 @@ public class PlatformingCharacter : Mobile, IInputReader
         {
             if(WallSliding)
                 FaceRight = TouchingWallDirection < 0;
-            wallSlideTime = Properties.CyoteTime + 1;
+            wallSlideTime = 8;
             Climbing = false;
         }
         else
