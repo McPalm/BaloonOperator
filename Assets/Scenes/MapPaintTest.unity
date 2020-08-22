@@ -51080,6 +51080,10 @@ MonoBehaviour:
   mapModuleSets:
   - {fileID: 11400000, guid: 57931cfbc6654354191a8fcf31f2741a, type: 2}
   - {fileID: 11400000, guid: d2548f7b3fe6058489c4adef27c1665f, type: 2}
+  - {fileID: 11400000, guid: 6ccaad1ffb36be846a0ffd9462da01bc, type: 2}
+  - {fileID: 11400000, guid: fbf9246123c5f0041b840c02a8b02701, type: 2}
+  - {fileID: 11400000, guid: 8f9aa7409aafa914c9fe0366dcb2c5c3, type: 2}
+  - {fileID: 11400000, guid: a8ad08379945cc7438e12b6e0174b4e1, type: 2}
   MapPainter: {fileID: 744718370}
 --- !u!114 &1661858975
 MonoBehaviour:

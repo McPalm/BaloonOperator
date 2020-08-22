@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using System.Runtime.CompilerServices;
+using System.Linq;
 
 public class MapLoader : NetworkBehaviour
 {
@@ -32,7 +33,20 @@ public class MapLoader : NetworkBehaviour
 
     MapModuleSample[] GetSamplesForDifficulty(int difficulty)
     {
-        return mapModuleSets[difficulty % mapModuleSets.Length].MapModules.ToArray();
+        Debug.Log($"Getting samples for diffuclty {difficulty}");
+        difficulty = Mathf.Clamp(difficulty, 0, mapModuleSets.Length-1);
+        var modules = new List<MapModuleSample>(mapModuleSets[difficulty].MapModules);
+        if (difficulty - 1 >= 0)
+            modules.AddRange(GetSome(.33f, mapModuleSets[difficulty - 1].MapModules));
+        if (difficulty + 1 < mapModuleSets.Length)
+            modules.AddRange(GetSome(.33f, mapModuleSets[difficulty + 1].MapModules));
+        Debug.Log($"Final module count at {modules.Count}");
+        return modules.ToArray();
+    }
+
+    MapModuleSample[] GetSome(float chance, List<MapModuleSample> from)
+    {
+        return from.Where(a => Random.value < chance).ToArray();
     }
 
     // Start is called before the first frame update

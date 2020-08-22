@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4f55140a2b374438d549a61bb7abb3, type: 3}
+  m_Name: EvilSpikes
+  m_EditorClassIdentifier: 
+  MapModules:
+  - {fileID: 11400000, guid: 17a23f309d9faed48827cb4f981961e5, type: 2}
+  - {fileID: 11400000, guid: 6e6cd206100ec7b47a57f13b2773f56b, type: 2}
+  - {fileID: 11400000, guid: 31dd0f618f11678438d319c435e9050a, type: 2}
+  - {fileID: 11400000, guid: c40ab883181e54d41942d62bdf4ce122, type: 2}
+  - {fileID: 11400000, guid: a9314214cb7a4414dac175b8c1658e4c, type: 2}
+  - {fileID: 11400000, guid: 974c7b61678da4644938ad3ff50d4a34, type: 2}
+  - {fileID: 11400000, guid: 6fb914053cdba954ab759e32863da1c4, type: 2}
+  - {fileID: 11400000, guid: 2ade1db429eaa54408a4a7309bd2137b, type: 2}
+  - {fileID: 11400000, guid: 829b4f7e4b3837e408740b74e0740d77, type: 2}
+  - {fileID: 11400000, guid: f6ed9b584a171024d912931d034cdae2, type: 2}
+  - {fileID: 11400000, guid: 28cb47e83bfad4241a3a2fa3bb59ace3, type: 2}
+  - {fileID: 11400000, guid: 9540ff5927669a4428a57ab0847ae8b3, type: 2}
+  - {fileID: 11400000, guid: 61015aadff4da0847b720bae9f0a4889, type: 2}
+  - {fileID: 11400000, guid: c88f15ca6ce1ca04497d16296a1174c2, type: 2}
+  - {fileID: 11400000, guid: e4ca474858b2ab0469df68898c12b61b, type: 2}
+  - {fileID: 11400000, guid: 45d30a6231a767746be8006d815d33a9, type: 2}
