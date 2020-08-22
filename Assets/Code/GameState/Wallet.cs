@@ -24,6 +24,7 @@ public class Wallet : NetworkBehaviour
     [ClientRpc(channel = Channels.DefaultReliable)]
     public void RpcUpdateMoney(int money)
     {
+        held = money;
         OnChangeSum.Invoke(held);
         OnChangeSumFormat.Invoke($"$ {held}");
     }
