@@ -6,6 +6,9 @@ using UnityEngine;
 // Doesn't pass walls.
 public class TellyAI : EnemyController
 {
+    public float speed = 2f;
+    public float targetRange = 2f;
+
     PlatformingCharacter currentTarget;
 
     public override void InitAI()
@@ -18,7 +21,7 @@ public class TellyAI : EnemyController
     {
         while (true)
         {
-            currentTarget = FindTarget(0);
+            currentTarget = FindTarget(targetRange);
             if (currentTarget != null)
             {
                 Debug.Log("FOUND TARGET!" + currentTarget.gameObject.name);
@@ -40,10 +43,10 @@ public class TellyAI : EnemyController
         }
         if (currentTarget != null)
         {
-            Vector3 direction = Vector3.Normalize(transform.position - currentTarget.transform.position);
+            Vector3 direction = Vector3.Normalize(currentTarget.transform.position - transform.position);
 
-            Mobile.HMomentum = direction.x * -1;
-            Mobile.VMomentum = direction.y * -1;
+            Mobile.HMomentum = direction.x * speed;
+            Mobile.VMomentum = direction.y * speed;
         }
         else
         {
@@ -55,7 +58,7 @@ public class TellyAI : EnemyController
             {
                 Mobile.FaceRight = !Mobile.FaceRight;
             }
-            Mobile.HMomentum = Mobile.Forward * 3;
+            Mobile.HMomentum = Mobile.Forward * speed;
         }
     }
 }

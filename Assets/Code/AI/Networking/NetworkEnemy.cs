@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-[RequireComponent(typeof(EnemyController))]
 public class NetworkEnemy : NetworkBehaviour
 {
     Mobile Mobile;
