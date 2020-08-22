@@ -19,14 +19,18 @@ public class Wallet : NetworkBehaviour
         OnChangeSum.Invoke(held);
         OnChangeSumFormat.Invoke($"$ {held}");
         if (isServer)
-            RpcUpdateMoney(money);
+            RpcUpdateMoney(held);
     }
     [ClientRpc(channel = Channels.DefaultReliable)]
     public void RpcUpdateMoney(int money)
     {
-        held = money;
-        OnChangeSum.Invoke(held);
-        OnChangeSumFormat.Invoke($"$ {held}");
+        if (!isServer)
+        {
+
+            held = money;
+            OnChangeSum.Invoke(money);
+            OnChangeSumFormat.Invoke($"$ {money}");
+        }
     }
 
     public UnityEvent<int> OnChangeSum;
