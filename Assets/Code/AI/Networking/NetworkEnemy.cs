@@ -26,6 +26,8 @@ public class NetworkEnemy : NetworkBehaviour
 
     [ClientRpc(channel = Channels.DefaultUnreliable)] private void RpcSyncInput(Vector2 pos, Vector2 force, double time)
     {
+        if (isServer)
+            return;
         if (lastUpdate > time)
             return;
         lastUpdate = time;
