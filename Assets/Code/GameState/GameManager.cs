@@ -16,6 +16,8 @@ public class GameManager : NetworkBehaviour
 
     float resetCooldown = 0f;
 
+    static public int StageDifficulty = 0;
+
 
     public UnityEvent OnWinEvent;
     public UnityEvent OnGameOverEvent;
@@ -72,6 +74,7 @@ public class GameManager : NetworkBehaviour
         }
     GameOver:
         RpcOnGameOver();
+        StageDifficulty = 0;
         yield return new WaitForSeconds(3f);
         lose = false;
         win = false;
@@ -79,6 +82,7 @@ public class GameManager : NetworkBehaviour
         goto Play;
     Win:
         RpcOnWin();
+        StageDifficulty++;
         yield return new WaitForSeconds(1f);
         SceneLoader.LoadNextScene();
         win = false;

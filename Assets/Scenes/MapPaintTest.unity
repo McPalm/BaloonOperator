@@ -51079,6 +51079,7 @@ MonoBehaviour:
   mapModuleSamples: []
   mapModuleSets:
   - {fileID: 11400000, guid: 57931cfbc6654354191a8fcf31f2741a, type: 2}
+  - {fileID: 11400000, guid: d2548f7b3fe6058489c4adef27c1665f, type: 2}
   MapPainter: {fileID: 744718370}
 --- !u!114 &1661858975
 MonoBehaviour:

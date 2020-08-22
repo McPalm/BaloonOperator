@@ -30,6 +30,11 @@ public class MapLoader : NetworkBehaviour
             modules.AddRange(set.MapModules);
     }
 
+    MapModuleSample[] GetSamplesForDifficulty(int difficulty)
+    {
+        return mapModuleSets[difficulty % mapModuleSets.Length].MapModules.ToArray();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +42,7 @@ public class MapLoader : NetworkBehaviour
         {
             generator = new MapGenerator()
             {
-                modules = modules.ToArray()
+                modules = GetSamplesForDifficulty(GameManager.StageDifficulty),
             };
             MapModule[] generatedMap = null;
             for (int i = 0; i < 100; i++)
