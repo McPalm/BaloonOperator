@@ -26,6 +26,10 @@ public class TellyAI : EnemyController
         var attack = GetComponent<EnemyAttack>();
         while (true)
         {
+            while(!enabled)
+            {
+                yield return new WaitForSeconds(1f);
+            }
             if (currentTarget == null)
             {
                 currentTarget = FindTarget(targetRange);
@@ -42,7 +46,6 @@ public class TellyAI : EnemyController
             {
                 attack.SetTarget(currentTarget.GetComponent<NetworkIdentity>());
                 attack.Attack();
-                Debug.Log("Attack time!");
                 yield return new WaitForSeconds(attackInterval);
             }
             yield return new WaitForSeconds(Random.value);

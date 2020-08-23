@@ -17,6 +17,8 @@ public class EnemyDeath : MonoBehaviour
         GetComponent<EnemyController>().enabled = false;
         GetComponent<Mobile>().HMomentum = 0f;
         GetComponentInChildren<SpriteRenderer>().flipY = true;
-        GetComponentInChildren<ContactDamage>().enabled = false;
+        ContactDamage contactDamage = GetComponentInChildren<ContactDamage>();
+        if(contactDamage)
+            contactDamage.enabled = false;
     }
 }

@@ -45,11 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameObject:
-  - {fileID: 9053982422635548910, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
-  - {fileID: 9053982422635548910, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
-  - {fileID: 9053982422635548910, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
-  - {fileID: 8471995272078084598, guid: e49e6aef05aab82418605f66983a042d, type: 3}
-  - {fileID: 8471995272078084598, guid: e49e6aef05aab82418605f66983a042d, type: 3}
   - {fileID: 8879460489585635906, guid: 4a577b4050807ac4d82ef17513b4f42c, type: 3}
 --- !u!212 &-2156301563007231161
 SpriteRenderer:
