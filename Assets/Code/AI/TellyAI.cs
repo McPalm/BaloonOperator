@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Searches out enemies from the whole map and flies right towards them.
+// Searches out enemies from below it, and flies right towards them and stops at an optimal firing range.
+// Tries to keep that optimal firing range, could be quite annoying actually, don't make it too fast.
 // Doesn't pass walls.
 public class TellyAI : EnemyController
 {
-    public float speed = 2f;
-    public float targetRange = 2f;
+    public float speed = 2.5f;
+    public float targetRange = 10f;
+    public float optimalRange = 5f;
 
     PlatformingCharacter currentTarget;
 
     public override void InitAI()
     {
-        Mobile.Gravity = 0;
+        Mobile.Gravity = -1;
         StartCoroutine(SearchForTarget());
     }
 
@@ -21,7 +23,18 @@ public class TellyAI : EnemyController
     {
         while (true)
         {
-            currentTarget = FindTarget(targetRange);
+            if (currentTarget == null)
+            {
+                currentTarget = FindTarget(targetRange);
+                if (currentTarget!= null && currentTarget.transform.position.y > transform.position.y)
+                {
+                    currentTarget = null;
+                }
+            }
+            else if(currentTarget.GetComponent<Health>().CurrentHealth <= 0)
+            {
+                currentTarget = null;
+            }
             yield return new WaitForSeconds(Random.value);
         }
     }
@@ -35,22 +48,26 @@ public class TellyAI : EnemyController
         }
         if (currentTarget != null)
         {
-            Vector3 direction = Vector3.Normalize(currentTarget.transform.position - transform.position);
+            Mobile.Gravity = 0;
+            if (Vector3.Distance(currentTarget.transform.position, transform.position) > optimalRange + 0.1f)
+            {
+                Vector3 direction = Vector3.Normalize(currentTarget.transform.position - transform.position);
 
-            Mobile.HMomentum = direction.x * speed;
-            Mobile.VMomentum = direction.y * speed;
-        }
-        else
-        {
-            if (Mobile.TouchingWallDirection == Mobile.Forward)
-            {
-                Mobile.FaceRight = !Mobile.FaceRight;
+                Mobile.HMomentum = direction.x * speed;
+                Mobile.VMomentum = direction.y * speed;
             }
-            else if (Mobile.OnEdge)
+            else if (Vector3.Distance(currentTarget.transform.position, transform.position) < optimalRange - 0.1f)
             {
-                Mobile.FaceRight = !Mobile.FaceRight;
+                Vector3 direction = Vector3.Normalize(currentTarget.transform.position - transform.position);
+
+                Mobile.HMomentum = direction.x * -speed;
+                Mobile.VMomentum = direction.y * -speed;
             }
-            Mobile.HMomentum = Mobile.Forward * speed;
+            else 
+            {
+                Mobile.HMomentum = 0;
+                Mobile.VMomentum = 0;
+            }
         }
     }
 }

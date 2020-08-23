@@ -374,5 +374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f8cf58278595545a17d04b991e54fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  targetRange: 5
+  speed: 3
+  targetRange: 8
+  optimalRange: 5

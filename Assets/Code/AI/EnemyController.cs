@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Linq;
+using System.Linq;
 
 public abstract class EnemyController : MonoBehaviour
 {
@@ -45,7 +47,9 @@ public abstract class EnemyController : MonoBehaviour
     protected PlatformingCharacter FindTarget(float limit = 0)
     {
         PlatformingCharacter[] characters = FindObjectsOfType<PlatformingCharacter>();
+        characters = characters.Where(c => c.GetComponent<Health>().CurrentHealth > 0).ToArray<PlatformingCharacter>();
         float min;
+        
         PlatformingCharacter target = null;
         if (limit == 0)
         {
