@@ -18,7 +18,12 @@ public class ProjectileSpawner : MonoBehaviour
     {
         var spawned = Instantiate(ProjectilePrefab, transform.position, transform.rotation);
         var hurtThing = spawned.GetComponent<ContactDamage>();
-        hurtThing.source = Source;
+        if(hurtThing)
+            hurtThing.source = Source;
+        var aim = spawned.GetComponent<TargetingMissile>();
+        if (aim)
+            aim.target = Source.GetComponent<EnemyAttack>()?.Target;
+
     }
 
 }

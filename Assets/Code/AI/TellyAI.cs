@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Mirror;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class TellyAI : EnemyController
     public float speed = 2.5f;
     public float targetRange = 10f;
     public float optimalRange = 5f;
+    public float attackInterval = 3f;
 
     PlatformingCharacter currentTarget;
 
@@ -21,6 +23,7 @@ public class TellyAI : EnemyController
 
     IEnumerator SearchForTarget()
     {
+        var attack = GetComponent<EnemyAttack>();
         while (true)
         {
             if (currentTarget == null)
@@ -34,6 +37,13 @@ public class TellyAI : EnemyController
             else if(currentTarget.GetComponent<Health>().CurrentHealth <= 0)
             {
                 currentTarget = null;
+            }
+            else
+            {
+                attack.SetTarget(currentTarget.GetComponent<NetworkIdentity>());
+                attack.Attack();
+                Debug.Log("Attack time!");
+                yield return new WaitForSeconds(attackInterval);
             }
             yield return new WaitForSeconds(Random.value);
         }

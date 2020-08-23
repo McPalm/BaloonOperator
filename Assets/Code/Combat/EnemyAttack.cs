@@ -17,10 +17,18 @@ public class EnemyAttack : NetworkBehaviour
 
     public Animator Animator;
 
+    [SyncVar]
+    NetworkIdentity target;
+    public Transform Target => target?.transform;
+
+    public void SetTarget(NetworkIdentity target)
+    {
+        this.target = target;
+    }
+
     [ClientRpc(channel = Channels.DefaultReliable)]
     void RpcAttack()
     {
-        Debug.Log("We strikin bby!");
         Animator.SetTrigger("Strike");
     }
 
