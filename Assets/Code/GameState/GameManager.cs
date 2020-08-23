@@ -79,6 +79,7 @@ public class GameManager : NetworkBehaviour
         lose = false;
         win = false;
         ResetScene();
+        FindObjectOfType<Wallet>().ResetWallet();
         goto Play;
     Win:
         StageDifficulty++;

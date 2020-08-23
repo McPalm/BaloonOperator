@@ -1,4 +1,5 @@
 ﻿using Mirror;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,4 +36,10 @@ public class Wallet : NetworkBehaviour
 
     public UnityEvent<int> OnChangeSum;
     public UnityEvent<string> OnChangeSumFormat;
+
+    internal void ResetWallet()
+    {
+        held = 0;
+        RpcUpdateMoney(held);
+    }
 }
