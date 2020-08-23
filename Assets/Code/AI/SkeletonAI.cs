@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 
 public class SkeletonAI : EnemyController
 {
-    PlatformingCharacter currentTarget;
     public EnemyAttack Attack;
     public float sightRange = 5f;
     
@@ -27,41 +26,30 @@ public class SkeletonAI : EnemyController
 
     public override void InitAI()
     {
-        StartCoroutine(SearchForTarget());
         StartCoroutine(GetMovement());
         index = 0;
     }
 
-    IEnumerator SearchForTarget()
-    {
-        while (enabled)
-        {
-            yield return new WaitForSeconds(Random.value * .25f);
-            currentTarget = FindTarget(sightRange);
-            if (currentTarget != null)
-            {
-                Debug.Log("FOUND TARGET!" + currentTarget.gameObject.name);
-            }
-            else
-            {
-                Debug.Log("DIDN't FIND TARGET");
-            }
-        }
-    }
-
     IEnumerator GetMovement()
     {
-        while (enabled)
+        while (true)
         {
-            if (currentTarget != null)
+            PlatformingCharacter currentTarget;
+            currentTarget = FindTarget(sightRange);
+            if(!enabled)
+            {
+                // im fucking dead mate
+                yield return new WaitForSeconds(1f);
+            }
+            else if (currentTarget != null)
             { 
                 transform.SetForward(currentTarget.transform.position.x - transform.position.x);
                 movement = NextMovement;
                 yield return new WaitForSeconds(0.25f);
                 movement = 0;
-                while(Random.value < .7f && currentTarget != null && enabled)
+                int maxToss = 3;
+                while(Random.value < .7f && currentTarget != null && enabled && maxToss-- > 0)
                 {
-                    Debug.Log("Toss me a thing!");
                     Attack.Attack();
                     yield return new WaitForSeconds(.5f);
                 }
@@ -70,7 +58,7 @@ public class SkeletonAI : EnemyController
             else
             {
                 movement = 0;
-                yield return null;
+                yield return new WaitForSeconds(Random.value * .25f);
             }
         }
     }

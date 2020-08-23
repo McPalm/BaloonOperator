@@ -6,8 +6,14 @@ public class Projectile : MonoBehaviour
 {
     public float gravity = 18f;
     public Vector2 speed;
+    public Vector2 randomness;
 
     public float lifetime = 60f;
+
+    private void Awake()
+    {
+        speed = new Vector2(speed.x + randomness.x * Random.value, speed.y + randomness.y * Random.value);
+    }
 
     private void FixedUpdate()
     {

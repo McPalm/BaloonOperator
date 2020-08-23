@@ -155,10 +155,10 @@ TextureImporter:
       name: EnemyDesign_2
       rect:
         serializedVersion: 2
-        x: 22
+        x: 25
         y: 52
-        width: 10
-        height: 10
+        width: 16
+        height: 16
       alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
