@@ -7,6 +7,8 @@ public class PlayerInput : MonoBehaviour
 {
     public InputToken InputToken { get; private set; }
 
+    Vector2 heldDirection;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,15 +17,12 @@ public class PlayerInput : MonoBehaviour
             ir.InputToken = InputToken;
     }
 
-    void Update()
-    {
-        
-    }
-
-
     public void OnMove(InputAction.CallbackContext e)
     {
         InputToken.Direction = e.ReadValue<Vector2>();
+        if (heldDirection.y > -.5f && InputToken.Direction.y < -.5f)
+            InputToken.PressPassThrough();
+        heldDirection = InputToken.Direction;
     }
 
     public void HandleUse(InputAction.CallbackContext e)

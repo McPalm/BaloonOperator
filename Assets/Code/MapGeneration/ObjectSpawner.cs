@@ -9,10 +9,12 @@ public class ObjectSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (MyNetworkManager.isServer)
+        var obj = GameObject[Random.Range(0, GameObject.Length)];
+
+        if (obj != null && MyNetworkManager.isServer)
         {
 
-            var obj = Instantiate(GameObject[Random.Range(0, GameObject.Length)], transform.position, Quaternion.identity);
+            obj = Instantiate(obj, transform.position, Quaternion.identity);
             obj.transform.parent = transform;
             obj.transform.parent = null;
             NetworkServer.Spawn(obj);

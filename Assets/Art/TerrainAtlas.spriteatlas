@@ -43,12 +43,21 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: b2caa6cb7ee1e264aa06179a4c46ebde, type: 3}
-    totalSpriteSurfaceArea: 6400
+    totalSpriteSurfaceArea: 8704
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 3380349468086241834, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: 5926654692161221611, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: 5021276824781742020, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: 1472199142777978493, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: -2700790861188583971, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: -2222709981057532532, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: -6598297166165082057, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: 7111638479969940081, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: -33255663527753849, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
   - {fileID: 2124303153266113190, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
   - {fileID: 6527952443591430980, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
   - {fileID: -1644569121288067293, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
@@ -69,6 +78,15 @@ SpriteAtlas:
   - {fileID: -4790908730115963414, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
   - {fileID: 8977284450834130336, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
   m_PackedSpriteNamesToIndex:
+  - SandStoneTiles_24
+  - SandStoneTiles_25
+  - SandStoneTiles_26
+  - SandStoneTiles_27
+  - SandStoneTiles_20
+  - SandStoneTiles_21
+  - SandStoneTiles_22
+  - SandStoneTiles_23
+  - SandStoneTiles_19
   - SandStoneTiles_18
   - SandStoneTiles_15
   - SandStoneTiles_14

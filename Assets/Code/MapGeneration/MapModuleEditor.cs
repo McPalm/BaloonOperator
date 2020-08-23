@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class MapModuleEditor : MonoBehaviour
 {
@@ -69,10 +71,12 @@ public class MapModuleEditor : MonoBehaviour
         for (int i = 0; i < 16; i++)
         {
             MapModuleSet.MapModules[i].CopyFrom(tilemap, (i % 4) * sizeX, (i / 4) * sizeY, i % 4 == 0);
+#if UNITY_EDITOR
             EditorUtility.SetDirty(MapModuleSet.MapModules[i]);
+#endif
         }
     }
-
+#if UNITY_EDITOR
     [CustomEditor(typeof(MapModuleEditor))]
     public class MapModuleEditorEditor : Editor
     {
@@ -88,4 +92,5 @@ public class MapModuleEditor : MonoBehaviour
                 
         }
     }
+#endif
 }

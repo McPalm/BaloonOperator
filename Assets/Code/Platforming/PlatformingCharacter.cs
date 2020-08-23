@@ -208,6 +208,9 @@ public class PlatformingCharacter : Mobile, IInputReader
             VMomentum *= Properties.JumpCap;
         }
 
+        // pass through platforms
+        AllowSemiSolids = !InputToken.PassThrough;
+
         // Gravity Manipulation
         if (Climbing)
         {

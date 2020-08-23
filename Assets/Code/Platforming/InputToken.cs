@@ -7,6 +7,7 @@ public class InputToken
     // getters & shared
     public bool JumpPressed => _jumpTimer > Time.timeSinceLevelLoad;
     public bool UsePressed => _useTimer > Time.timeSinceLevelLoad;
+    public bool PassThrough => _passThroughTimer > Time.timeSinceLevelLoad;
     public Vector2 Direction { get; set; }
     public bool JumpHeld { get; set; }
     public bool UseHeld { get; set; }
@@ -20,10 +21,12 @@ public class InputToken
     // from source
     public void PressJump() => _jumpTimer = Time.timeSinceLevelLoad + .15f;
     public void PressUse() => _useTimer = Time.timeSinceLevelLoad + .15f;
+    public void PressPassThrough() => _passThroughTimer = Time.timeSinceLevelLoad + .2f;
 
     // internal
     float _jumpTimer = 0f;
     float _useTimer = 0f;
+    float _passThroughTimer = 0f;
 
     public InputSnapshot GetSnapshot() =>
         new InputSnapshot
