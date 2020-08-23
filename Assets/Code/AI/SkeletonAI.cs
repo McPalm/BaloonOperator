@@ -7,6 +7,8 @@ using UnityEngine.UIElements;
 public class SkeletonAI : EnemyController
 {
     PlatformingCharacter currentTarget;
+    public EnemyAttack Attack;
+    public float sightRange = 5f;
     
     int[] movementPattern = { 4, -2, -4, 2 };
     int index;
@@ -32,10 +34,10 @@ public class SkeletonAI : EnemyController
 
     IEnumerator SearchForTarget()
     {
-        while (true)
+        while (enabled)
         {
-            yield return new WaitForSeconds(5f);
-            currentTarget = FindTarget(10);
+            yield return new WaitForSeconds(Random.value * .25f);
+            currentTarget = FindTarget(sightRange);
             if (currentTarget != null)
             {
                 Debug.Log("FOUND TARGET!" + currentTarget.gameObject.name);
@@ -49,12 +51,27 @@ public class SkeletonAI : EnemyController
 
     IEnumerator GetMovement()
     {
-        while (true)
+        while (enabled)
         {
-            movement = NextMovement;
-            yield return new WaitForSeconds(0.25f);
-            movement = 0;
-            yield return new WaitForSeconds(1f);
+            if (currentTarget != null)
+            { 
+                transform.SetForward(currentTarget.transform.position.x - transform.position.x);
+                movement = NextMovement;
+                yield return new WaitForSeconds(0.25f);
+                movement = 0;
+                while(Random.value < .7f && currentTarget != null && enabled)
+                {
+                    Debug.Log("Toss me a thing!");
+                    Attack.Attack();
+                    yield return new WaitForSeconds(.5f);
+                }
+                yield return new WaitForSeconds(.5f);
+            }
+            else
+            {
+                movement = 0;
+                yield return null;
+            }
         }
     }
 
@@ -76,7 +93,6 @@ public class SkeletonAI : EnemyController
                 Mobile.FaceRight = !Mobile.FaceRight;
             }
             Mobile.HMomentum = Mobile.Forward * 1 * movement;
-            Debug.Log("Movement:" + Mobile.HMomentum);
         }
     }
 }

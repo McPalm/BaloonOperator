@@ -22,15 +22,7 @@ public class TellyAI : EnemyController
         while (true)
         {
             currentTarget = FindTarget(targetRange);
-            if (currentTarget != null)
-            {
-                Debug.Log("FOUND TARGET!" + currentTarget.gameObject.name);
-            }
-            else
-            {
-                Debug.Log("DIDN't FIND TARGET");
-            }
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(Random.value);
         }
     }
 

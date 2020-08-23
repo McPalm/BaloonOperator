@@ -23,9 +23,7 @@ public class RedShellAI : EnemyController
         {
             Mobile.FaceRight = !Mobile.FaceRight;
         }
-        Debug.Log($"speed {Mobile.HMomentum}");
         Mobile.HMomentum = Mobile.Forward * 3;
-        Debug.Log($"speed {Mobile.HMomentum}");
     }
 
 }

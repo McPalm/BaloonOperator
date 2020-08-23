@@ -20,6 +20,7 @@ public class EnemyAttack : NetworkBehaviour
     [ClientRpc(channel = Channels.DefaultReliable)]
     void RpcAttack()
     {
+        Debug.Log("We strikin bby!");
         Animator.SetTrigger("Strike");
     }
 
