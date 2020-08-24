@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 4764443514532281652}
   - component: {fileID: 860394241173490227}
   - component: {fileID: 9126862238547311020}
+  - component: {fileID: -5666810627453627301}
   m_Layer: 11
   m_Name: FlyingAI
   m_TagString: Untagged
@@ -559,6 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f4aedbb17f8384f8a23312a29e41bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flipY: 0
 --- !u!114 &1083235114125029111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,3 +633,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Health: {fileID: 0}
+--- !u!114 &-5666810627453627301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879460489585635906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f298f3bdaec97394d82f0ded5b81577b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackedParameters:
+  - Dead
+  - Grounded

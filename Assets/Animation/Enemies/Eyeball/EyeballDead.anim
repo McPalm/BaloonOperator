@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EyeballIdle
+  m_Name: EyeballDead
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -6573069573500222382, guid: 31f289252780ca849a35232fc989c284, type: 3}
-    - time: 0.13333334
-      value: {fileID: -2009427316012929905, guid: 31f289252780ca849a35232fc989c284, type: 3}
-    - time: 0.26666668
-      value: {fileID: -7535378375613994169, guid: 31f289252780ca849a35232fc989c284, type: 3}
-    - time: 0.38333333
-      value: {fileID: -6573069573500222382, guid: 31f289252780ca849a35232fc989c284, type: 3}
+      value: {fileID: -5997298322305600186, guid: 31f289252780ca849a35232fc989c284, type: 3}
     attribute: m_Sprite
     path: Sprite
     classID: 212
@@ -46,16 +40,13 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -6573069573500222382, guid: 31f289252780ca849a35232fc989c284, type: 3}
-    - {fileID: -2009427316012929905, guid: 31f289252780ca849a35232fc989c284, type: 3}
-    - {fileID: -7535378375613994169, guid: 31f289252780ca849a35232fc989c284, type: 3}
-    - {fileID: -6573069573500222382, guid: 31f289252780ca849a35232fc989c284, type: 3}
+    - {fileID: -5997298322305600186, guid: 31f289252780ca849a35232fc989c284, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.4
+    m_StopTime: 0.016666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

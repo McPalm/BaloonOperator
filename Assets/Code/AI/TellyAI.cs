@@ -19,6 +19,13 @@ public class TellyAI : EnemyController
     {
         Mobile.Gravity = -1;
         StartCoroutine(SearchForTarget());
+        GetComponent<Health>().OnChangeTrueHealth += TellyAI_OnChangeTrueHealth;
+    }
+
+    private void TellyAI_OnChangeTrueHealth(int hp, int chane)
+    {
+        if (hp <= 0)
+            Mobile.Gravity = 8f;
     }
 
     IEnumerator SearchForTarget()
@@ -28,10 +35,14 @@ public class TellyAI : EnemyController
         {
             while(!enabled)
             {
+                Mobile.Gravity = 8f;
+                if (Mobile.VMomentum > 5f)
+                    Mobile.VMomentum = 5f;
                 yield return new WaitForSeconds(1f);
             }
             if (currentTarget == null)
             {
+                Mobile.Gravity = -1f;
                 currentTarget = FindTarget(targetRange);
                 if (currentTarget!= null && currentTarget.transform.position.y > transform.position.y)
                 {
@@ -44,6 +55,7 @@ public class TellyAI : EnemyController
             }
             else
             {
+                Mobile.Gravity = 0f;
                 attack.SetTarget(currentTarget.GetComponent<NetworkIdentity>());
                 attack.Attack();
                 yield return new WaitForSeconds(attackInterval);

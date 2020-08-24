@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyDeath : MonoBehaviour
 {
+    public bool flipY = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,8 @@ public class EnemyDeath : MonoBehaviour
     {
         GetComponent<EnemyController>().enabled = false;
         GetComponent<Mobile>().HMomentum = 0f;
-        GetComponentInChildren<SpriteRenderer>().flipY = true;
+        if(flipY)
+            GetComponentInChildren<SpriteRenderer>().flipY = true;
         ContactDamage contactDamage = GetComponentInChildren<ContactDamage>();
         if(contactDamage)
             contactDamage.enabled = false;
