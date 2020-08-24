@@ -22,7 +22,7 @@ public class PlatformingCharacter : Mobile, IInputReader
     int ForceMoveFrames = 0;
     int rootDuration = 0;
 
-    bool CanWallJump => Properties.WalljumpForce > 0f && !Grounded && wallSlideTime > 0 && allowWallJump;
+    bool CanWallJump => Properties.WalljumpForce > 0f && !Grounded && (wallSlideTime > 0 || TouchingWall ) && allowWallJump;
 
     public bool allowWallJump = true;
     public bool allowClimb = true;
@@ -103,10 +103,11 @@ public class PlatformingCharacter : Mobile, IInputReader
 
         // horiontal movement
         var desiredSpeed = x * Properties.MaxSpeed;
+        var accelMultipler = desiredSpeed == 0f && !Grounded ? .2f : 1f; // keep momentum in air if stick is neutral.
         if (Grounded && rootDuration > 0)
             desiredSpeed = 0f;
         bool breaking = (Mathf.Abs(desiredSpeed) < Mathf.Abs(HMomentum) || Mathf.Sign(desiredSpeed) != Mathf.Sign(HMomentum));
-        var accel = Properties.AccelerationCurve.Evaluate(breaking ? -currentSpeed : currentSpeed);
+        var accel = Properties.AccelerationCurve.Evaluate(breaking ? -currentSpeed : currentSpeed) * accelMultipler ;
         if (peakJump)
             accel *= Properties.PeakAirControl;
         else if (!Grounded)
