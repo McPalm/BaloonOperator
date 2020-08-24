@@ -20,11 +20,13 @@ public class PlatformingCharacter : Mobile, IInputReader
     Vector2 ForceMove;
     int ForceMoveFrames = 0;
     int rootDuration = 0;
+    float lastWallJump = 0f;
 
     // State auto properties
     public bool WallSliding => VMomentum < 0f && wallSlideTime > 0;
     bool Rooted => rootDuration > 0;
     bool CanWallJump => Properties.WalljumpForce > 0f && !Grounded && (wallSlideTime > 0 || TouchingWall ) && allowWallJump && !Rooted;
+    float TimeSinceLastWalljump => Time.timeSinceLevelLoad - lastWallJump;
 
     public bool allowWallJump = true;
     public bool allowClimb = true;
@@ -100,12 +102,14 @@ public class PlatformingCharacter : Mobile, IInputReader
             x = 1f;
         if (x < -.75f)
             x = -1f;
-        if (x != 0f && (Grounded || Properties.airTurn) && !Rooted)
-            FaceRight = x > 0f;
 
         // horiontal movement
         var desiredSpeed = x * Properties.MaxSpeed;
-        var accelMultipler = desiredSpeed == 0f && !Grounded ? .2f : 1f; // keep momentum in air if stick is neutral.
+        var accelMultipler = desiredSpeed == 0f && !Grounded ? .1f : 1f; // keep momentum in air if stick is neutral.
+        if (Grounded)
+            lastWallJump = 0f;
+        if (TimeSinceLastWalljump < 1f)
+            accelMultipler *= TimeSinceLastWalljump;
         if (Grounded && Rooted)
             desiredSpeed = 0f;
         bool breaking = (Mathf.Abs(desiredSpeed) < Mathf.Abs(HMomentum) || Mathf.Sign(desiredSpeed) != Mathf.Sign(HMomentum));
@@ -114,7 +118,15 @@ public class PlatformingCharacter : Mobile, IInputReader
             accel *= Properties.PeakAirControl;
         else if (!Grounded)
             accel *= Properties.AirControl;
-        HMomentum = Mathf.Clamp(desiredSpeed, HMomentum - accel, HMomentum + accel);
+        float suggestion = Mathf.Clamp(desiredSpeed, HMomentum - accel, HMomentum + accel);
+        if (HMomentum != 0f && System.Math.Sign(suggestion) != System.Math.Sign(HMomentum)) // snap to 0 before conitnuing in the other direction.
+            HMomentum = 0f;
+        else
+        {
+            HMomentum = suggestion;
+            if (x != 0f && (Grounded || Properties.airTurn) && !Rooted && (Mathf.Abs(HMomentum) > .7f || Mathf.Abs(x) > .75f))
+                FaceRight = x > 0f;
+        }
         if (Grounded && breaking)
             HMomentum *= Properties.Traction;
 
@@ -168,7 +180,7 @@ public class PlatformingCharacter : Mobile, IInputReader
             cyoteTime = 0;
             jumpConsumed = true;
         }
-        else if(input.jumpBufferTimer >= 0f && CanWallJump)
+        else if(input.jumpBufferTimer >= 0f && CanWallJump) // Walljump
         {
             if(TouchingWall)
                 FaceRight = TouchingWallDirection < 0;
@@ -180,6 +192,7 @@ public class PlatformingCharacter : Mobile, IInputReader
             jumpConsumed = true;
             ForceMove = new Vector2(-TouchingWallDirection, 0f);
             ForceMoveFrames = 5;
+            lastWallJump = Time.timeSinceLevelLoad;
         }
         else if (!Grounded && VMomentum < 0f && Properties.HeadBonkForce > 0f)
         {

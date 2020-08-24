@@ -16,29 +16,56 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.035793304
-      value: 2.0002327
-      inSlope: -0.084735185
-      outSlope: -0.084735185
+      time: -2.009428
+      value: 1.9988408
+      inSlope: -1.0456171
+      outSlope: -1.0456171
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
+      outWeight: 0.07146655
+    - serializedVersion: 3
+      time: 0.057914734
+      value: 0.50094223
+      inSlope: -0.0041538603
+      outSlope: -0.0041538603
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2848847
       outWeight: 0.108203866
+    - serializedVersion: 3
+      time: 0.14025217
+      value: 3
+      inSlope: -0.085742205
+      outSlope: -0.085742205
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 5.0124664
       value: 0.203125
       inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      outSlope: -0.08562347
+      tangentMode: 1
       weightedMode: 0
       inWeight: 0
+      outWeight: 0.0680211
+    - serializedVersion: 3
+      time: 9
+      value: 0
+      inSlope: -0.003672752
+      outSlope: -0.003672752
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.54770714
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  MaxSpeed: 7
-  Traction: 0.9
-  AirControl: 0.906
+  MaxSpeed: 9
+  Traction: 0.915
+  AirControl: 1
   PeakAirControl: 1
   Gravity: 40
   JumpForce: 15
