@@ -9,8 +9,11 @@ public class AnimationPhysics : MonoBehaviour
 
     public float xForce;
     public float yForce;
+    public bool airForce;
 
     public bool rooted;
+
+    int grace = 0;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -20,12 +23,17 @@ public class AnimationPhysics : MonoBehaviour
             if (rooted)
                 player.Root(2);
         }
-        if(mobile)
+        if (mobile)
         {
-            if (xForce != 0f)
-                mobile.HMomentum = xForce * mobile.Forward;
-            if (yForce != 0f)
-                mobile.VMomentum = yForce;
+
+            grace = mobile.Grounded ? 5 : grace - 1;
+            if (grace > 0 || airForce)
+            {
+                if (xForce != 0f)
+                    mobile.HMomentum = xForce * mobile.Forward;
+                if (yForce != 0f)
+                    mobile.VMomentum = yForce;
+            }
         }
     }
 }
