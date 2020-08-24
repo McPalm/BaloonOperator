@@ -6,8 +6,9 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     public InputToken InputToken { get; private set; }
-
     Vector2 heldDirection;
+    float direction = 0f;
+    float softTimer = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,26 @@ public class PlayerInput : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext e)
     {
-        InputToken.Direction = e.ReadValue<Vector2>();
+        var value = e.ReadValue<Vector2>();
+
+        var x = value.x;
+        if (Mathf.Abs(x) > .75f || x == 0f)
+        {
+            direction = Mathf.Round(x);
+            softTimer = Time.timeSinceLevelLoad + .1f;
+        }
+        else if(softTimer < Time.timeSinceLevelLoad)
+        {
+            direction = Mathf.Round(x);
+        }
+        else
+        {
+            x = x * .2f + heldDirection.x * .8f;
+            value = new Vector2(x, value.y);
+        }
+        
+
+        InputToken.Direction = value;
         if (heldDirection.y > -.5f && InputToken.Direction.y < -.5f)
             InputToken.PressPassThrough();
         heldDirection = InputToken.Direction;
