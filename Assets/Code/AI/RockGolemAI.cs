@@ -23,6 +23,10 @@ public class RockGolemAI : EnemyController
     {
         while (true)
         {
+            while(!enabled)
+            {
+                yield return null;
+            }
             currentTarget = FindTarget(targetRange);
             if (currentTarget != null)
             {
@@ -66,11 +70,13 @@ public class RockGolemAI : EnemyController
 
     public override void Enemybehaviour()
     {
+        /*
         if (IsStunned)
         {
             Mobile.HMomentum = 0f;
             return;
         }
+        */
     }
 
 }
