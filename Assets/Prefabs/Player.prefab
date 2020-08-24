@@ -196,6 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1379418884}
   - component: {fileID: 1379418885}
+  - component: {fileID: 3628002833670853626}
   m_Layer: 0
   m_Name: Health Bar
   m_TagString: Untagged
@@ -275,6 +276,22 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3628002833670853626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379418883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ca894800ec40494bad269357245baf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showLessThanFull: 0
+  showOnChange: 1
+  showDuration: 3
+  fadeDuration: 0.25
 --- !u!1 &2003696171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,6 +1359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4392001553009017889}
   - component: {fileID: 480744467138530314}
+  - component: {fileID: 2698329074678219010}
   m_Layer: 0
   m_Name: Stamina Bar
   m_TagString: Untagged
@@ -1421,6 +1439,22 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2698329074678219010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741327408500249334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ca894800ec40494bad269357245baf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showLessThanFull: 1
+  showOnChange: 0
+  showDuration: 0.5
+  fadeDuration: 0.1
 --- !u!1001 &5415466754690231377
 PrefabInstance:
   m_ObjectHideFlags: 0
