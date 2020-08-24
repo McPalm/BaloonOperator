@@ -15,14 +15,16 @@ public class PlatformingCharacter : Mobile, IInputReader
     public event System.Action OnJump;
     public event System.Action OnWallJump;
     public event System.Action<PlatformingCharacter> OnStomp;
-    public bool WallSliding => VMomentum < 0f && wallSlideTime > 0;
     public bool Climbing { get; set; }
     int ForceJumpFrames = 0;
     Vector2 ForceMove;
     int ForceMoveFrames = 0;
     int rootDuration = 0;
 
-    bool CanWallJump => Properties.WalljumpForce > 0f && !Grounded && (wallSlideTime > 0 || TouchingWall ) && allowWallJump;
+    // State auto properties
+    public bool WallSliding => VMomentum < 0f && wallSlideTime > 0;
+    bool Rooted => rootDuration > 0;
+    bool CanWallJump => Properties.WalljumpForce > 0f && !Grounded && (wallSlideTime > 0 || TouchingWall ) && allowWallJump && !Rooted;
 
     public bool allowWallJump = true;
     public bool allowClimb = true;
@@ -98,13 +100,13 @@ public class PlatformingCharacter : Mobile, IInputReader
             x = 1f;
         if (x < -.75f)
             x = -1f;
-        if (x != 0f && (Grounded || Properties.airTurn) && rootDuration < 0)
+        if (x != 0f && (Grounded || Properties.airTurn) && !Rooted)
             FaceRight = x > 0f;
 
         // horiontal movement
         var desiredSpeed = x * Properties.MaxSpeed;
         var accelMultipler = desiredSpeed == 0f && !Grounded ? .2f : 1f; // keep momentum in air if stick is neutral.
-        if (Grounded && rootDuration > 0)
+        if (Grounded && Rooted)
             desiredSpeed = 0f;
         bool breaking = (Mathf.Abs(desiredSpeed) < Mathf.Abs(HMomentum) || Mathf.Sign(desiredSpeed) != Mathf.Sign(HMomentum));
         var accel = Properties.AccelerationCurve.Evaluate(breaking ? -currentSpeed : currentSpeed) * accelMultipler ;
@@ -121,7 +123,9 @@ public class PlatformingCharacter : Mobile, IInputReader
             cyoteTime = Properties.CyoteTime + 1;
         else
             cyoteTime--;
-        if(allowClimb && InputToken.ClimbHeld && Properties.ClimbSpeed > 0f && !Grounded && TouchingWall)
+
+        // climbing
+        if(allowClimb && InputToken.ClimbHeld && Properties.ClimbSpeed > 0f && !Grounded && TouchingWall && !Rooted)
         {
             if(input.direction.y < 0f && Properties.ClimbSpeed < Properties.MaxWallslideSpeed)
                 VMomentum = VMomentum * .5f + Properties.MaxWallslideSpeed * .5f * input.direction.y;
@@ -133,7 +137,8 @@ public class PlatformingCharacter : Mobile, IInputReader
             Climbing = true;
             ForceMove = new Vector2(TouchingWallDirection, 0f);
         }
-        else if (Properties.WalljumpForce > 0f && !Grounded && TouchingWall && TouchingWallDirection == System.Math.Sign(input.direction.x))
+        // wallsliding
+        else if (Properties.WalljumpForce > 0f && !Grounded && TouchingWall && TouchingWallDirection == System.Math.Sign(input.direction.x) && !Rooted)
         {
             if(WallSliding)
                 FaceRight = TouchingWallDirection < 0;
@@ -156,7 +161,7 @@ public class PlatformingCharacter : Mobile, IInputReader
             Climbing = false;
         }
 
-        if (cyoteTime > 0 && input.jumpBufferTimer >= 0f)
+        if (cyoteTime > 0 && input.jumpBufferTimer >= 0f && !Rooted)
         {
             VMomentum = Properties.JumpForce;
             OnJump?.Invoke();
