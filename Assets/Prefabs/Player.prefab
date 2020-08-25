@@ -1465,6 +1465,10 @@ PrefabInstance:
       propertyPath: source
       value: 
       objectReference: {fileID: 3602800873068193666}
+    - target: {fileID: 1096067993, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
+      propertyPath: OnHitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4039f37d23bd96a48817d244ec16ce69, type: 3}
     - target: {fileID: 3790142971370965258, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1612,6 +1616,10 @@ PrefabInstance:
     - target: {fileID: 7389731376565558285, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_Name
       value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761799980511812512, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
+      propertyPath: clip
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9118922853219489889, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_LocalPosition.x

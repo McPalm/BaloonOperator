@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 0}
   damage: 1
+  OnHitSound: {fileID: 8300000, guid: 66e6bc233fd45a546b671b6f3a52714d, type: 3}
 --- !u!58 &2532732225946504553
 CircleCollider2D:
   m_ObjectHideFlags: 0

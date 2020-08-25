@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 0}
   damage: 1
+  OnHitSound: {fileID: 0}
 --- !u!60 &4621272909052951406
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -139,6 +140,7 @@ GameObject:
   - component: {fileID: 1922948091}
   - component: {fileID: 7120206765310401611}
   - component: {fileID: 5608804126195876058}
+  - component: {fileID: 8761799980511812512}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -212,3 +214,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   Animator: {fileID: 1922948091}
+--- !u!114 &8761799980511812512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389731376565558285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3804fb16717b7824f858e0caf8704bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  volume: 1

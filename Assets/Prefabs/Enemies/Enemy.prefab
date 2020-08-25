@@ -72,6 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 0}
   damage: 1
+  OnHitSound: {fileID: 8300000, guid: 66e6bc233fd45a546b671b6f3a52714d, type: 3}
 --- !u!1 &4037480144309179411
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,6 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f4aedbb17f8384f8a23312a29e41bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flipY: 1
 --- !u!114 &-7274048596213868904
 MonoBehaviour:
   m_ObjectHideFlags: 0
