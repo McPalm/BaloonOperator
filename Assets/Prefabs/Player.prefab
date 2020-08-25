@@ -893,6 +893,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnStruck:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2445479908138148257}
+        m_TargetAssemblyTypeName: SpriteColourFlash, Assembly-CSharp
+        m_MethodName: PlayFlash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   blockTriggers: 0
 --- !u!114 &539727597621919533
 MonoBehaviour:
@@ -1169,6 +1184,7 @@ GameObject:
   - component: {fileID: 1209720722372671022}
   - component: {fileID: 3011320248621275233}
   - component: {fileID: 1950856074}
+  - component: {fileID: 2445479908138148257}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -1209,7 +1225,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3a4d389b76f7ae5479b7db6c74ec95df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1231,7 +1247,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 3604182692263377810, guid: 9fe02bf2f570d0f4084d29ff425b5e50, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1273,6 +1289,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2445479908138148257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160744774408102427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 592049590ed9e524b83c9fa9a69d49f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderer: {fileID: 1209720722372671022}
+  Pattern: {fileID: 11400000, guid: d57ceb200792e5d4e8240b8874f8bba9, type: 2}
 --- !u!1 &7436720121926329020
 GameObject:
   m_ObjectHideFlags: 0

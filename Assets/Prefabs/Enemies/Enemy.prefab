@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 3674057681821385093}
   - component: {fileID: 1811609250282791800}
   - component: {fileID: 2215162937025290959}
+  - component: {fileID: 1943727924878725908}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -124,7 +125,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3a4d389b76f7ae5479b7db6c74ec95df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -146,7 +147,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -5962192985538256292, guid: a97674aed472e6a4c926dd2680cb2a31, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -169,6 +170,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Root: {fileID: 7293224593479539135}
+--- !u!114 &1943727924878725908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4037480144309179411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 592049590ed9e524b83c9fa9a69d49f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderer: {fileID: 1811609250282791800}
+  Pattern: {fileID: 11400000, guid: 8572aaabb19812c46b2e18c2baeec573, type: 2}
 --- !u!1 &9053982422635548910
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +304,21 @@ MonoBehaviour:
   OnChangeHealth:
     m_PersistentCalls:
       m_Calls: []
+  OnStruck:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1943727924878725908}
+        m_TargetAssemblyTypeName: SpriteColourFlash, Assembly-CSharp
+        m_MethodName: PlayFlash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   blockTriggers: 0
 --- !u!114 &-4496146389823606990
 MonoBehaviour:

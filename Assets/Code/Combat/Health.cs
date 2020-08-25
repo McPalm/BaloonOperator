@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
     public event System.Action<int, int> OnChangeTrueHealth;
 
     public UnityEvent<float> OnChangeHealth;
+    public UnityEvent<int> OnStruck;
 
     /// <summary>
     /// make it so that this isntance does not accept Hurt or Heal messages. Intended to manage authority over networking
@@ -39,6 +40,7 @@ public class Health : MonoBehaviour
             return;
         if (HasIFrames)
             return;
+        OnStruck.Invoke(data.damage);
         OnHurt?.Invoke(data);
         if (data.reject)
             return;
