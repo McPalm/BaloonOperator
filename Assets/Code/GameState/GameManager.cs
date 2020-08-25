@@ -95,7 +95,6 @@ public class GameManager : NetworkBehaviour
     [Server]
     public void TriggerLoss()
     {
-        Debug.Log("You LOSE!");
         lose = true;
     }
 
@@ -104,7 +103,6 @@ public class GameManager : NetworkBehaviour
     {
         if (isServer)
         {
-            Debug.Log("You WIN!");
             win = true;
         }
     }
