@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 3194641530333117914}
   - component: {fileID: 1492598216250146863}
   - component: {fileID: 128053030959420114}
+  - component: {fileID: 564037956926731822}
   m_Layer: 11
   m_Name: Skelington
   m_TagString: Untagged
@@ -439,3 +440,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Health: {fileID: 2777494180912461108}
+--- !u!114 &564037956926731822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8471995272078084598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f298f3bdaec97394d82f0ded5b81577b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackedParameters:
+  - Dead
