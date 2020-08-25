@@ -7,10 +7,11 @@ public class Attack : MonoBehaviour, IInputReader
     public InputToken InputToken { get; set; }
     public Animator animator;
     PlatformingCharacter PC;
-    public int attackDuration = 15;
-    float cooldown = 0f;
+    float clearFlag = 0f;
 
-    public bool CanAttack => PC.WallSliding == false && PC.Climbing == false && cooldown < Time.timeSinceLevelLoad;
+    readonly float inputBuffer = .25f;
+
+    public bool CanAttack => PC.WallSliding == false && PC.Climbing == false;
 
     public event System.Action OnAttack;
 
@@ -25,9 +26,12 @@ public class Attack : MonoBehaviour, IInputReader
         {
             animator.SetTrigger("Strike");
             InputToken.ConsumeUse();
-            PC.Root(attackDuration);
-            cooldown = Time.timeSinceLevelLoad + attackDuration * Time.fixedDeltaTime;
+            clearFlag = Time.timeSinceLevelLoad + inputBuffer;
             OnAttack?.Invoke();
+        }
+        else if(clearFlag > 0f && clearFlag < Time.timeSinceLevelLoad)
+        {
+            animator.ResetTrigger("Strike");
         }
     }
 }
