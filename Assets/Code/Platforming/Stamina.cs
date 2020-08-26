@@ -17,6 +17,11 @@ public class Stamina : MonoBehaviour
 
     public UnityEvent<float> OnValueChanged;
 
+    float rechargeCooldown = .7f;
+    float rechargeTimer = 0f;
+    bool CanRecharge => Time.timeSinceLevelLoad > rechargeTimer && pc.Grounded;
+
+    float expenseCarryover = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -28,24 +33,30 @@ public class Stamina : MonoBehaviour
 
     private void Pc_OnWallJump()
     {
-        currentstamina -= .2f;
+        expenseCarryover += .19f;
     }
 
     private void Pc_OnJump()
     {
-        // currentstamina -= .125f;
+        expenseCarryover += .19f;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        float expenditure = expenseCarryover;
+        expenseCarryover = 0f;
         if (pc.Climbing)
         {
             if (pc.VMomentum > -.1f)
-                currentstamina -= Time.fixedDeltaTime * (pc.VMomentum * .15f + .1f);
+                expenditure += Time.fixedDeltaTime * (pc.VMomentum * .23f + .1f);
         }
-        else if (pc.Grounded)
-            currentstamina += Time.fixedDeltaTime * 2f;
+
+        currentstamina -= expenditure;
+        if (expenditure > 0f)
+            rechargeTimer = Time.timeSinceLevelLoad + rechargeCooldown;
+        else if (CanRecharge)
+            currentstamina += Time.fixedDeltaTime * (pc.HMomentum == 0f ? 1.5f : .5f);
 
 
         if (currentstamina <= 0f)

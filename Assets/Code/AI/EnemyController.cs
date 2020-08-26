@@ -33,12 +33,14 @@ public abstract class EnemyController : MonoBehaviour
 
     private void OnEnable()
     {
-        ActiveAwakeCoroutine = StartCoroutine(AwakeCoroutine());
+        if(MyNetworkManager.isServer)
+            ActiveAwakeCoroutine = StartCoroutine(AwakeCoroutine());
     }
 
     private void OnDisable()
     {
-        StopCoroutine(ActiveAwakeCoroutine);
+        if(ActiveAwakeCoroutine != null)
+            StopCoroutine(ActiveAwakeCoroutine);
     }
 
     // put AI loop in here
