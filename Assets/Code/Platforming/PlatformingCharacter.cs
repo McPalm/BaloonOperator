@@ -20,6 +20,7 @@ public class PlatformingCharacter : Mobile, IInputReader
     Vector2 ForceMove;
     int ForceMoveFrames = 0;
     int rootDuration = 0;
+    public float Friction { get; set; } = 1f;
     float lastWallJump = 0f;
 
     // State auto properties
@@ -105,6 +106,7 @@ public class PlatformingCharacter : Mobile, IInputReader
         // horiontal movement
         var desiredSpeed = x * Properties.MaxSpeed;
         var accelMultipler = desiredSpeed == 0f && !Grounded ? .1f : 1f; // keep momentum in air if stick is neutral.
+        accelMultipler *= Friction;
         if(lowStamina)
         {
             accelMultipler *= .12f;

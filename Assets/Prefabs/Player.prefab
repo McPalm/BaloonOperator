@@ -636,8 +636,7 @@ MonoBehaviour:
   Player:
     serializedVersion: 2
     m_Bits: 0
-  allowWallJump: 1
-  allowClimb: 1
+  lowStamina: 0
 --- !u!114 &3602800873068193668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1060,7 +1059,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6671757999103305365}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.62, y: -0.018, z: 0}
+  m_LocalPosition: {x: 0.51, y: -0.018, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2970501628481386639}
@@ -1503,7 +1502,7 @@ PrefabInstance:
     - target: {fileID: 3790142971370965258, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8460758886575586376, guid: 92373188b2e5c1a4696d1a555eb5e833, type: 3}
+      objectReference: {fileID: -4666927688053034149, guid: 92373188b2e5c1a4696d1a555eb5e833, type: 3}
     - target: {fileID: 3790142971370965258, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -1530,19 +1529,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4621272909052951406, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.11078029
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4621272909052951406, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.43592167
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4621272909052951406, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.25
+      value: 1.4375
       objectReference: {fileID: 0}
     - target: {fileID: 4621272909052951406, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1
+      value: 0.3125
       objectReference: {fileID: 0}
     - target: {fileID: 4621272909052951406, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_IsTrigger
@@ -1550,35 +1549,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4621272909052951406, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
-      value: 0.56324434
+      value: -0.530257
       objectReference: {fileID: 0}
     - target: {fileID: 4621272909052951406, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
-      value: -0.43592167
+      value: -0.13563383
       objectReference: {fileID: 0}
     - target: {fileID: 4621272909052951406, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
-      value: 0.50074434
+      value: -0.57009363
       objectReference: {fileID: 0}
     - target: {fileID: 4621272909052951406, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
-      value: 0.06407833
+      value: 0.098073125
       objectReference: {fileID: 0}
     - target: {fileID: 4621272909052951406, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
-      value: 1.8132443
+      value: 0.72540855
       objectReference: {fileID: 0}
     - target: {fileID: 4621272909052951406, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
-      value: 0.56407833
+      value: 0.31478286
       objectReference: {fileID: 0}
     - target: {fileID: 4621272909052951406, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
-      value: 2.0007443
+      value: 0.7259369
       objectReference: {fileID: 0}
     - target: {fileID: 4621272909052951406, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
-      value: -0.43592167
+      value: -0.34526885
       objectReference: {fileID: 0}
     - target: {fileID: 4621272909052951406, guid: 1245f758c932e1b4baf374f1aca5aeeb, type: 3}
       propertyPath: m_AutoTiling

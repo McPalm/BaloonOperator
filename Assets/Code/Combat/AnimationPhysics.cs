@@ -12,8 +12,11 @@ public class AnimationPhysics : MonoBehaviour
     public bool airForce;
 
     public bool rooted;
+    [Range(0f, 1f)]
+    public float friction = 1f;
 
-    int grace = 0;
+    int impulseDuration = 0;
+    bool impulseApplies;
 
     public event System.Action OnStartSwing;
 
@@ -29,18 +32,27 @@ public class AnimationPhysics : MonoBehaviour
         {
             if (rooted)
                 player.Root(2);
+            player.Friction = friction;
         }
         if (mobile)
         {
+            if (xForce == 0f && yForce == 0f)
+            {
+                impulseDuration = 0;
+                impulseApplies = false;
+            }
+            else impulseDuration++;
+            if (impulseDuration == 1 && mobile.Grounded)
+                impulseApplies = true;
 
-            grace = mobile.Grounded ? 5 : grace - 1;
-            if (grace > 0 || airForce)
+            if (impulseApplies || airForce)
             {
                 if (xForce != 0f)
                     mobile.HMomentum = xForce * mobile.Forward;
                 if (yForce != 0f)
                     mobile.VMomentum = yForce;
             }
+
         }
     }
 }
