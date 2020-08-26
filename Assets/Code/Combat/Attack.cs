@@ -6,8 +6,10 @@ public class Attack : MonoBehaviour, IInputReader
 {
     public InputToken InputToken { get; set; }
     public Animator animator;
+    public AnimationPhysics animationPhysics;
     PlatformingCharacter PC;
     float clearFlag = 0f;
+    Stamina Stamina { get; set; }
 
     readonly float inputBuffer = .25f;
 
@@ -17,12 +19,14 @@ public class Attack : MonoBehaviour, IInputReader
 
     void Start()
     {
+        Stamina = GetComponent<Stamina>();
         PC = GetComponent<PlatformingCharacter>();
+        animationPhysics.OnStartSwing += () => Stamina.Spend(.2f);
     }
 
     void FixedUpdate()
     {
-        if(CanAttack && InputToken.UsePressed)
+        if(CanAttack && InputToken.UsePressed && Stamina.HasStamina)
         {
             animator.SetTrigger("Strike");
             InputToken.ConsumeUse();

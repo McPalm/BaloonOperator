@@ -41,6 +41,11 @@ public class Stamina : MonoBehaviour
         expenseCarryover += .19f;
     }
 
+    public void Spend(float stamina)
+    {
+        expenseCarryover += stamina;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -64,8 +69,7 @@ public class Stamina : MonoBehaviour
         if (currentstamina >= maxStamina)
             exhausted = false;
 
-        pc.allowWallJump = HasStamina;
-        pc.allowClimb = HasStamina;
+        pc.lowStamina = !HasStamina;
 
         currentstamina = Mathf.Clamp(currentstamina, 0f, maxStamina);
 

@@ -25,11 +25,10 @@ public class PlatformingCharacter : Mobile, IInputReader
     // State auto properties
     public bool WallSliding => VMomentum < 0f && wallSlideTime > 0;
     bool Rooted => rootDuration > 0;
-    bool CanWallJump => Properties.WalljumpForce > 0f && !Grounded && (wallSlideTime > 0 || TouchingWall ) && allowWallJump && !Rooted;
+    bool CanWallJump => Properties.WalljumpForce > 0f && !Grounded && (wallSlideTime > 0 || TouchingWall ) && !lowStamina && !Rooted;
     float TimeSinceLastWalljump => Time.timeSinceLevelLoad - lastWallJump;
 
-    public bool allowWallJump = true;
-    public bool allowClimb = true;
+    public bool lowStamina = false;
 
     public bool Disabled { get; set; }
 
@@ -106,6 +105,11 @@ public class PlatformingCharacter : Mobile, IInputReader
         // horiontal movement
         var desiredSpeed = x * Properties.MaxSpeed;
         var accelMultipler = desiredSpeed == 0f && !Grounded ? .1f : 1f; // keep momentum in air if stick is neutral.
+        if(lowStamina)
+        {
+            accelMultipler *= .12f;
+            desiredSpeed *= .4f;
+        }
         if (Grounded)
             lastWallJump = 0f;
         if (TimeSinceLastWalljump < 1f)
@@ -137,7 +141,7 @@ public class PlatformingCharacter : Mobile, IInputReader
             cyoteTime--;
 
         // climbing
-        if(allowClimb && InputToken.ClimbHeld && Properties.ClimbSpeed > 0f && !Grounded && TouchingWall && !Rooted)
+        if(!lowStamina && InputToken.ClimbHeld && Properties.ClimbSpeed > 0f && !Grounded && TouchingWall && !Rooted)
         {
             if(input.direction.y < 0f && Properties.ClimbSpeed < Properties.MaxWallslideSpeed)
                 VMomentum = VMomentum * .5f + Properties.MaxWallslideSpeed * .5f * input.direction.y;
@@ -175,7 +179,7 @@ public class PlatformingCharacter : Mobile, IInputReader
 
         if (cyoteTime > 0 && input.jumpBufferTimer >= 0f && !Rooted)
         {
-            VMomentum = Properties.JumpForce;
+            VMomentum = lowStamina ? Properties.JumpForce * .5f : Properties.JumpForce;
             OnJump?.Invoke();
             cyoteTime = 0;
             jumpConsumed = true;

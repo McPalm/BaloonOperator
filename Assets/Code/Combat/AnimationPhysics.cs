@@ -15,6 +15,13 @@ public class AnimationPhysics : MonoBehaviour
 
     int grace = 0;
 
+    public event System.Action OnStartSwing;
+
+    public void StartSwing()
+    {
+        OnStartSwing?.Invoke();
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
