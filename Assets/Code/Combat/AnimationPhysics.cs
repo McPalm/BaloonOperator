@@ -18,6 +18,9 @@ public class AnimationPhysics : MonoBehaviour
     int impulseDuration = 0;
     bool impulseApplies;
 
+    public int reachX;
+    public int reachY;
+
     public event System.Action OnStartSwing;
 
     public void StartSwing()

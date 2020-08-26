@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a07d00854eeb8149ab663604bd1ed09, type: 3}
+  m_Name: Bizarre
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 395535372834942686, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: 2122629394848206431, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: -454605883652939903, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: -4762378235705298219, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: -3220661916622806375, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: 4561057683907754772, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: 6965340621389422099, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: -2577689053460118322, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: 2506808021011344968, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: 7316565534474019770, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: 1495451118424412668, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: -5871039384300083803, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: -8448651244608180998, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: -5485995240715335912, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: -8804491389474178362, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: -6966097168018355677, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: 1624241336661996616, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: -1432358280210741762, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
+  - {fileID: 4215605385231464202, guid: 48c140f0dc71f094d8d8c0c0b75ab8ba, type: 3}
