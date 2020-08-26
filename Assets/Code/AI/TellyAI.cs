@@ -17,8 +17,6 @@ public class TellyAI : EnemyController
 
     public override void InitAI()
     {
-        Mobile.Gravity = -1;
-        StartCoroutine(SearchForTarget());
         GetComponent<Health>().OnChangeTrueHealth += TellyAI_OnChangeTrueHealth;
     }
 
@@ -28,70 +26,69 @@ public class TellyAI : EnemyController
             Mobile.Gravity = 8f;
     }
 
-    IEnumerator SearchForTarget()
+    public void Movement()
     {
-        var attack = GetComponent<EnemyAttack>();
-        while (true)
-        {
-            while(!enabled)
-            {
-                Mobile.Gravity = 8f;
-                if (Mobile.VMomentum > 5f)
-                    Mobile.VMomentum = 5f;
-                yield return new WaitForSeconds(1f);
-            }
-            if (currentTarget == null)
-            {
-                Mobile.Gravity = -1f;
-                currentTarget = FindTarget(targetRange);
-                if (currentTarget!= null && currentTarget.transform.position.y > transform.position.y)
-                {
-                    currentTarget = null;
-                }
-            }
-            else if(currentTarget.GetComponent<Health>().CurrentHealth <= 0)
-            {
-                currentTarget = null;
-            }
-            else
-            {
-                Mobile.Gravity = 0f;
-                attack.SetTarget(currentTarget.GetComponent<NetworkIdentity>());
-                attack.Attack();
-                yield return new WaitForSeconds(attackInterval);
-            }
-            yield return new WaitForSeconds(Random.value);
-        }
-    }
-
-    public override void Enemybehaviour()
-    {
-        if (IsStunned)
+        if(currentTarget == null || IsStunned)
         {
             Mobile.HMomentum = 0f;
-            return;
+            Mobile.VMomentum = IsStunned ? 0f : 2f;
         }
-        if (currentTarget != null)
+        else
         {
-            Mobile.Gravity = 0;
-            if (Vector3.Distance(currentTarget.transform.position, transform.position) > optimalRange + 0.1f)
+            float sqrDistance = Vector3.SqrMagnitude(currentTarget.transform.position - transform.position);
+            float sqrOptimal = optimalRange * optimalRange;
+            if (sqrDistance > sqrOptimal + .75f)
             {
                 Vector3 direction = Vector3.Normalize(currentTarget.transform.position - transform.position);
 
                 Mobile.HMomentum = direction.x * speed;
                 Mobile.VMomentum = direction.y * speed;
             }
-            else if (Vector3.Distance(currentTarget.transform.position, transform.position) < optimalRange - 0.1f)
+            else if (sqrDistance < sqrOptimal - .75f)
             {
                 Vector3 direction = Vector3.Normalize(currentTarget.transform.position - transform.position);
 
                 Mobile.HMomentum = direction.x * -speed;
                 Mobile.VMomentum = direction.y * -speed;
             }
-            else 
+            else
             {
                 Mobile.HMomentum = 0;
                 Mobile.VMomentum = 0;
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        Movement();
+    }
+
+    protected override IEnumerator AwakeCoroutine()
+    {
+        yield return null;
+        var attack = GetComponent<EnemyAttack>();
+    idle:
+        currentTarget = null;
+        for (; ; )
+        {
+            currentTarget = FindTarget(targetRange);
+            if (currentTarget != null && currentTarget.transform.position.y < transform.position.y)
+                goto attack;
+            else
+                currentTarget = null;
+            yield return new WaitForSeconds(Random.value * .2f);
+        }
+    attack:
+        for (; ; )
+        {
+            if (currentTarget.GetComponent<Health>().CurrentHealth <= 0)
+                goto idle;
+            {
+                attack.SetTarget(currentTarget.GetComponent<NetworkIdentity>());
+                attack.Attack();
+                yield return new WaitForSeconds(attackInterval + Random.value * .25f);
+
             }
         }
     }

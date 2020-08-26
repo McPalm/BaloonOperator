@@ -29,6 +29,20 @@ public abstract class EnemyController : MonoBehaviour
         InitAI();
     }
 
+    Coroutine ActiveAwakeCoroutine;
+
+    private void OnEnable()
+    {
+        ActiveAwakeCoroutine = StartCoroutine(AwakeCoroutine());
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(ActiveAwakeCoroutine);
+    }
+
+    // put AI loop in here
+    abstract protected IEnumerator AwakeCoroutine();
     abstract public void InitAI();
 
     private void Health_OnChangeTrueHealth(int hp, int change)
@@ -69,12 +83,4 @@ public abstract class EnemyController : MonoBehaviour
         }
         return target;
     }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        Enemybehaviour();
-    }
-
-    public abstract void Enemybehaviour();
 }

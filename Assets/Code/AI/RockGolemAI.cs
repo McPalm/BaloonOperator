@@ -16,37 +16,8 @@ public class RockGolemAI : EnemyController
 
     public override void InitAI()
     {
-        StartCoroutine(SearchForTarget());
     }
 
-    IEnumerator SearchForTarget()
-    {
-        while (true)
-        {
-            while(!enabled)
-            {
-                yield return null;
-            }
-            currentTarget = FindTarget(targetRange);
-            if (currentTarget != null)
-            {
-
-                float dx = Mathf.Abs(currentTarget.transform.position.x - transform.position.x);
-                float dy = Mathf.Abs(currentTarget.transform.position.y - transform.position.y);
-                if(dy < 3f)
-                    transform.SetForward(currentTarget.transform.position.x - transform.position.x);
-                if(dy < 1f && dx < engageRange)
-                {
-                    yield return Charge();
-                }
-            }
-            else
-            {
-                currentTarget = null;
-            }
-            yield return new WaitForSeconds(Random.value * 0.2f);
-        }
-    }
 
     IEnumerator Charge()
     {
@@ -67,16 +38,32 @@ public class RockGolemAI : EnemyController
         Mobile.HMomentum = 0f;
     }
 
-
-    public override void Enemybehaviour()
+    protected override IEnumerator AwakeCoroutine()
     {
-        /*
-        if (IsStunned)
+        while (true)
         {
-            Mobile.HMomentum = 0f;
-            return;
-        }
-        */
-    }
+            while (!enabled)
+            {
+                yield return null;
+            }
+            currentTarget = FindTarget(targetRange);
+            if (currentTarget != null)
+            {
 
+                float dx = Mathf.Abs(currentTarget.transform.position.x - transform.position.x);
+                float dy = Mathf.Abs(currentTarget.transform.position.y - transform.position.y);
+                if (dy < 3f)
+                    transform.SetForward(currentTarget.transform.position.x - transform.position.x);
+                if (dy < 1f && dx < engageRange)
+                {
+                    yield return Charge();
+                }
+            }
+            else
+            {
+                currentTarget = null;
+            }
+            yield return new WaitForSeconds(Random.value * 0.2f);
+        }
+    }
 }

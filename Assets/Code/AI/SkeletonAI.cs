@@ -11,76 +11,58 @@ public class SkeletonAI : EnemyController
     
     int[] movementPattern = { 4, -2, -4, 2 };
     int index;
-    int NextMovement
-    {
-        get
-        {
-            if (index == movementPattern.Length)
-            {
-                index = 0;
-            }
-            return movementPattern[index++];
-        }
-    }
-    int movement;
+    int NextMovement => movementPattern[index++ % movementPattern.Length];
 
     public override void InitAI()
     {
-        StartCoroutine(GetMovement());
-        index = 0;
     }
 
-    IEnumerator GetMovement()
+    protected override IEnumerator AwakeCoroutine()
     {
-        while (true)
+        index = 0;
+        yield return new WaitForFixedUpdate();
+        for (; ; )
         {
-            PlatformingCharacter currentTarget;
-            currentTarget = FindTarget(sightRange);
-            if(!enabled)
+
+            if (IsStunned)
             {
-                // im fucking dead mate
-                yield return new WaitForSeconds(1f);
-            }
-            else if (currentTarget != null)
-            { 
-                transform.SetForward(currentTarget.transform.position.x - transform.position.x);
-                movement = NextMovement;
-                yield return new WaitForSeconds(0.25f);
-                movement = 0;
-                int maxToss = 3;
-                while(Random.value < .7f && currentTarget != null && enabled && maxToss-- > 0)
-                {
-                    Attack.Attack();
-                    yield return new WaitForSeconds(.5f);
-                }
-                yield return new WaitForSeconds(.5f);
+                Mobile.HMomentum = 0f;
+                yield return null;
             }
             else
             {
-                movement = 0;
-                yield return new WaitForSeconds(Random.value * .25f);
+                PlatformingCharacter currentTarget;
+                currentTarget = FindTarget(sightRange);
+                yield return Shuffle();
+                if (currentTarget != null)
+                {
+                    transform.SetForward(currentTarget.transform.position.x - transform.position.x);
+                    yield return ThrowBones();
+                    yield return new WaitForSeconds(.5f);
+                }
+                else
+                {
+                    Mobile.HMomentum = 0;
+                    yield return new WaitForSeconds(Random.value);
+                }
             }
         }
     }
 
-    public override void Enemybehaviour()
+    IEnumerator Shuffle()
     {
-        if (IsStunned)
+        Mobile.HMomentum = NextMovement;
+        yield return new WaitForSeconds(0.25f);
+        Mobile.HMomentum = 0;
+    }
+
+    IEnumerator ThrowBones()
+    {
+        int maxToss = 3;
+        while (Random.value < .7f && maxToss-- > 0)
         {
-            Mobile.HMomentum = 0f;
-            return;
-        }
-        else
-        {
-            if (Mobile.TouchingWallDirection == Mobile.Forward)
-            {
-                Mobile.FaceRight = !Mobile.FaceRight;
-            }
-            else if (Mobile.OnEdge)
-            {
-                Mobile.FaceRight = !Mobile.FaceRight;
-            }
-            Mobile.HMomentum = Mobile.Forward * 1 * movement;
+            Attack.Attack();
+            yield return new WaitForSeconds(.5f);
         }
     }
 }
