@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c7ed10c2bb15c4a92cf5a35715d02b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipped: {fileID: 11400000, guid: 0c684cc040a531a4398fb1639dfd5940, type: 2}
+  equipped: {fileID: 11400000, guid: dcf3dc30d17c326408a60b1aff200f81, type: 2}
   spriteRenderer: {fileID: 9205024081500251483}
   swipeTrail: {fileID: 2551983925500400132}
   ContactDamage: {fileID: 5415466755783591880}
