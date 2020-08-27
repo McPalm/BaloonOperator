@@ -63,12 +63,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  MaxSpeed: 9
+  MaxSpeed: 7
   Traction: 0.915
   AirControl: 1
   PeakAirControl: 1
   Gravity: 40
-  JumpForce: 15
+  JumpForce: 16.5
   WalljumpForce: 14
   WallpushForce: 6
   HeadBonkForce: 9
