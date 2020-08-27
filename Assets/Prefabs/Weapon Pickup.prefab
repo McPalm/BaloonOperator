@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8553789316679821822}
   - component: {fileID: 4391201688896292524}
   - component: {fileID: -4588148536976269128}
+  - component: {fileID: -6371251913047238350}
+  - component: {fileID: 2666797452164148804}
   m_Layer: 15
   m_Name: Weapon Pickup
   m_TagString: Untagged
@@ -90,6 +92,37 @@ MonoBehaviour:
   serverOnly: 0
   m_AssetId: 
   hasSpawned: 0
+--- !u!114 &-6371251913047238350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595536403421124037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c53c5a42079858f4182fb14f59b3de3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Solid:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &2666797452164148804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595536403421124037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b62a7fce7f5e6f4da6d396db2268bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immobile: 0
+  radius: 0.5
+  Gravity: 18
+  wallStop: 0.8
 --- !u!1 &9004979817222766486
 GameObject:
   m_ObjectHideFlags: 0

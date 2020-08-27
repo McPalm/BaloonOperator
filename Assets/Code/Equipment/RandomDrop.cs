@@ -12,7 +12,10 @@ public class RandomDrop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int i = Random.Range(0, weapons.Count);
-        FindObjectOfType<ItemManager>().Spawn(weapons[i], transform.position);
+        if (MyNetworkManager.isServer)
+        {
+            int i = Random.Range(0, weapons.Count);
+            FindObjectOfType<ItemManager>().Spawn(weapons[i], transform.position);
+        }
     }
 }

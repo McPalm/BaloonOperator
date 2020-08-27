@@ -206,6 +206,50 @@ Transform:
   m_Father: {fileID: 1801076201}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &177836790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 177836792}
+  - component: {fileID: 177836791}
+  m_Layer: 0
+  m_Name: Item Indexer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &177836791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177836790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7499042ec8f806c47a537ed7339b2e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponsList: {fileID: 11400000, guid: 09945c4d26827104ebd3c634b7d8aeac, type: 2}
+--- !u!4 &177836792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177836790}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 44.375397, y: 20.364435, z: -8.882826}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &637748143
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,7 +970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  startLevel: Assets/Scenes/MapPaintTest.unity
+  startLevel: Assets/Scenes/MapGenerator.unity
   OnWinEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1013,7 +1057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  nextScene: Assets/Scenes/MapPaintTest.unity
+  nextScene: Assets/Scenes/MapGenerator.unity
 --- !u!114 &1837832009
 MonoBehaviour:
   m_ObjectHideFlags: 0

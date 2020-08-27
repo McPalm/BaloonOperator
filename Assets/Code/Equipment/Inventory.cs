@@ -39,17 +39,18 @@ public class Inventory : NetworkBehaviour, IInputReader
 
             // equip the new weapon
             var index = WeaponsList.IndexFor(weapon.Weapon);
-            RpcEquip(index);
+            RpcEquip(index, target);
         }
     }
 
     [ClientRpc(channel=Channels.DefaultReliable)]
-    public void RpcEquip(int weaponIndex)
+    public void RpcEquip(int weaponIndex, NetworkIdentity old)
     {
         // get index of the weapon
         var weapon = WeaponsList.WeaponProperties[weaponIndex];
         // equip it
         WeaponEquiper.Equip(weapon);
+        old.gameObject.SetActive(false);
     }
 
     GameObject GetInteractable()

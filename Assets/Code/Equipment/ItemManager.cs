@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class ItemManager : NetworkBehaviour
 {
+    static public ItemManager Instance { private set; get; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public WeaponPickup WeaponPickupPrefab;
     
     public WeaponPickup Spawn(WeaponProperties weapon, Vector2 position)
