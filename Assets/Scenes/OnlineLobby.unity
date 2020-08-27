@@ -233,7 +233,7 @@ MonoBehaviour:
   startOnHeadless: 1
   showDebugMessages: 0
   serverTickRate: 30
-  offlineScene: Assets/Scenes/LANlobby.unity
+  offlineScene: Assets/Scenes/OnlineLobby.unity
   onlineScene: Assets/Scenes/GamePlay.unity
   transport: {fileID: 347877655}
   networkAddress: localhost

@@ -6,15 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/OnlineLobby.unity
+    guid: 9c3694e61f1ff154186f41f4e28b35b0
+  - enabled: 1
     path: Assets/Scenes/LANlobby.unity
     guid: bd6efaafffa97c84eb8ad11bf091eafc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/GamePlay.unity
     guid: 5018dda924af1ab4fb40b3d91921a234
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TerrainButOnline.unity
     guid: b9b56465911cea143b0e801e3d065065
   - enabled: 1
