@@ -18,12 +18,12 @@ public class NetworkEnemy : NetworkBehaviour
     {
         if (isServer)
         {
-            RpcSyncInput(transform.position, new Vector2(Mobile.HMomentum, Mobile.VMomentum), NetworkTime.time);
+            RpcSyncInput(transform.position, new Vector2(Mobile.HMomentum, Mobile.VMomentum), NetworkTime.time, Mobile.Forward);
         }
 
     }
 
-    [ClientRpc(channel = Channels.DefaultUnreliable)] private void RpcSyncInput(Vector2 pos, Vector2 force, double time)
+    [ClientRpc(channel = Channels.DefaultUnreliable)] private void RpcSyncInput(Vector2 pos, Vector2 force, double time, int forward)
     {
         if (isServer)
             return;
@@ -33,5 +33,6 @@ public class NetworkEnemy : NetworkBehaviour
         transform.position = pos;
         Mobile.HMomentum = force.x;
         Mobile.VMomentum = force.y;
+        Mobile.FaceRight = forward > 0;
     }
 }
