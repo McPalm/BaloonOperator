@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  WeaponsList: {fileID: 11400000, guid: 09945c4d26827104ebd3c634b7d8aeac, type: 2}
   WeaponPickupPrefab: {fileID: 8553789316679821822, guid: 50ea31a39b27611458648f0a8896ee18, type: 3}
 --- !u!114 &364150017
 MonoBehaviour:
