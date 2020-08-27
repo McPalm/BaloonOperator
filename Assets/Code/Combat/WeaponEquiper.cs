@@ -12,6 +12,8 @@ public class WeaponEquiper : MonoBehaviour
     public Animator Animator;
     public PolygonCollider2D Collider;
 
+    public WeaponProperties Equipped => equipped;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class WeaponEquiper : MonoBehaviour
 
     public void Equip(WeaponProperties weapon)
     {
+        equipped = weapon;
         spriteRenderer.sprite = weapon.sprite;
         swipeTrail.localPosition = new Vector3(weapon.lenght, 0f);
         ContactDamage.damage = weapon.damage;

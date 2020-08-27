@@ -58,6 +58,14 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    public void HandleInteract(InputAction.CallbackContext e)
+    {
+        if (e.started)
+        {
+            InputToken.PressInteract();
+        }
+    }
+
     public void OnJump(InputAction.CallbackContext e)
     {
         if (e.started)

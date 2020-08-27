@@ -8,5 +8,19 @@ public class WeaponsList : ScriptableObject
 {
     public WeaponProperties[] WeaponProperties;
 
+    public int IndexFor(WeaponProperties p)
+    {
+        for(int i = 0; i < WeaponProperties.Length; i++)
+        {
+            if (WeaponProperties[i] == p)
+                return i;
+        }
+        throw new System.Exception($"Weapon {p} missing in Weapons List!");
+    }
+
+    public WeaponProperties WeaponFor(int index)
+    {
+        return WeaponProperties[index];
+    }
     
 }

@@ -27,8 +27,9 @@ public class Stamina : MonoBehaviour
     void Start()
     {
         pc = GetComponent<PlatformingCharacter>();
-        pc.OnJump += Pc_OnJump;
+        // pc.OnJump += Pc_OnJump;  // I dont think this contributes to a good playstyle, the fact taht being in air interupts recovery is quite good enough.
         pc.OnWallJump += Pc_OnWallJump;
+        currentstamina = maxStamina;
     }
 
     private void Pc_OnWallJump()

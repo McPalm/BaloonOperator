@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: WeaponsList
   m_EditorClassIdentifier: 
   WeaponProperties:
+  - {fileID: 11400000, guid: dcf3dc30d17c326408a60b1aff200f81, type: 2}
   - {fileID: 11400000, guid: 03a781c00505eb64887fff081a359b2b, type: 2}
   - {fileID: 11400000, guid: 0c684cc040a531a4398fb1639dfd5940, type: 2}
