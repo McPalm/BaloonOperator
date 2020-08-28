@@ -59,6 +59,9 @@ TextureImporter:
   - first:
       213: -5996965363428705851
     second: Attacks_18
+  - first:
+      213: -1482853811982139335
+    second: Attacks_19
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -613,6 +616,31 @@ TextureImporter:
       bones: []
       spriteID: 5c9b28676cf76cca0800000000000000
       internalID: -5996965363428705851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attacks_19
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 113
+        width: 83
+        height: 5
+      alignment: 9
+      pivot: {x: 0.19782248, y: 0.50000304}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 22.5, y: -2.5}
+        - {x: 22.5, y: 2.5}
+        - {x: 41.5, y: 2.5}
+        - {x: 41.5, y: -2.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93088f28058db6be0800000000000000
+      internalID: -1482853811982139335
       vertices: []
       indices: 
       edges: []
