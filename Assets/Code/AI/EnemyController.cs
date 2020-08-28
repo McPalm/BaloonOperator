@@ -47,15 +47,15 @@ public abstract class EnemyController : MonoBehaviour
     abstract protected IEnumerator AwakeCoroutine();
     abstract public void InitAI();
 
-    private void Health_OnChangeTrueHealth(int hp, int change)
+    private void Health_OnChangeTrueHealth(int hp, DamageProperties props)
     {
-        if(change > 0)
-            stunTime = Time.timeSinceLevelLoad + .5f;
+        if(props.damage > 0)
+            stunTime = Mathf.Max(Time.timeSinceLevelLoad + props.stun, stunTime);
     }
 
     private void Health_OnHurt(DamageData obj)
     {
-        stunTime = Time.timeSinceLevelLoad + .5f;
+        stunTime = Mathf.Max(Time.timeSinceLevelLoad + obj.stunDuration, stunTime);
     }
 
     // Note that this can and will return null.

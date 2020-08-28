@@ -8,7 +8,7 @@ public class ProjectileSpawner : MonoBehaviour
 {
     public GameObject ProjectilePrefab;
     public GameObject Source;
-    public int damage = -1;
+    public DamageProperties damage;
 
     private void OnEnable()
     {
@@ -22,8 +22,8 @@ public class ProjectileSpawner : MonoBehaviour
         if(hurtThing)
         {
             hurtThing.source = Source;
-            if (damage > -1)
-                hurtThing.damage = damage;
+            if (damage.damage > -1)
+                hurtThing.damagePropeties = damage;
         }
 
         var aim = spawned.GetComponent<TargetingMissile>();

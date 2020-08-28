@@ -28,8 +28,8 @@ public class WeaponEquiper : MonoBehaviour
         equipped = weapon;
         spriteRenderer.sprite = weapon.sprite;
         swipeTrail.localPosition = new Vector3(weapon.lenght, 0f);
-        ContactDamage.damage = weapon.damage;
-        ContactDamage.terrainDamage = weapon.breaksBlocks ? 1 : 0;
+        ContactDamage.damagePropeties = weapon.damageProperties;
+
         Animator.SetFloat("AttackSpeed", weapon.attackSpeed);
         Animator.SetBool("Hammer", weapon.hammer);
         Animator.SetBool("Spear", weapon.spear);
@@ -40,7 +40,7 @@ public class WeaponEquiper : MonoBehaviour
         List<Vector2> points = new List<Vector2>();
         weapon.sprite.GetPhysicsShape(0, points);
         Collider.SetPath(0, points);
-        ProjectileSpawner.damage = weapon.damage;
+        ProjectileSpawner.damage = weapon.damageProperties;
         Bowstring.SetActive(weapon.bow);
     }
 

@@ -23,7 +23,7 @@ public class DeathHasConsequences : MonoBehaviour
         Health.OnChangeTrueHealth += Health_OnChangeTrueHealth;
     }
 
-    private void Health_OnChangeTrueHealth(int hp, int change)
+    private void Health_OnChangeTrueHealth(int hp, DamageProperties props)
     {
         if(hp <= 0 != dead)
         {

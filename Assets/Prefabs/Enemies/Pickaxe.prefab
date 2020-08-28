@@ -133,6 +133,7 @@ MonoBehaviour:
   speed: {x: 2, y: 14}
   randomness: {x: 1, y: 2}
   lifetime: 2
+  fullRotation: 0
 --- !u!114 &3386879638659806870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +148,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 0}
   damage: 1
+  damagePropeties:
+    damage: 1
+    terrainDamage: 0
+    stun: 0.5
   OnHitSound: {fileID: 8300000, guid: 66e6bc233fd45a546b671b6f3a52714d, type: 3}
 --- !u!58 &2532732225946504553
 CircleCollider2D:

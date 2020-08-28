@@ -21,7 +21,7 @@ public class Destructible : MonoBehaviour
             obj.damage = 0;
     }
 
-    private void Health_OnChangeTrueHealth(int current, int change)
+    private void Health_OnChangeTrueHealth(int current, DamageProperties props)
     {
         if (current <= 0)
             Kill();

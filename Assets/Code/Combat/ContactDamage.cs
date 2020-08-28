@@ -6,7 +6,7 @@ public class ContactDamage : MonoBehaviour
 {
     public GameObject source;
     public int damage = 1;
-    public int terrainDamage = 0;
+    public DamageProperties damagePropeties;
 
     public AudioClip OnHitSound;
 
@@ -18,11 +18,9 @@ public class ContactDamage : MonoBehaviour
         if (health)
         {
 
-            health.Hurt(new DamageData()
+            health.Hurt(new DamageData(damagePropeties)
             {
-                damage = damage,
-                source = source == null ? gameObject : source,
-                terrainDamage = terrainDamage,
+                source = source ?? gameObject,   
             });
             if(OnHitSound != null)
                 AudioPool.PlaySound(clip: OnHitSound, position: transform.position);

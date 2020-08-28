@@ -19,5 +19,5 @@ public class WeaponProperties : ScriptableObject
 
     // damage stats
     public bool breaksBlocks;
-    public int damage = 1;
+    public DamageProperties damageProperties;
 }

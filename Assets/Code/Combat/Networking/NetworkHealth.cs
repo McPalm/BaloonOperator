@@ -47,7 +47,7 @@ public class NetworkHealth : NetworkBehaviour
         {
             if (!isServer)
                 throw new System.Exception("Only server is allowed to do authorative heal and damage");
-            CmdChangeHealth(change);
+            CmdChangeHealth(change, data.GetProps());
             return;
         }
         var source = data.source.GetComponent<NetworkIdentity>();
@@ -85,39 +85,39 @@ public class NetworkHealth : NetworkBehaviour
                 accept = true;
         }
         if (accept)
-            CmdChangeHealth(change);
+            CmdChangeHealth(change, data.GetProps());
         data.reject = !accept;
     }
 
     [Command(channel = Channels.DefaultReliable, ignoreAuthority = true)]
-    void CmdChangeHealth(int change)
+    void CmdChangeHealth(int change, DamageProperties props)
     {
-        ServerChangeHealth(change);
+        ServerChangeHealth(change, props);
     }
 
-    void ServerChangeHealth(int change)
+    void ServerChangeHealth(int change, DamageProperties props)
     {
         trueDamage += change;
         trueDamage = Mathf.Max(trueDamage, 0);
-        RpcSetHealth(change, trueDamage, NetworkTime.time);
+        RpcSetHealth(trueDamage, props, NetworkTime.time);
     }
 
 
     // sends update from the server to all clients
     [ClientRpc(channel = Channels.DefaultReliable)]
-    void RpcSetHealth(int change, int lostHealth, double time)
+    void RpcSetHealth(int lostHealth, DamageProperties props, double time)
     {
         if(time < lastUpdate)
         {
-            Health.SetHealth(Health.HealthLost, change);
+            Health.SetHealth(Health.HealthLost, props);
         }
         else
         {
-            Health.SetHealth(lostHealth, change);
+            Health.SetHealth(lostHealth, props);
             lastUpdate = time;
         }
     }
 
 
-    [Command(channel = Channels.DefaultReliable, ignoreAuthority = true)]private void CmdSyncHealth() => RpcSetHealth(0, trueDamage, NetworkTime.time);
+    [Command(channel = Channels.DefaultReliable, ignoreAuthority = true)]private void CmdSyncHealth() => RpcSetHealth(trueDamage, new DamageProperties(), NetworkTime.time);
 }

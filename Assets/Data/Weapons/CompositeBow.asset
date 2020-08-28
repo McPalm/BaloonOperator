@@ -22,4 +22,7 @@ MonoBehaviour:
   slashing: 0
   stabbing: 0
   breaksBlocks: 0
-  damage: 2
+  damageProperties:
+    damage: 2
+    terrainDamage: 0
+    stun: 0.1

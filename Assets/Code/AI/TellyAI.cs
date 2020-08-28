@@ -20,7 +20,7 @@ public class TellyAI : EnemyController
         GetComponent<Health>().OnChangeTrueHealth += TellyAI_OnChangeTrueHealth;
     }
 
-    private void TellyAI_OnChangeTrueHealth(int hp, int chane)
+    private void TellyAI_OnChangeTrueHealth(int hp, DamageProperties props)
     {
         if (hp <= 0)
             Mobile.Gravity = 8f;
