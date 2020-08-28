@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 7909579148341350538}
   - component: {fileID: 8404027736657562452}
   m_Layer: 12
-  m_Name: GameObject
+  m_Name: Contact Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28383edcc0f901a41a4fd3c4514fec68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 0}
+  source: {fileID: 8471995272078084598}
   damage: 1
   damagePropeties:
     damage: 1

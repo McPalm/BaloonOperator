@@ -1028,6 +1028,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  defaultWeapon: {fileID: 11400000, guid: dcf3dc30d17c326408a60b1aff200f81, type: 2}
 --- !u!4 &1837832007
 Transform:
   m_ObjectHideFlags: 0

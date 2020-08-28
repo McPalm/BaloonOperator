@@ -23,6 +23,8 @@ public class GameManager : NetworkBehaviour
     public UnityEvent OnGameOverEvent;
     public UnityEvent OnPlayStateEvent;
 
+    public WeaponProperties defaultWeapon;
+
     private void Awake()
     {
         AllPlayers = new List<GameObject>();
@@ -40,6 +42,10 @@ public class GameManager : NetworkBehaviour
             SceneLoader.LoadScene(startLevel);
             StartCoroutine(StateMachine());
         }
+        OnGameOverEvent.AddListener(() =>
+        {
+            Player.GetComponent<Inventory>().WeaponEquiper.Equip(defaultWeapon);
+        });
     }
 
     bool IsGameOver()
