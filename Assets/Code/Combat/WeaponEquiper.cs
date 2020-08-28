@@ -29,6 +29,7 @@ public class WeaponEquiper : MonoBehaviour
         spriteRenderer.sprite = weapon.sprite;
         swipeTrail.localPosition = new Vector3(weapon.lenght, 0f);
         ContactDamage.damage = weapon.damage;
+        ContactDamage.terrainDamage = weapon.breaksBlocks ? 1 : 0;
         Animator.SetFloat("AttackSpeed", weapon.attackSpeed);
         Animator.SetBool("Hammer", weapon.hammer);
         Animator.SetBool("Spear", weapon.spear);

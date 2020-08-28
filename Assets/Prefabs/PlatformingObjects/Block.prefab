@@ -101,9 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef12d9cb66a036245b8f2f9bf3b783e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 3
+  MaxHealth: 1
   iFrames: 0
   OnChangeHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStruck:
     m_PersistentCalls:
       m_Calls: []
   blockTriggers: 0
@@ -149,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510c1117ad42a65488407e1c3ecb8757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageResistance: 1
 --- !u!61 &-6709875061277369854
 BoxCollider2D:
   m_ObjectHideFlags: 0

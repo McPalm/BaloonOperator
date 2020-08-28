@@ -6,6 +6,7 @@ public class ContactDamage : MonoBehaviour
 {
     public GameObject source;
     public int damage = 1;
+    public int terrainDamage = 0;
 
     public AudioClip OnHitSound;
 
@@ -21,6 +22,7 @@ public class ContactDamage : MonoBehaviour
             {
                 damage = damage,
                 source = source == null ? gameObject : source,
+                terrainDamage = terrainDamage,
             });
             if(OnHitSound != null)
                 AudioPool.PlaySound(clip: OnHitSound, position: transform.position);

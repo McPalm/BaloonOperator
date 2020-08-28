@@ -9,5 +9,6 @@ public class DamageData
     public GameObject source;
     public bool authorative;
     public bool reject = false;
+    public int terrainDamage = 0;
          
 }

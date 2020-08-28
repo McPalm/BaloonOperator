@@ -20,6 +20,9 @@ public class Health : MonoBehaviour
     public event System.Action OnZeroHealth;
     public event System.Action<int, int> OnChangeTrueHealth;
 
+
+    public event System.Action<DamageData> ApplyDefence; // invoked before damage is applied, defences may modify its effect
+
     public UnityEvent<float> OnChangeHealth;
     public UnityEvent<int> OnStruck;
 
@@ -36,6 +39,7 @@ public class Health : MonoBehaviour
 
     public void Hurt(DamageData data)
     {
+        ApplyDefence?.Invoke(data);
         if (data.damage < 1)
             return;
         if (HasIFrames)
