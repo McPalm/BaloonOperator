@@ -45,6 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 6250706745249627603, guid: 9fdd8c590e3e6a14f91a1b1d47b52165, type: 3}
   Source: {fileID: 8879460489585635906}
+  damage:
+    damage: 1
+    terrainDamage: 0
+    stun: 0.5
 --- !u!1 &2165904659863133152
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +176,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 6250706745249627603, guid: 9fdd8c590e3e6a14f91a1b1d47b52165, type: 3}
   Source: {fileID: 8879460489585635906}
+  damage:
+    damage: 1
+    terrainDamage: 0
+    stun: 0.5
 --- !u!1 &4509257176198510271
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,6 +337,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 6250706745249627603, guid: 9fdd8c590e3e6a14f91a1b1d47b52165, type: 3}
   Source: {fileID: 8879460489585635906}
+  damage:
+    damage: 1
+    terrainDamage: 0
+    stun: 0.5
 --- !u!1 &8327690532719422060
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +386,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 6250706745249627603, guid: 9fdd8c590e3e6a14f91a1b1d47b52165, type: 3}
   Source: {fileID: 8879460489585635906}
+  damage:
+    damage: 1
+    terrainDamage: 0
+    stun: 0.5
 --- !u!1 &8879460489585635906
 GameObject:
   m_ObjectHideFlags: 0
