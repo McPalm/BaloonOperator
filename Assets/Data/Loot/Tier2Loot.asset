@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bb60d035fe8594f84e297607f80f18, type: 3}
+  m_Name: Tier2Loot
+  m_EditorClassIdentifier: 
+  CommonWeapons:
+  - {fileID: 11400000, guid: 03a781c00505eb64887fff081a359b2b, type: 2}
+  - {fileID: 11400000, guid: 96bbd77410be3e748a3d0b0d5a092697, type: 2}
+  - {fileID: 11400000, guid: bd5c28269798e884782e8346a218c4a0, type: 2}
+  - {fileID: 11400000, guid: 4b024f91b17acec4cb188c324c77743e, type: 2}
+  - {fileID: 11400000, guid: 0ae4dae0bed9dc247952c9d291dc1aad, type: 2}
+  - {fileID: 11400000, guid: 0c684cc040a531a4398fb1639dfd5940, type: 2}
+  UncommonWeapons:
+  - {fileID: 11400000, guid: 0e89474f976644740ab84c5976d41c65, type: 2}
+  - {fileID: 11400000, guid: d1982ed493510fd4aa79bb38393a8b61, type: 2}
+  - {fileID: 11400000, guid: e04a4dfc122c52942b3f7ebfa446f79c, type: 2}
+  - {fileID: 11400000, guid: 8ec129be5c6ce554d90fca626ee913af, type: 2}

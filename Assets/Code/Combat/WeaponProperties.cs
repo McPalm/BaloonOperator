@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Weapon Properties", menuName = "Weapon Properties")]
-public class WeaponProperties : ScriptableObject
+public class WeaponProperties : ScriptableObject, LootTable.ILoot
 {
     public Sprite sprite;
     public float lenght = .25f;

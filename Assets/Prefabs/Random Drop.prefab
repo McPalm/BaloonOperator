@@ -44,19 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponPrefab: {fileID: 8553789316679821822, guid: 50ea31a39b27611458648f0a8896ee18, type: 3}
-  weapons:
-  - {fileID: 11400000, guid: dcf3dc30d17c326408a60b1aff200f81, type: 2}
-  - {fileID: 11400000, guid: 0e89474f976644740ab84c5976d41c65, type: 2}
-  - {fileID: 11400000, guid: 55b6ff0fe2cc6174eb6923bad613bd4d, type: 2}
-  - {fileID: 11400000, guid: e04a4dfc122c52942b3f7ebfa446f79c, type: 2}
-  - {fileID: 11400000, guid: af2144cc85dc0cf4aa7b48378d20244a, type: 2}
-  - {fileID: 11400000, guid: d1982ed493510fd4aa79bb38393a8b61, type: 2}
-  - {fileID: 11400000, guid: 03a781c00505eb64887fff081a359b2b, type: 2}
-  - {fileID: 11400000, guid: ac16ec49f9c9fa3439af3fa1831b3e01, type: 2}
-  - {fileID: 11400000, guid: bd5c28269798e884782e8346a218c4a0, type: 2}
-  - {fileID: 11400000, guid: 24f82be77a74dce4aabf861247f9fa59, type: 2}
-  - {fileID: 11400000, guid: 4b024f91b17acec4cb188c324c77743e, type: 2}
-  - {fileID: 11400000, guid: 0c684cc040a531a4398fb1639dfd5940, type: 2}
-  - {fileID: 11400000, guid: 8a18003f049a62243a4147be2e9dde3c, type: 2}
-  - {fileID: 11400000, guid: 0ae4dae0bed9dc247952c9d291dc1aad, type: 2}
-  - {fileID: 11400000, guid: 8ec129be5c6ce554d90fca626ee913af, type: 2}
+  lootTables:
+  - {fileID: 11400000, guid: 3e82e86468f196e488139586094e10f4, type: 2}
+  - {fileID: 11400000, guid: 3e82e86468f196e488139586094e10f4, type: 2}
+  - {fileID: 11400000, guid: 91199ce0676f5e448b19a676e8eb5f84, type: 2}
+  - {fileID: 11400000, guid: 91199ce0676f5e448b19a676e8eb5f84, type: 2}
+  - {fileID: 11400000, guid: 14ee6a4b4bc43d9458409c8e3546441f, type: 2}
+  - {fileID: 11400000, guid: 14ee6a4b4bc43d9458409c8e3546441f, type: 2}
