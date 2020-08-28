@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8c2a782db29a364591f60878c500f1b, type: 3}
-  m_Name: Hammer
+  m_Name: Warhammer
   m_EditorClassIdentifier: 
-  sprite: {fileID: 8460758886575586376, guid: 92373188b2e5c1a4696d1a555eb5e833, type: 3}
-  lenght: 1.598
+  sprite: {fileID: -5996965363428705851, guid: 92373188b2e5c1a4696d1a555eb5e833, type: 3}
+  lenght: 1
   attackSpeed: 1
-  hammer: 1
-  oneHander: 0
+  hammer: 0
+  oneHander: 1
   bow: 0
   spear: 0
   slashing: 1
-  stabbing: 0
-  breaksBlocks: 1
-  damage: 3
+  stabbing: 1
+  breaksBlocks: 0
+  damage: 2

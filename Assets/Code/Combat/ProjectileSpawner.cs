@@ -8,6 +8,7 @@ public class ProjectileSpawner : MonoBehaviour
 {
     public GameObject ProjectilePrefab;
     public GameObject Source;
+    public int damage = -1;
 
     private void OnEnable()
     {
@@ -19,7 +20,12 @@ public class ProjectileSpawner : MonoBehaviour
         var spawned = Instantiate(ProjectilePrefab, transform.position, transform.rotation);
         var hurtThing = spawned.GetComponent<ContactDamage>();
         if(hurtThing)
+        {
             hurtThing.source = Source;
+            if (damage > -1)
+                hurtThing.damage = damage;
+        }
+
         var aim = spawned.GetComponent<TargetingMissile>();
         if (aim)
             aim.target = Source.GetComponent<EnemyAttack>()?.Target;

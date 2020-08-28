@@ -39,5 +39,7 @@ public class Attack : MonoBehaviour, IInputReader
         }
         animator.SetBool("AttackHeld", InputToken.UseHeld);
         animator.SetBool("InputForward",  Mathf.RoundToInt(InputToken.Direction.x) == transform.Forward());
+        animator.SetBool("InputUp", Mathf.RoundToInt(InputToken.Direction.y) > 0);
+        animator.SetBool("InputDown", Mathf.RoundToInt(InputToken.Direction.y) < 0);
     }
 }

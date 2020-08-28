@@ -11,6 +11,8 @@ public class WeaponEquiper : MonoBehaviour
     public ContactDamage ContactDamage;
     public Animator Animator;
     public PolygonCollider2D Collider;
+    public ProjectileSpawner ProjectileSpawner;
+    public GameObject Bowstring;
 
     public WeaponProperties Equipped => equipped;
 
@@ -29,9 +31,16 @@ public class WeaponEquiper : MonoBehaviour
         ContactDamage.damage = weapon.damage;
         Animator.SetFloat("AttackSpeed", weapon.attackSpeed);
         Animator.SetBool("Hammer", weapon.hammer);
+        Animator.SetBool("Spear", weapon.spear);
+        Animator.SetBool("Bow", weapon.bow);
+        Animator.SetBool("OneHanded", weapon.oneHander);
+        Animator.SetBool("Stabbing", weapon.stabbing);
+        Animator.SetBool("Slashing", weapon.slashing);
         List<Vector2> points = new List<Vector2>();
         weapon.sprite.GetPhysicsShape(0, points);
         Collider.SetPath(0, points);
+        ProjectileSpawner.damage = weapon.damage;
+        Bowstring.SetActive(weapon.bow);
     }
 
     

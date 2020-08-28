@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8c2a782db29a364591f60878c500f1b, type: 3}
-  m_Name: Hammer
+  m_Name: Tetsubo
   m_EditorClassIdentifier: 
-  sprite: {fileID: 8460758886575586376, guid: 92373188b2e5c1a4696d1a555eb5e833, type: 3}
-  lenght: 1.598
+  sprite: {fileID: 8459689340476424515, guid: 92373188b2e5c1a4696d1a555eb5e833, type: 3}
+  lenght: 1.75
   attackSpeed: 1
   hammer: 1
   oneHander: 0
@@ -22,4 +22,4 @@ MonoBehaviour:
   slashing: 1
   stabbing: 0
   breaksBlocks: 1
-  damage: 3
+  damage: 4
