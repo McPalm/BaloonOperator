@@ -4,6 +4,9 @@ using System.Linq;
 public class MapGenerator
 {
     public MapModuleSample[] modules;
+    public MapModuleSample[] rareModules;
+    public MapModuleSample[] topModules;
+    public MapModuleSample[] bottomModules;
 
     int IndexFor(int x, int y) => x + y * 4;
 
@@ -15,6 +18,8 @@ public class MapGenerator
         bool haveGoal = false;
         bool haveChallenge = false;
         bool haveMonster = false;
+        bool haveRare = false;
+
         for (int y = 3; y >= 0; y-- )
         {
             bool haveDowns = false;
@@ -24,6 +29,10 @@ public class MapGenerator
                 var flip = x == 0;
                 var isOpenTop = y < 3 && map[IndexFor(x, y+1)].MapModuleSample.OpenBottom;
                 ValidTiles = modules;
+                if(y == 3)
+                    ValidTiles = ValidTiles.Concat(topModules).ToArray();
+                if(y == 0)
+                    ValidTiles = ValidTiles.Concat(bottomModules).ToArray();
 
 
                 MapModuleFlag desiredFlag = MapModuleFlag.none;
@@ -73,6 +82,11 @@ public class MapGenerator
                 }
 
                 ValidTiles = ValidTiles.Where(m => m.MapModuleFlag == desiredFlag).ToArray();
+                if (desiredFlag == MapModuleFlag.none && !haveRare && rareModules.Length > 0 && Random.value * (1+y) < .2f)
+                {
+                    ValidTiles = rareModules;
+                    haveRare = true;
+                }
 
                 if (x == 3)
                 {

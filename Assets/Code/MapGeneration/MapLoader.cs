@@ -15,9 +15,7 @@ public class MapLoader : NetworkBehaviour
 
     bool generated = false;
 
-    public MapModuleSample[] mapModuleSamples;
-    public MapModuleSet[] mapModuleSets;
-    public MapModuleSet extras;
+    public GeneratorSet[] sets;
     public MapPainter MapPainter;
 
     SerializedMapModule[] serializedArray;
@@ -25,21 +23,40 @@ public class MapLoader : NetworkBehaviour
     public MapModuleList MapModuleList;
     MapGenerator generator;
 
-    MapModuleSample[] GetSamplesForDifficulty(int difficulty)
+    MapGenerator GetMapGeneratorForDifficulty(int difficulty)
     {
-        difficulty = Mathf.Clamp(difficulty, 0, mapModuleSets.Length-1);
-        var modules = new List<MapModuleSample>(mapModuleSets[difficulty].MapModules);
-        modules.AddRange(extras.MapModules);
-        if (difficulty - 1 >= 0)
-            modules.AddRange(GetSome(.33f, mapModuleSets[difficulty - 1].MapModules));
-        if (difficulty + 1 < mapModuleSets.Length)
-            modules.AddRange(GetSome(.33f, mapModuleSets[difficulty + 1].MapModules));
-        return modules.ToArray();
-    }
+        difficulty = Mathf.Clamp(difficulty, 0, sets.Length - 1);
+        var set = sets[difficulty];
+        var modules = new List<MapModuleSample>();
+        var generator = new MapGenerator();
 
-    MapModuleSample[] GetSome(float chance, List<MapModuleSample> from)
-    {
-        return from.Where(a => Random.value < chance).ToArray();
+
+        foreach(var list in set.Standard)
+        {
+            modules.AddRange(list.MapModules);
+        }
+        generator.modules = modules.ToArray();
+        modules.Clear();
+        foreach (var list in set.Bottom)
+        {
+            modules.AddRange(list.MapModules);
+        }
+        generator.bottomModules = modules.ToArray();
+        modules.Clear();
+        foreach (var list in set.Top)
+        {
+            modules.AddRange(list.MapModules);
+        }
+        generator.topModules = modules.ToArray();
+        modules.Clear();
+        foreach (var list in set.Rare)
+        {
+            modules.AddRange(list.MapModules);
+        }
+        generator.rareModules = modules.ToArray();
+
+        return generator;
+
     }
 
     // Start is called before the first frame update
@@ -47,10 +64,7 @@ public class MapLoader : NetworkBehaviour
     {
         if (isServer)
         {
-            generator = new MapGenerator()
-            {
-                modules = GetSamplesForDifficulty(GameManager.StageDifficulty),
-            };
+            generator = GetMapGeneratorForDifficulty(GameManager.StageDifficulty);
             MapModule[] generatedMap = null;
             for (int i = 0; i < 100; i++)
             {

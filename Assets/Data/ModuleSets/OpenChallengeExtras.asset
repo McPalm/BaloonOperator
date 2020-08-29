@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4f55140a2b374438d549a61bb7abb3, type: 3}
+  m_Name: OpenChallengeExtras
+  m_EditorClassIdentifier: 
+  MapModules:
+  - {fileID: 11400000, guid: 68d415f3e43e61f4ebbdadc9f98ebbbe, type: 2}
+  - {fileID: 11400000, guid: 4960799541dfe6247a4684712dfce832, type: 2}
+  - {fileID: 11400000, guid: 0ef9278368d94534e8b3c9e6e6718959, type: 2}
+  - {fileID: 11400000, guid: 7d4f829d4c53d4d428b65b88b9ecf7bc, type: 2}
+  - {fileID: 11400000, guid: 7cc07be96250e9c41a1810c08f567487, type: 2}
+  - {fileID: 11400000, guid: 7a07f15d32b11a045a3663977ee2d751, type: 2}
+  - {fileID: 11400000, guid: 73df8cf8806f686419f7bf3d3ff7bbc7, type: 2}
+  - {fileID: 11400000, guid: e3e334e264917584da8ed643913434a9, type: 2}
+  - {fileID: 11400000, guid: 818a3f89199440f47a2e730e7a102996, type: 2}
+  - {fileID: 11400000, guid: ede6c3198e2b63a428aad9fd2d78da26, type: 2}
+  - {fileID: 11400000, guid: de1ca00c697007c46bb0c74af2e6f6fa, type: 2}
+  - {fileID: 11400000, guid: 7b02ebe2b50ddf344b43b78af8a31e65, type: 2}
+  - {fileID: 11400000, guid: e0dd01352d21f994c8b691b0a7d07ed1, type: 2}
+  - {fileID: 11400000, guid: d9489a172d1b246489f39a33cfc1e2ac, type: 2}
+  - {fileID: 11400000, guid: 60de10c1871a9e14a95bc451e6dbe19d, type: 2}
+  - {fileID: 11400000, guid: d60d626ba1427af4c98e00d321179975, type: 2}
