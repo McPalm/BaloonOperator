@@ -13,6 +13,8 @@ public class MapGenerator
         MapModuleSample[] ValidTiles;
         bool haveStart = false;
         bool haveGoal = false;
+        bool haveChallenge = false;
+        bool haveMonster = false;
         for (int y = 3; y >= 0; y-- )
         {
             bool haveDowns = false;
@@ -24,16 +26,56 @@ public class MapGenerator
                 ValidTiles = modules;
 
 
+                MapModuleFlag desiredFlag = MapModuleFlag.none;
+                switch (y)
+                {
+                    case 3:
+                        if (!haveStart)
+                        {
+                            if (Random.value < (x + 1) / 4f)
+                            {
+                                desiredFlag = MapModuleFlag.start;
+                            }
+                        }
+                        break;
+                    case 1:
+                    case 2:
+                        int odds = 0;
+                        odds += !haveMonster ? 1 : 0;
+                        odds += !haveChallenge ? 1 : 0;
+                        int roomsLeft = y * 4 - x - 2;
+                        if(odds > 0 && Random.Range(0, odds) >= Random.Range(0,roomsLeft))
+                        {
+                            if (haveChallenge)
+                                desiredFlag = MapModuleFlag.monster;
+                            else if (haveMonster)
+                                desiredFlag = MapModuleFlag.challenge;
+                            else
+                                desiredFlag = Random.value < .5 ? MapModuleFlag.monster : MapModuleFlag.challenge;
+                        }
+                        break;
+                    case 0:
+                        if (!haveGoal && y == 0)
+                        {
+                            if (Random.value < (x + 1) / 4f)
+                                desiredFlag = MapModuleFlag.goal;
+                        }
+                        else if (!haveMonster || !haveChallenge)
+                        {
+                            if (haveChallenge)
+                                desiredFlag = MapModuleFlag.monster;
+                            else if (haveMonster)
+                                desiredFlag = MapModuleFlag.challenge;
+                            else
+                                desiredFlag = Random.value < .5 ? MapModuleFlag.monster : MapModuleFlag.challenge;
+                        }
+                        break;
+                }
+
+                ValidTiles = ValidTiles.Where(m => m.MapModuleFlag == desiredFlag).ToArray();
+
                 if (x == 3)
                 {
-                    if (y == 3 && haveStart == false)
-                    {
-                        ValidTiles = ValidTiles.Where(m => m.MapModuleFlag == MapModuleFlag.start).ToArray();
-                    }
-                    if (y == 0 && haveGoal == false)
-                    {
-                        ValidTiles = ValidTiles.Where(m => m.MapModuleFlag == MapModuleFlag.goal).ToArray();
-                    }
                     if(!haveDowns && y != 0)
                     {
                         ValidTiles = ValidTiles.Where(m => m.OpenBottom == true).ToArray();
@@ -43,13 +85,6 @@ public class MapGenerator
                 {
                     ValidTiles = ValidTiles.Where(m => m.OpenBottom == false).ToArray();
                 }
-                if(y == 0||haveStart)
-                    ValidTiles = ValidTiles.Where(m => m.MapModuleFlag != MapModuleFlag.start).ToArray();
-                if (y == 1 || y == 2)
-                    ValidTiles = ValidTiles.Where(m => m.MapModuleFlag == MapModuleFlag.none).ToArray();
-                if(y == 3||haveGoal)
-                    ValidTiles = ValidTiles.Where(m => m.MapModuleFlag != MapModuleFlag.goal).ToArray();
-
 
                 ValidTiles = ValidTiles.Where(m => m.OpenBothSides == !isSide && m.OpenTop == isOpenTop ).ToArray();
                 map[IndexFor(x, y)] = new MapModule( ValidTiles[ Random.Range( 0, ValidTiles.Length) ], flip);
@@ -61,14 +96,20 @@ public class MapGenerator
                         map[IndexFor(x, y)].flip = true;
                     }
                 }
-                if ( map[IndexFor(x, y)].MapModuleSample.MapModuleFlag == MapModuleFlag.start)
+                switch(map[IndexFor(x, y)].MapModuleSample.MapModuleFlag)
                 {
-                    haveStart = true;
-                }
-
-                if (map[IndexFor(x, y)].MapModuleSample.MapModuleFlag == MapModuleFlag.goal)
-                {
-                    haveGoal = true;
+                    case MapModuleFlag.start:
+                        haveStart = true;
+                        break;
+                    case MapModuleFlag.goal:
+                        haveGoal = true;
+                        break;
+                    case MapModuleFlag.challenge:
+                        haveChallenge = true;
+                        break;
+                    case MapModuleFlag.monster:
+                        haveMonster = true;
+                        break;
                 }
 
                 if (map[IndexFor(x, y)].MapModuleSample.OpenBottom)

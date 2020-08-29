@@ -155,7 +155,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  WeaponsList: {fileID: 11400000, guid: 09945c4d26827104ebd3c634b7d8aeac, type: 2}
   WeaponPickupPrefab: {fileID: 8553789316679821822, guid: 50ea31a39b27611458648f0a8896ee18, type: 3}
 --- !u!114 &364150017
 MonoBehaviour:
@@ -51148,7 +51147,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fbf9246123c5f0041b840c02a8b02701, type: 2}
   - {fileID: 11400000, guid: 8f9aa7409aafa914c9fe0366dcb2c5c3, type: 2}
   - {fileID: 11400000, guid: a8ad08379945cc7438e12b6e0174b4e1, type: 2}
+  extras: {fileID: 11400000, guid: 7c0ffe360c2473d4dba5bd69572b7c5a, type: 2}
   MapPainter: {fileID: 744718370}
+  MapModuleList: {fileID: 11400000, guid: 367cc930c339ff64fbbc19efc3ac6559, type: 2}
 --- !u!114 &1661858975
 MonoBehaviour:
   m_ObjectHideFlags: 0

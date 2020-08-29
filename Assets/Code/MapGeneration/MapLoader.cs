@@ -17,24 +17,19 @@ public class MapLoader : NetworkBehaviour
 
     public MapModuleSample[] mapModuleSamples;
     public MapModuleSet[] mapModuleSets;
+    public MapModuleSet extras;
     public MapPainter MapPainter;
 
     SerializedMapModule[] serializedArray;
 
-    List<MapModuleSample> modules = new List<MapModuleSample>();
+    public MapModuleList MapModuleList;
     MapGenerator generator;
-
-    private void Awake()
-    {
-        modules.AddRange(mapModuleSamples);
-        foreach (var set in mapModuleSets)
-            modules.AddRange(set.MapModules);
-    }
 
     MapModuleSample[] GetSamplesForDifficulty(int difficulty)
     {
         difficulty = Mathf.Clamp(difficulty, 0, mapModuleSets.Length-1);
         var modules = new List<MapModuleSample>(mapModuleSets[difficulty].MapModules);
+        modules.AddRange(extras.MapModules);
         if (difficulty - 1 >= 0)
             modules.AddRange(GetSome(.33f, mapModuleSets[difficulty - 1].MapModules));
         if (difficulty + 1 < mapModuleSets.Length)
@@ -72,7 +67,7 @@ public class MapLoader : NetworkBehaviour
             serializedArray = new SerializedMapModule[16];
             for(int i = 0; i < 16; i++)
             {
-                serializedArray[i].index = modules.IndexOf(generatedMap[i].MapModuleSample);
+                serializedArray[i].index = MapModuleList.GetIndexFor(generatedMap[i].MapModuleSample);
                 serializedArray[i].flip = generatedMap[i].flip;
             }
             MapPainter.Paint(generatedMap);
@@ -99,7 +94,7 @@ public class MapLoader : NetworkBehaviour
         MapModule[] generatedMap = new MapModule[16];
         for (int i = 0; i < 16; i++)
         {
-            generatedMap[i] = new MapModule(modules[serializedMap[i].index], serializedMap[i].flip);
+            generatedMap[i] = new MapModule(MapModuleList.GetByIndex(serializedMap[i].index), serializedMap[i].flip);
         }
         MapPainter.Paint(generatedMap);
         generated = true;
