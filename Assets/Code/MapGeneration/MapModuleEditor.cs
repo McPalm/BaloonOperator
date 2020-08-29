@@ -14,6 +14,7 @@ public class MapModuleEditor : MonoBehaviour
     const int sizeX = 17;
     const int sizeY = 13;
 
+
     private void OnDrawGizmos()
     {
         for (int i = 0; i < 5; i++)
@@ -27,7 +28,6 @@ public class MapModuleEditor : MonoBehaviour
             if (MapModuleSet != null)
                 PaintProps(i % 4, i / 4, MapModuleSet.MapModules[i]);
         }
-
         // SaveLoad();
     }
 
@@ -41,21 +41,11 @@ public class MapModuleEditor : MonoBehaviour
             Gizmos.DrawLine(new Vector3(x + sizeX - .5f, y + 3f), new Vector3(x + sizeX, y + 3f));
             Gizmos.DrawLine(new Vector3(x, y + 3f), new Vector3(x + .5f, y + 3f));
         }
-        if(sample.OpenBottom)
+        if (sample.OpenBottom)
             Gizmos.DrawLine(new Vector3(x + sizeX / 2f, y), new Vector3(x + sizeX / 2f, y + .5f));
         if (sample.OpenTop)
-            Gizmos.DrawLine(new Vector3(x + sizeX / 2f, y+ sizeY), new Vector3(x + sizeX / 2f, y + sizeY - .5f));
-        switch(sample.MapModuleFlag)
-        {
-            case MapModuleFlag.goal:
-                Gizmos.color = Color.red;
-                Gizmos.DrawLine(new Vector3(x, y), new Vector3(x + .5f, y + .5f));
-                break;
-            case MapModuleFlag.start:
-                Gizmos.color = Color.green;
-                Gizmos.DrawLine(new Vector3(x, y), new Vector3(x + .5f, y + .5f));
-                break;
-        }
+            Gizmos.DrawLine(new Vector3(x + sizeX / 2f, y + sizeY), new Vector3(x + sizeX / 2f, y + sizeY - .5f));
+        
     }
 
     public void Load()
@@ -89,8 +79,43 @@ public class MapModuleEditor : MonoBehaviour
                 ((MapModuleEditor)target).Save();
             if (GUILayout.Button("Load"))
                 ((MapModuleEditor)target).Load();
-                
+
+        }
+
+        public void OnSceneGUI()
+        {
+            var butt = ((MapModuleEditor)target).MapModuleSet.MapModules;
+            for (int i = 0; i < butt.Count; i++)
+            {
+                    PaintLabels(i % 4, i / 4, butt[i]);
+            }
+        }
+        void PaintLabels(int x, int y, MapModuleSample sample)
+        {
+            var pos = new Vector3((x + .5f) * sizeX, (y + .5f) * sizeY);
+            var style = new GUIStyle();
+
+            switch (sample.MapModuleFlag)
+            {
+                case MapModuleFlag.goal:
+                    style.normal.textColor = Color.red;
+                    Handles.Label(pos, "Goal", style);
+                    break;
+                case MapModuleFlag.start:
+                    style.normal.textColor = Color.green;
+                    Handles.Label(pos, "Start", style);
+                    break;
+                case MapModuleFlag.challenge:
+                    style.normal.textColor = Color.yellow;
+                    Handles.Label(pos, "Challenge", style);
+                    break;
+                case MapModuleFlag.monster:
+                    style.normal.textColor = new Color(1f, .2f, .95f);
+                    Handles.Label(pos, "Monster", style);
+                    break;
+            }
         }
     }
+
 #endif
 }
