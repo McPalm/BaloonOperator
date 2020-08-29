@@ -23,7 +23,7 @@ public class PlayerInput : MonoBehaviour
         var value = e.ReadValue<Vector2>();
 
         var x = value.x;
-        if (Mathf.Abs(x) > .75f || x == 0f)
+        if (Mathf.Abs(x) > .65f || x == 0f)
         {
             direction = Mathf.Round(x);
             softTimer = Time.timeSinceLevelLoad + .1f;
