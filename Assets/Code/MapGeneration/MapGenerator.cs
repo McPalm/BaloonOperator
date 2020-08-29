@@ -8,6 +8,8 @@ public class MapGenerator
     public MapModuleSample[] topModules;
     public MapModuleSample[] bottomModules;
 
+    public bool generateShop = false;
+
     int IndexFor(int x, int y) => x + y * 4;
 
     public MapModule[] GenerateMap()
@@ -19,6 +21,7 @@ public class MapGenerator
         bool haveChallenge = false;
         bool haveMonster = false;
         bool haveRare = false;
+        bool haveShop = !generateShop;
 
         for (int y = 3; y >= 0; y-- )
         {
@@ -81,7 +84,12 @@ public class MapGenerator
                         break;
                 }
 
+                if (desiredFlag == MapModuleFlag.none && haveShop == false && Random.value < .25f)
+                {
+                    desiredFlag = MapModuleFlag.shop;
+                }
                 ValidTiles = ValidTiles.Where(m => m.MapModuleFlag == desiredFlag).ToArray();
+
                 if (desiredFlag == MapModuleFlag.none && !haveRare && rareModules.Length > 0 && Random.value * (1+y) < .2f)
                 {
                     ValidTiles = rareModules;
@@ -123,6 +131,9 @@ public class MapGenerator
                         break;
                     case MapModuleFlag.monster:
                         haveMonster = true;
+                        break;
+                    case MapModuleFlag.shop:
+                        haveShop = true;
                         break;
                 }
 

@@ -14,7 +14,8 @@ public class ItemManager : NetworkBehaviour
     }
 
     public WeaponPickup WeaponPickupPrefab;
-    
+    public ShopPickup ShopPickupPrefab;
+
     public GameObject Spawn(ILoot loot, Vector2 position)
     {
        
@@ -33,5 +34,14 @@ public class ItemManager : NetworkBehaviour
         obj.Weapon = weapon;
         NetworkServer.Spawn(obj.gameObject);
         return obj;
+    }
+
+    public GameObject SpawnShopItem(WeaponProperties item, Vector2 position, int price)
+    {
+        var obj = Instantiate(ShopPickupPrefab, position, Quaternion.identity, transform);
+        obj.weaponProperties = item;
+        obj.price = price;
+        NetworkServer.Spawn(obj.gameObject);
+        return obj.gameObject;
     }
 }

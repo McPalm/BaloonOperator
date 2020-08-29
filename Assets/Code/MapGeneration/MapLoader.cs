@@ -29,7 +29,7 @@ public class MapLoader : NetworkBehaviour
         var set = sets[difficulty];
         var modules = new List<MapModuleSample>();
         var generator = new MapGenerator();
-
+        generator.generateShop = set.hasShops;
 
         foreach(var list in set.Standard)
         {

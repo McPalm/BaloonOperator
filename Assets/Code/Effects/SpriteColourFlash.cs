@@ -9,7 +9,7 @@ public class SpriteColourFlash : MonoBehaviour
 
     float time = 999f;
 
-    Color baseColour;
+    public Color baseColour { get; set; }
 
     void Start()
     {

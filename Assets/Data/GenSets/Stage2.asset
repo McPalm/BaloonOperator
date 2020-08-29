@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d44d433b06f1de46b3e0cf133d7cc93, type: 3}
   m_Name: Stage2
   m_EditorClassIdentifier: 
+  hasShops: 1
   Standard:
   - {fileID: 11400000, guid: 9102abb4d4108ba4ca511c09f8a07acd, type: 2}
   - {fileID: 11400000, guid: d2548f7b3fe6058489c4adef27c1665f, type: 2}
+  - {fileID: 11400000, guid: 280416ad8373750408ebfbcb500d91b0, type: 2}
   Bottom:
   - {fileID: 11400000, guid: fbf9246123c5f0041b840c02a8b02701, type: 2}
   Top:

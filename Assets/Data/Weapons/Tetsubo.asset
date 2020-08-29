@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 8459689340476424515, guid: 92373188b2e5c1a4696d1a555eb5e833, type: 3}
   lenght: 1.75
-  attackSpeed: 1.2
+  attackSpeed: 1.25
   hammer: 1
   oneHander: 0
   bow: 0
   spear: 0
   slashing: 1
-  stabbing: 0
+  stabbing: 1
   breaksBlocks: 1
   damageProperties:
     damage: 2

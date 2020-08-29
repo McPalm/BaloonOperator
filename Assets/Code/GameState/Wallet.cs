@@ -14,6 +14,15 @@ public class Wallet : NetworkBehaviour
         OnChangeSum.Invoke(held);
     }
 
+    public void SpendMoney(int money)
+    {
+        held -= money;
+        OnChangeSum.Invoke(held);
+        OnChangeSumFormat.Invoke($"$ {held}");
+        if (isServer)
+            RpcUpdateMoney(held);
+    }
+
     public void AddMoney(int money)
     {
         held += money;

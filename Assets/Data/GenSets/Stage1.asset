@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d44d433b06f1de46b3e0cf133d7cc93, type: 3}
   m_Name: Stage1
   m_EditorClassIdentifier: 
+  hasShops: 0
   Standard:
   - {fileID: 11400000, guid: 57931cfbc6654354191a8fcf31f2741a, type: 2}
   - {fileID: 11400000, guid: 7c0ffe360c2473d4dba5bd69572b7c5a, type: 2}

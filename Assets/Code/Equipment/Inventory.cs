@@ -16,11 +16,21 @@ public class Inventory : NetworkBehaviour, IInputReader
     {
         if (isLocalPlayer && InputToken.InteractPressed)
         {
-            var weapon = GetInteractable()?.GetComponent<WeaponPickup>();
-            if (weapon)
+            var inter = GetInteractable();
+            if (inter)
             {
-                CmdSwap(weapon.GetComponent<NetworkIdentity>());
-                InputToken.ConsumeInteract();
+                var weapon = inter.GetComponent<WeaponPickup>();
+                if (weapon)
+                {
+                    CmdSwap(weapon.GetComponent<NetworkIdentity>());
+                    InputToken.ConsumeInteract();
+                }
+                var shopItem = inter.GetComponent<ShopPickup>();
+                if(shopItem && FindObjectOfType<Wallet>().held >= shopItem.price)
+                {
+                    CmdSwap(shopItem.GetComponent<NetworkIdentity>());
+                    InputToken.ConsumeInteract();
+                }
             }
         }
     }
@@ -40,6 +50,19 @@ public class Inventory : NetworkBehaviour, IInputReader
             // equip the new weapon
             var index = WeaponsList.IndexFor(weapon.Weapon);
             RpcEquip(index, target);
+            return;
+        }
+        var shopItem = target.GetComponent<ShopPickup>();
+        if(shopItem && shopItem.isActiveAndEnabled && FindObjectOfType<Wallet>().held >= shopItem.price)
+        {
+            // spend the cash
+            FindObjectOfType<Wallet>().SpendMoney(shopItem.price);
+ 
+            FindObjectOfType<ItemManager>().Spawn(WeaponEquiper.Equipped, transform.position);
+            shopItem.gameObject.SetActive(false);
+            var index = WeaponsList.IndexFor(shopItem.weaponProperties);
+            RpcEquip(index, target);
+            return;
         }
     }
 

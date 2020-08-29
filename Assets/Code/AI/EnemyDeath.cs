@@ -18,8 +18,13 @@ public class EnemyDeath : MonoBehaviour
     {
         GetComponent<EnemyController>().enabled = false;
         GetComponent<Mobile>().HMomentum = 0f;
-        if(flipY)
-            GetComponentInChildren<SpriteRenderer>().flipY = true;
+        SpriteRenderer ren = GetComponentInChildren<SpriteRenderer>();
+        if (flipY)
+            ren.flipY = true;
+        ren.sortingLayerName = "Background";
+        ren.sortingOrder = -5;
+        var flash = ren.GetComponent<SpriteColourFlash>();
+        flash.enabled = false;
         ContactDamage contactDamage = GetComponentInChildren<ContactDamage>();
         if(contactDamage)
             contactDamage.enabled = false;

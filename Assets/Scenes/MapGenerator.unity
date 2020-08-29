@@ -156,6 +156,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   WeaponPickupPrefab: {fileID: 8553789316679821822, guid: 50ea31a39b27611458648f0a8896ee18, type: 3}
+  ShopPickupPrefab: {fileID: 44382307164838432, guid: d9ceb625dc7a1b0499eaefe19e876a05, type: 3}
 --- !u!114 &364150017
 MonoBehaviour:
   m_ObjectHideFlags: 0

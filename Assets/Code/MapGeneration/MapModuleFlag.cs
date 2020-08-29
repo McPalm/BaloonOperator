@@ -6,4 +6,5 @@ public enum MapModuleFlag
     goal = 2,
     challenge = 3,
     monster = 4,
+    shop = 5,
 }
