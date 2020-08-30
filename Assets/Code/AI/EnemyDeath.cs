@@ -25,8 +25,6 @@ public class EnemyDeath : MonoBehaviour
         ren.sortingOrder = -5;
         var flash = ren.GetComponent<SpriteColourFlash>();
         flash.enabled = false;
-        ContactDamage contactDamage = GetComponentInChildren<ContactDamage>();
-        if(contactDamage)
-            contactDamage.enabled = false;
+        GetComponentsInChildren<ContactDamage>().ForEach(cd => cd.enabled = false);
     }
 }

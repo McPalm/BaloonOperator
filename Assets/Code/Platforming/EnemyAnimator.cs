@@ -36,6 +36,9 @@ public class EnemyAnimator : MonoBehaviour
                 case "Grounded":
                     Animator.SetBool("Grounded", mobile.Grounded);
                     break;
+                case "Speed":
+                    Animator.SetFloat("Speed", Mathf.Abs(mobile.HMomentum));
+                    break;
             }
         }
     }
