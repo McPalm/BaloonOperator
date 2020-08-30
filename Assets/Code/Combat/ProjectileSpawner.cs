@@ -10,10 +10,13 @@ public class ProjectileSpawner : MonoBehaviour
     public GameObject Source;
     public DamageProperties damage;
 
+    public bool ManuallyAim;
+
     private void OnEnable()
     {
         SpawnProjectile();
     }
+
 
     public void SpawnProjectile()
     {
@@ -29,7 +32,10 @@ public class ProjectileSpawner : MonoBehaviour
         var aim = spawned.GetComponent<TargetingMissile>();
         if (aim)
             aim.target = Source.GetComponent<EnemyAttack>()?.Target;
-
+        if (ManuallyAim)
+        {
+            spawned.transform.right = Source.GetComponent<EnemyAttack>().GetAimPosition() - transform.position;
+        }
     }
 
 }

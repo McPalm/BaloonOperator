@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Mirror;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,6 +26,7 @@ public class SpearLizzerAI : EnemyController
             target = FindTarget(attackRange);
             if (target != null)
             {
+                Attack.SetTarget(target.GetComponent<NetworkIdentity>());
                 LookAtTarget();
                 yield return new WaitForSeconds(Random.value * .5f);
                 LookAtTarget();

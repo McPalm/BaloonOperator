@@ -19,11 +19,40 @@ public class EnemyAttack : NetworkBehaviour
 
     [SyncVar]
     NetworkIdentity target;
+    public Vector2 aimPoint;
+    bool aimed;
+
     public Transform Target => target?.transform;
 
     public void SetTarget(NetworkIdentity target)
     {
         this.target = target;
+    }
+
+    public void TakeAim()
+    {
+        if(target)
+        {
+            aimPoint = target.transform.position;
+            aimed = true;
+        }
+    }
+
+    public Vector3 GetAimPosition()
+    {
+        if(aimed)
+        {
+            aimed = false;
+            return aimPoint;
+        }
+        else if(target)
+        {
+            return target.transform.position;
+        }
+        else
+        {
+            return transform.position + new Vector3(transform.Forward(), 0);
+        }
     }
 
     [ClientRpc(channel = Channels.DefaultReliable)]

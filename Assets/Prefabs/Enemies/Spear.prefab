@@ -144,11 +144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4b5ff779c05e245bb4fb0da3893a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 9
-  speed: {x: 24, y: 1}
-  randomness: {x: 0, y: 0.5}
+  gravity: 8
+  speed: {x: 18, y: -2}
+  randomness: {x: 0, y: 8}
   lifetime: 3
-  fullRotation: 0
+  fullRotation: 1
 --- !u!114 &2199610886872986953
 MonoBehaviour:
   m_ObjectHideFlags: 0

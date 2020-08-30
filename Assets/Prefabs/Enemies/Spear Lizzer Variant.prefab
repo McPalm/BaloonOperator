@@ -49,6 +49,7 @@ MonoBehaviour:
     damage: 1
     terrainDamage: 0
     stun: 0.5
+  ManuallyAim: 1
 --- !u!95 &9066573154214057497
 Animator:
   serializedVersion: 3
@@ -94,8 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a16e6f9a402d09479f58d239d063f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 8
-  attackRecovery: 1.5
+  attackRange: 10
+  attackRecovery: 1.75
   Attack: {fileID: 4341549096777734280}
 --- !u!114 &4341549096777734280
 MonoBehaviour:
@@ -112,6 +113,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   Animator: {fileID: 9066573154214057497}
+  aimPoint: {x: 0, y: 0}
 --- !u!1001 &2823289533123259334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119,6 +121,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5854956700694336468, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
+      propertyPath: MaxHealth
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1811609250282791800, guid: 188e28f2de4196246af08bfc33e5116b, type: 3}
       propertyPath: m_Sprite
       value: 
