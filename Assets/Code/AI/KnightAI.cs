@@ -60,7 +60,7 @@ public class KnightAI : EnemyController
             yield return new WaitForFixedUpdate();
             if (Mobile.OnEdge)
             {
-                Mobile.HMomentum = 0f;
+                Move(0f);
                 if (Random.value < .5f)
                     goto attack;
                 else

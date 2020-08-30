@@ -12,7 +12,7 @@ public class SpearLizzerAI : EnemyController
 
     public override void InitAI()
     {
-        throw new System.NotImplementedException();
+
     }
 
     protected override IEnumerator AwakeCoroutine()

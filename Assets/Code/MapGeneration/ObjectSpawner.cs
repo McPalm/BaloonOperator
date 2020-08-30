@@ -7,7 +7,7 @@ public class ObjectSpawner : MonoBehaviour
 {
     public GameObject[] GameObject;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         var obj = GameObject[Random.Range(0, GameObject.Length)];
 
