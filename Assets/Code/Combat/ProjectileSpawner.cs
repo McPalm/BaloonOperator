@@ -12,9 +12,18 @@ public class ProjectileSpawner : MonoBehaviour
 
     public bool ManuallyAim;
 
+    public Transform Target { get; set; }
+
     private void OnEnable()
     {
         SpawnProjectile();
+    }
+
+    Vector2 GetAimPosition()
+    {
+        if (Target)
+            return Target.position;
+        return Source.GetComponent<EnemyAttack>().GetAimPosition();
     }
 
 
@@ -34,7 +43,7 @@ public class ProjectileSpawner : MonoBehaviour
             aim.target = Source.GetComponent<EnemyAttack>()?.Target;
         if (ManuallyAim)
         {
-            spawned.transform.right = Source.GetComponent<EnemyAttack>().GetAimPosition() - transform.position;
+            spawned.transform.right = GetAimPosition() - (Vector2)transform.position;
         }
     }
 
