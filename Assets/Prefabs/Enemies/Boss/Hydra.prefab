@@ -353,12 +353,19 @@ MonoBehaviour:
   NeutralSprite: {fileID: 4289562892611146519, guid: 988912be226a58e49818f8743d82fd11, type: 3}
   AttackSprite: {fileID: -6467499720295795977, guid: 988912be226a58e49818f8743d82fd11, type: 3}
   StunnedSprite: {fileID: 4926761630071503352, guid: 988912be226a58e49818f8743d82fd11, type: 3}
+  SpawnInSprite: {fileID: 9136747212597514508, guid: 988912be226a58e49818f8743d82fd11, type: 3}
+  neckSprites: []
+  BackgroundNekk: {fileID: 7280525935452323883, guid: 988912be226a58e49818f8743d82fd11, type: 3}
+  ActiveNekk: {fileID: -2541103358571744273, guid: 988912be226a58e49818f8743d82fd11, type: 3}
   SpriteRenderer: {fileID: 1351258128593957056}
   DamageSource: {fileID: 6516409037804382847}
+  HurtBox: {fileID: 4447607326393695215}
   Solid:
     serializedVersion: 2
     m_Bits: 256
   ProjectileSpawner: {fileID: 2410949003259067106}
+  RestPosition: {fileID: 0}
+  SpawnPosition: {fileID: 0}
 --- !u!114 &6117800902298940721
 MonoBehaviour:
   m_ObjectHideFlags: 0

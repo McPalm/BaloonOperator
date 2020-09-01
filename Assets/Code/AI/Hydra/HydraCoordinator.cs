@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HydraCoordinator : NetworkBehaviour
 {
+    public UnityEvent EventOnDefeat;
 
     public float enrageTimer = 300f;
 
@@ -32,17 +34,22 @@ public class HydraCoordinator : NetworkBehaviour
     {
         Debug.Log("Is dead!");
         var head = heads[index];
-        if (head.isActiveAndEnabled)
+        if (!head.Dead)
         {
             headKills++;
             StartCoroutine(KillHeadRoutine(head));
         }
     }
 
+    void KillHead(HydraAI head)
+    {
+        head.RpcKill();
+        head.Dead = true;
+    }
+
     IEnumerator KillHeadRoutine(HydraAI head)
     {
-        head.gameObject.SetActive(false);
-        Debug.Log("inactive");
+        KillHead(head);
         head.GetComponent<Health>().Heal(new DamageData()
         {
             damage = 999,
@@ -50,8 +57,7 @@ public class HydraCoordinator : NetworkBehaviour
         });
         if (headKills < 4)
         {
-            yield return new WaitForSeconds(2f);
-            Debug.Log("wake up two");
+            yield return new WaitForSeconds(3f);
             int count = 0;
             for (int i = 0; i < heads.Length; i++)
             {
@@ -64,7 +70,15 @@ public class HydraCoordinator : NetworkBehaviour
                 }
             }
         }
+        if(headKills == 7)
+        {
+            Debug.Log("Victory!");
+            RpcWin();
+        }
     }
+
+    [ClientRpc]
+    void RpcWin() => EventOnDefeat?.Invoke();
 
     public void Activate()
     {
@@ -84,7 +98,7 @@ public class HydraCoordinator : NetworkBehaviour
     IEnumerator MainLoop()
     {
         yield return new WaitForSeconds(.1f);
-        RpcActivateHead(1);
+        RpcActivateHead(0);
         yield return new WaitForSeconds(1f);
 
         enrageTimer += Time.timeSinceLevelLoad;

@@ -11,6 +11,7 @@ public class HydraAI : NetworkBehaviour
     int attackPattern;
     [SyncVar]
     public bool enraged;
+    public bool Dead { get; set; }
 
     float EF => enraged ? .5f : 1f;
 
@@ -23,10 +24,17 @@ public class HydraAI : NetworkBehaviour
     public Sprite NeutralSprite;
     public Sprite AttackSprite;
     public Sprite StunnedSprite;
+    public Sprite SpawnInSprite;
+
+    public SpriteRenderer[] neckSprites;
+
+    public Sprite BackgroundNekk;
+    public Sprite ActiveNekk;
 
     public SpriteRenderer SpriteRenderer;
 
     public GameObject DamageSource;
+    public Collider2D HurtBox;
 
     public LayerMask Solid;
 
@@ -34,26 +42,36 @@ public class HydraAI : NetworkBehaviour
 
     Coroutine activeLoop;
 
-    Vector3 home;
-
+    public Transform RestPosition;
+    public Transform SpawnPosition;
 
     private void Start()
     {
-        home = transform.position;
         transform.position = transform.position + Vector3.down * 5f;
     }
     // Start is called before the first frame update
     void OnEnable()
     {
         activeLoop = StartCoroutine(LocalLoop());
+        HurtBox.enabled = false;
+        SpriteRenderer.flipY = false;
+        Dead = false;
     }
 
-    private void OnDisable()
-    {
+    [ClientRpc]
+    public void RpcKill() => StartCoroutine(KillRoutine());
+
+    IEnumerator KillRoutine()
+    { 
         StopCoroutine(activeLoop);
+        attackPattern = 0;
+        HurtBox.enabled = false;
+        DamageSource.SetActive(false);
         Attacking = false;
         SpriteRenderer.sprite = NeutralSprite;
-        attackPattern = 0;
+        SpriteRenderer.flipY = true;
+        yield return LerpTo(transform.position + Vector3.down * 6, 4f, attackCurve);
+        gameObject.SetActive(false);
     }
 
     public void SetAttack(GameObject target, int type)
@@ -66,10 +84,27 @@ public class HydraAI : NetworkBehaviour
 
     IEnumerator LocalLoop()
     {
-        yield return null;
+        SpriteRenderer.sprite = SpawnInSprite;
+        SpriteRenderer.sortingOrder = -2;
+        Vector3 home = RestPosition.position;
         Vector3 wiggleAnchor = home;
         float wiggleTimer = 0f;
-        for(; ; )
+        neckSprites.ForEach(s => s.sprite = BackgroundNekk);
+
+        transform.position = SpawnPosition.position;
+        yield return LerpTo(home, 2f, retractCurve);
+        yield return new WaitForSeconds(.25f);
+        HurtBox.enabled = true;
+        SpriteRenderer.sprite = NeutralSprite;
+        SpriteRenderer.sortingOrder = -1;
+        for(int i = 0; i < neckSprites.Length; i++)
+        {
+            yield return new WaitForSeconds(.2f);
+            neckSprites[i].sprite = ActiveNekk;
+        }
+        yield return new WaitForSeconds(.2f);
+
+        for (; ; )
         {
             switch(attackPattern)
             {
