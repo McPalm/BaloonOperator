@@ -33,7 +33,7 @@ public abstract class EnemyController : MonoBehaviour
 
     private void OnEnable()
     {
-        if(MyNetworkManager.isServer)
+        if(MyNetworkManager.isServer || GetComponent<Mirror.NetworkIdentity>() == null)
             ActiveAwakeCoroutine = StartCoroutine(AwakeCoroutine());
     }
 
