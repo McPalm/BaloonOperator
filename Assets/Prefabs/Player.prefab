@@ -913,7 +913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef12d9cb66a036245b8f2f9bf3b783e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 3
+  MaxHealth: 5
   iFrames: 30
   OnChangeHealth:
     m_PersistentCalls:
@@ -1152,7 +1152,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 5250391804782597863, guid: e2a38d2c606e6144b8371eab18e00d0e, type: 3}
   Source: {fileID: 3602800873068193666}
-  damage: -1
+  damage:
+    damage: 0
+    terrainDamage: 0
+    stun: 0.5
+  ManuallyAim: 0
 --- !u!1 &6671757999103305365
 GameObject:
   m_ObjectHideFlags: 0
