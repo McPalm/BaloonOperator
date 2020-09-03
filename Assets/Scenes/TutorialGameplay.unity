@@ -1093,10 +1093,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   stages:
-  - MapGenerator
-  - MapGenerator
-  - MapGenerator
-  - HydraBoss
+  - Tutorial
   OnWinEvent:
     m_PersistentCalls:
       m_Calls:

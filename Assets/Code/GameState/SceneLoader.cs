@@ -8,8 +8,6 @@ public class SceneLoader : NetworkBehaviour
 {
     string activeScene;
 
-    [Scene]
-    public string nextScene;
 
     private void Start()
     {
@@ -60,11 +58,6 @@ public class SceneLoader : NetworkBehaviour
         {
             connection.Value.Send(message);
         }
-    }
-
-    public void LoadNextScene()
-    {
-        LoadScene(nextScene);
     }
 
     public void ReloadScene()

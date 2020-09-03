@@ -26,5 +26,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HydraBoss.unity
     guid: 523aefa22939926488e30e78301fcdc1
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 579de8aac3bf25044a40a3f18de72ece
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9a8865553ba39dc4d95375352be30905, type: 2}

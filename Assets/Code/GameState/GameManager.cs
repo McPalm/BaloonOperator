@@ -7,8 +7,8 @@ using UnityEngine.Events;
 
 public class GameManager : NetworkBehaviour
 {
-    [Scene]
-    public string startLevel;
+    public string[] stages;
+    string NextStage => stages[StageDifficulty % stages.Length];
 
     public SceneLoader SceneLoader { get; set; }
     public GameObject Player { get; set; }
@@ -39,7 +39,7 @@ public class GameManager : NetworkBehaviour
         if (isServer)
         {
             SceneLoader = GetComponent<SceneLoader>();
-            SceneLoader.LoadScene(startLevel);
+            SceneLoader.LoadScene(NextStage);
             StartCoroutine(StateMachine());
         }
         OnGameOverEvent.AddListener(() =>
@@ -84,14 +84,15 @@ public class GameManager : NetworkBehaviour
         yield return new WaitForSeconds(3f);
         lose = false;
         win = false;
-        ResetScene();
+        ResetGame();
+        
         FindObjectOfType<Wallet>().ResetWallet();
         goto Play;
     Win:
         StageDifficulty++;
         RpcOnWin(StageDifficulty);
         yield return new WaitForSeconds(1f);
-        SceneLoader.LoadNextScene();
+        SceneLoader.LoadScene(NextStage);
         win = false;
         lose = false;
         HealAllPlayersOne();
@@ -114,12 +115,12 @@ public class GameManager : NetworkBehaviour
     }
 
     [Server]
-    public void ResetScene()
+    public void ResetGame()
     {
         if (resetCooldown > Time.time)
             throw new System.Exception("Your reloading the stage to quickly");
         resetCooldown = Time.time + 1f;
-        SceneLoader.ReloadScene();
+        SceneLoader.LoadScene(NextStage);
         foreach (GameObject go in AllPlayers)
         {
             go.GetComponent<Health>().Heal(new DamageData()
