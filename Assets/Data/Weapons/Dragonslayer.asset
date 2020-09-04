@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: -6931215245725216204, guid: 92373188b2e5c1a4696d1a555eb5e833, type: 3}
   lenght: 2
-  attackSpeed: 1.2
+  attackSpeed: 0.85
   hammer: 1
   oneHander: 0
   bow: 0
@@ -23,6 +23,6 @@ MonoBehaviour:
   stabbing: 1
   breaksBlocks: 1
   damageProperties:
-    damage: 4
+    damage: 5
     terrainDamage: 1
     stun: 1.25
