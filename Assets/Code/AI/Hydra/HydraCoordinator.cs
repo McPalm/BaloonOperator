@@ -113,7 +113,7 @@ public class HydraCoordinator : NetworkBehaviour
             }
             if(canDo)
             {
-                var scramble = heads.Where(h => h.gameObject.active).ToList();
+                var scramble = heads.Where(h => h.gameObject.activeInHierarchy).ToList();
                 scramble.Sort((a, b) => Random.value < .5f ? 1 : -1);
                 int attack = 0;
                 foreach(var head in scramble)
