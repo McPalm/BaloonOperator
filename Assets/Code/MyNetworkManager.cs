@@ -42,7 +42,7 @@ public class MyNetworkManager : NetworkManager
 
         var device = await discoverer.DiscoverDeviceAsync(PortMapper.Upnp, cts);
 
-        await device.CreatePortMapAsync(new Mapping(Protocol.Tcp, 7777, 7777, "The mapping name"));
+        await device.CreatePortMapAsync(new Mapping(Protocol.Udp, 7777, 7777, "Horse Cave"));
         }
         catch(System.Exception e)
         {
