@@ -42,6 +42,7 @@ public class WeaponEquiper : MonoBehaviour
         Collider.SetPath(0, points);
         ProjectileSpawner.damage = weapon.damageProperties;
         Bowstring.SetActive(weapon.bow);
+        ProjectileSpawner.gameObject.SetActive(weapon.bow);
     }
 
     
