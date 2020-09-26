@@ -33,21 +33,21 @@ public class MyNetworkManager : NetworkManager
 
     public async System.Threading.Tasks.Task PortForwardAsync(int port)
     {
-        Debug.Log("Attempting Port Forward 0");
+        Debug.Log("Attempting Port Forward...");
         var discoverer = new NatDiscoverer();
 
         var cts = new CancellationTokenSource(10000);
         try
         {
 
-        var device = await discoverer.DiscoverDeviceAsync(PortMapper.Upnp, cts);
+            var device = await discoverer.DiscoverDeviceAsync(PortMapper.Upnp, cts);
 
-        await device.CreatePortMapAsync(new Mapping(Protocol.Udp, 7777, 7777, "Horse Cave"));
+            await device.CreatePortMapAsync(new Mapping(Protocol.Udp, port, port, "HorseCave"));
         }
         catch(System.Exception e)
         {
             Debug.LogError(e);
         }
-        Debug.Log("Port Forward Succesfull maybe?");
+        Debug.Log("Port Forward attempt complete.");
     }
 }

@@ -43,7 +43,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: b2caa6cb7ee1e264aa06179a4c46ebde, type: 3}
-    totalSpriteSurfaceArea: 8704
+    totalSpriteSurfaceArea: 14848
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -77,6 +77,30 @@ SpriteAtlas:
   - {fileID: 3700883606535427162, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
   - {fileID: -4790908730115963414, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
   - {fileID: 8977284450834130336, guid: c5aca5fcb0f0694479516f19a212255f, type: 3}
+  - {fileID: -8997771917765000216, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 5028535166358594044, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: -501416542569807478, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 5749154476595445941, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 315728392234899890, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 3826460246342912573, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: -6536548197929699230, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: -395801949700579045, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 4281400459136399087, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 5986671171444472379, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 4148626851589432401, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 6216005682119544182, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: -7517275718019960796, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 4901922965961745511, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 4070657425024690499, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 442590082090136176, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 8524039456401508778, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: -7580133699464026777, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 1004703808762746389, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 3866165015136959179, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 8961959024958650054, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 4436524647612785229, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: 1163592929244199813, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
+  - {fileID: -8541717239000916593, guid: 4f04d7fce56b9e146ad5fac866db7d51, type: 3}
   m_PackedSpriteNamesToIndex:
   - SandStoneTiles_24
   - SandStoneTiles_25
@@ -106,5 +130,29 @@ SpriteAtlas:
   - SandStoneTiles_3
   - SandStoneTiles_0
   - SandStoneTiles_1
+  - SpellunkyCave_0
+  - SpellunkyCave_1
+  - SpellunkyCave_2
+  - SpellunkyCave_3
+  - SpellunkyCave_4
+  - SpellunkyCave_5
+  - SpellunkyCave_6
+  - SpellunkyCave_7
+  - SpellunkyCave_8
+  - SpellunkyCave_9
+  - SpellunkyCave_13
+  - SpellunkyCave_12
+  - SpellunkyCave_11
+  - SpellunkyCave_10
+  - SpellunkyCave_17
+  - SpellunkyCave_16
+  - SpellunkyCave_15
+  - SpellunkyCave_14
+  - SpellunkyCave_22
+  - SpellunkyCave_23
+  - SpellunkyCave_20
+  - SpellunkyCave_19
+  - SpellunkyCave_21
+  - SpellunkyCave_18
   m_Tag: TerrainAtlas
   m_IsVariant: 0
