@@ -9,6 +9,8 @@ public class WeaponPickup : NetworkBehaviour
     int weaponIndex;
     public WeaponProperties Weapon;
     public SpriteRenderer SpriteRenderer;
+    [SyncVar]
+    public int durabilityLoss = 0;
          
     // Start is called before the first frame update
     void Start()

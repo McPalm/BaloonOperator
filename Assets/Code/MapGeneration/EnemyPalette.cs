@@ -15,7 +15,6 @@ public class EnemyPalette : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log($"Difficulty be like {GameManager.StageDifficulty}");
         switch(GameManager.StageDifficulty)
         {
             case 0:

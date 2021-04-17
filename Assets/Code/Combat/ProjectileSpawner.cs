@@ -14,6 +14,8 @@ public class ProjectileSpawner : MonoBehaviour
 
     public Transform Target { get; set; }
 
+    public event System.Action<GameObject> OnSpawnProjectile;
+
     private void OnEnable()
     {
         SpawnProjectile();
@@ -45,6 +47,7 @@ public class ProjectileSpawner : MonoBehaviour
         {
             spawned.transform.right = GetAimPosition() - (Vector2)transform.position;
         }
+        OnSpawnProjectile?.Invoke(spawned);
     }
 
 }

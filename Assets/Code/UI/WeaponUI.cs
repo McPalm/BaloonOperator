@@ -15,6 +15,18 @@ public class WeaponUI : MonoBehaviour
         Inventory = target;
         target.OnWeaponChange += Target_OnWeaponChange;
         Target_OnWeaponChange(Inventory);
+        target.WeaponEquiper.OnDurabilityChange += WeaponEquiper_OnDurabilityChange;
+    }
+
+    private void WeaponEquiper_OnDurabilityChange(Weapon obj)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if(obj == Inventory.HeldWeapons[i])
+            {
+                DrawDurability(i);
+            }
+        }
     }
 
     IEnumerator Start()
@@ -41,12 +53,24 @@ public class WeaponUI : MonoBehaviour
             
             images[i].gameObject.SetActive(held != null);
             images[i].sprite = obj?.HeldWeapons[i]?.WeaponProperties.sprite;
+            DrawDurability(i);
 
             if (held != null && held == obj.CurrentWeapon)
             {
                 FrameOfEquipped.transform.position = images[i].transform.position;
                 FrameOfEquipped.enabled = true;
             }
+        }
+    }
+
+    void DrawDurability(int i)
+    {
+        var slide = images[i].GetComponentInChildren<Slider>();
+        var weapon = Inventory.HeldWeapons[i];
+        if(weapon != null)
+        {
+            slide.maxValue = weapon.WeaponProperties.durability;
+            slide.value = slide.maxValue - weapon.damageTaken;
         }
     }
 }

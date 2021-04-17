@@ -15,6 +15,7 @@ MonoBehaviour:
   sprite: {fileID: -3604998909101181594, guid: 92373188b2e5c1a4696d1a555eb5e833, type: 3}
   lenght: 2
   attackSpeed: 1
+  durability: 25
   hammer: 0
   oneHander: 0
   bow: 0

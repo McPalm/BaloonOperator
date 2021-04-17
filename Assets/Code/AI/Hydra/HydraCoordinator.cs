@@ -32,7 +32,6 @@ public class HydraCoordinator : NetworkBehaviour
 
     private void HydraCoordinator_OnZeroHealth(int index)
     {
-        Debug.Log("Is dead!");
         var head = heads[index];
         if (!head.Dead)
         {
@@ -72,7 +71,6 @@ public class HydraCoordinator : NetworkBehaviour
         }
         if(headKills == 7)
         {
-            Debug.Log("Victory!");
             RpcWin();
         }
     }
@@ -82,7 +80,6 @@ public class HydraCoordinator : NetworkBehaviour
 
     public void Activate()
     {
-        Debug.Log("Wake up!");
         if (MyNetworkManager.isServer)
         {
             StartCoroutine(MainLoop());

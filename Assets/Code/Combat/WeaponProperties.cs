@@ -8,6 +8,7 @@ public class WeaponProperties : ScriptableObject, LootTable.ILoot
     public Sprite sprite;
     public float lenght = .25f;
     public float attackSpeed = 1f;
+    public int durability = 15;
 
     // moveset related
     public bool hammer;

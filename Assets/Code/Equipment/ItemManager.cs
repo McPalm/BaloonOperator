@@ -28,10 +28,11 @@ public class ItemManager : NetworkBehaviour
         return null;
     }
 
-    public WeaponPickup Spawn(WeaponProperties weapon, Vector2 position)
+    public WeaponPickup Spawn(WeaponProperties weapon, Vector2 position, int durabilityLoss = 0)
     {
         var obj = Instantiate(WeaponPickupPrefab, position, Quaternion.identity, transform);
         obj.Weapon = weapon;
+        obj.durabilityLoss = durabilityLoss;
         NetworkServer.Spawn(obj.gameObject);
         return obj;
     }

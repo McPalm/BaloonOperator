@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class WeaponEquiper : MonoBehaviour
 {
+
+    public event System.Action<Weapon> OnWeaponBreak;
+    public event System.Action<Weapon> OnDurabilityChange;
+
     Weapon equipped;
 
     public SpriteRenderer spriteRenderer;
@@ -14,6 +18,9 @@ public class WeaponEquiper : MonoBehaviour
     public ProjectileSpawner ProjectileSpawner;
     public GameObject Bowstring;
 
+    public AudioClip BreakSound;
+    public ParticleSystem BreakParticles;
+
     public WeaponProperties EquippedProperties => equipped.WeaponProperties;
     public Weapon Equipped => equipped;
 
@@ -21,8 +28,32 @@ public class WeaponEquiper : MonoBehaviour
     void Start()
     {
         Equip(equipped);
+        ContactDamage.OnHit += ContactDamage_OnHit;
+        ProjectileSpawner.OnSpawnProjectile += ProjectileSpawner_OnSpawnProjectile;
     }
 
+    private void ProjectileSpawner_OnSpawnProjectile(GameObject obj)
+    {
+        DurabilityLoss(1);
+    }
+
+    private void ContactDamage_OnHit(Health obj)
+    {
+        DurabilityLoss(1);
+    }
+
+    public void DurabilityLoss(int durability = 1)
+    {
+        Equipped.damageTaken += durability;
+        OnDurabilityChange?.Invoke(Equipped);
+        if (Equipped.Broken)
+        {
+            OnWeaponBreak?.Invoke(Equipped);
+            AudioPool.PlaySound(transform.position, BreakSound);
+            BreakParticles.Play();
+            Animator.SetBool("HasWeapon", false);
+        }
+    }
 
     public void Equip(Weapon weapon)
     {

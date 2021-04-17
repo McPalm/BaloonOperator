@@ -22,7 +22,7 @@ public class Inventory : NetworkBehaviour, IInputReader
     public void Clear()
     {
         HeldWeapons = new Weapon[5];
-        PutInSlot(StartWeapon, 0);
+        PutInSlot(new Weapon(StartWeapon), 0);
     }
 
     void Start()
@@ -30,6 +30,17 @@ public class Inventory : NetworkBehaviour, IInputReader
         AnimationPhysics = WeaponEquiper.GetComponent<AnimationPhysics>();
         Clear();
         GetComponent<Health>().OnZeroHealth += Inventory_OnZeroHealth;
+        WeaponEquiper.OnWeaponBreak += WeaponEquiper_OnWeaponBreak;
+    }
+
+    private void WeaponEquiper_OnWeaponBreak(Weapon obj)
+    {
+        for (int i = 0; i < HeldWeapons.Length; i++)
+        {
+            if (obj == HeldWeapons[i])
+                HeldWeapons[i] = null;
+        }
+        OnWeaponChange(this);
     }
 
     private void Inventory_OnZeroHealth()
@@ -71,7 +82,7 @@ public class Inventory : NetworkBehaviour, IInputReader
         {
             if(i == 4 || HeldWeapons[i] == null)
             {
-                PutInSlot(new Weapon(item.Weapon) , i);
+                PutInSlot(new Weapon(item.Weapon, item.durabilityLoss) , i);
                 if (i == 4)
                     EquipSlot(4);
                 Destroy(item.gameObject);
@@ -110,7 +121,7 @@ public class Inventory : NetworkBehaviour, IInputReader
         {
             if (HeldWeapons[slot] == WeaponEquiper.Equipped)
                 WeaponEquiper.Equip(null);
-            CmdDropWeapon(WeaponsList.IndexFor(HeldWeapons[slot].WeaponProperties));
+            CmdDropWeapon(WeaponsList.IndexFor(HeldWeapons[slot].WeaponProperties), HeldWeapons[slot].damageTaken);
         }
         HeldWeapons[slot] = null;
         OnWeaponChange?.Invoke(this);
@@ -127,9 +138,9 @@ public class Inventory : NetworkBehaviour, IInputReader
     public void DropCurrent() => Drop(WeaponEquiper.Equipped);
 
     [Command(channel = Channels.DefaultReliable)]
-    void CmdDropWeapon(int index)
+    void CmdDropWeapon(int index, int durabilityLoss)
     {
-        FindObjectOfType<ItemManager>().Spawn(WeaponsList.WeaponFor(index), transform.position);
+        FindObjectOfType<ItemManager>().Spawn(WeaponsList.WeaponFor(index), transform.position, durabilityLoss);
     }
 
     public void EquipSlot(int slot)
