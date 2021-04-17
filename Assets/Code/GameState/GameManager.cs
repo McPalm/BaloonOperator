@@ -22,6 +22,7 @@ public class GameManager : NetworkBehaviour
     public UnityEvent OnWinEvent;
     public UnityEvent OnGameOverEvent;
     public UnityEvent OnPlayStateEvent;
+    public UnityEvent OnResetEvent;
 
     public WeaponProperties defaultWeapon;
 
@@ -42,9 +43,10 @@ public class GameManager : NetworkBehaviour
             SceneLoader.LoadScene(NextStage);
             StartCoroutine(StateMachine());
         }
-        OnGameOverEvent.AddListener(() =>
+        OnResetEvent.AddListener(() =>
         {
-            Player.GetComponent<Inventory>().WeaponEquiper.Equip(defaultWeapon);
+            var inventory = Player.GetComponent<Inventory>();
+            inventory.Clear();
         });
     }
 
@@ -130,7 +132,8 @@ public class GameManager : NetworkBehaviour
                 authorative = true,
             });
         }
-        ///Probably add reset health to character since they aren't a part of the scene.
+
+        RpcOnReset();
     }
 
     public void RegisterPlayer(GameObject player)
@@ -166,5 +169,6 @@ public class GameManager : NetworkBehaviour
     }
     [ClientRpc] void RpcOnGameOver() => OnGameOverEvent.Invoke();
     [ClientRpc] void RpcOnPlayState() => OnPlayStateEvent.Invoke();
+    [ClientRpc] void RpcOnReset() => OnResetEvent.Invoke();
     
 }

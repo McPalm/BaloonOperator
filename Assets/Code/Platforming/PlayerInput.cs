@@ -16,6 +16,28 @@ public class PlayerInput : MonoBehaviour
         InputToken = new InputToken();
         foreach (var ir in GetComponents<IInputReader>())
             ir.InputToken = InputToken;
+        var input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
+        if (input.isActiveAndEnabled)
+        {
+            foreach (var action in input.currentActionMap.actions)
+            {
+                switch (action.name)
+                {
+                    case "Slot1":
+                        action.started += (a) => GetComponent<Inventory>().EquipSlot(0);
+                        break;
+                    case "Slot2":
+                        action.started += (a) => GetComponent<Inventory>().EquipSlot(1);
+                        break;
+                    case "Slot3":
+                        action.started += (a) => GetComponent<Inventory>().EquipSlot(2);
+                        break;
+                    case "Slot4":
+                        action.started += (a) => GetComponent<Inventory>().EquipSlot(3);
+                        break;
+                }
+            }
+        }
     }
 
     public void OnMove(InputAction.CallbackContext e)

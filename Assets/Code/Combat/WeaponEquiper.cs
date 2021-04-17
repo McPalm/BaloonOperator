@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponEquiper : MonoBehaviour
 {
-    [SerializeField] WeaponProperties equipped;
+    Weapon equipped;
 
     public SpriteRenderer spriteRenderer;
     public Transform swipeTrail;
@@ -14,7 +14,8 @@ public class WeaponEquiper : MonoBehaviour
     public ProjectileSpawner ProjectileSpawner;
     public GameObject Bowstring;
 
-    public WeaponProperties Equipped => equipped;
+    public WeaponProperties EquippedProperties => equipped.WeaponProperties;
+    public Weapon Equipped => equipped;
 
     // Start is called before the first frame update
     void Start()
@@ -23,26 +24,34 @@ public class WeaponEquiper : MonoBehaviour
     }
 
 
-    public void Equip(WeaponProperties weapon)
+    public void Equip(Weapon weapon)
     {
         equipped = weapon;
-        spriteRenderer.sprite = weapon.sprite;
-        swipeTrail.localPosition = new Vector3(weapon.lenght, 0f);
-        ContactDamage.damagePropeties = weapon.damageProperties;
+        Animator.SetBool("HasWeapon", equipped != null);
+        if (weapon == null)
+        {
+            spriteRenderer.sprite = null;
+            return;
+        }
+        var props = weapon.WeaponProperties;
+        spriteRenderer.sprite = props.sprite;
+        swipeTrail.localPosition = new Vector3(props.lenght, 0f);
+        ContactDamage.damagePropeties = props.damageProperties;
 
-        Animator.SetFloat("AttackSpeed", weapon.attackSpeed);
-        Animator.SetBool("Hammer", weapon.hammer);
-        Animator.SetBool("Spear", weapon.spear);
-        Animator.SetBool("Bow", weapon.bow);
-        Animator.SetBool("OneHanded", weapon.oneHander);
-        Animator.SetBool("Stabbing", weapon.stabbing);
-        Animator.SetBool("Slashing", weapon.slashing);
+        Animator.SetTrigger("Equip");
+        Animator.SetFloat("AttackSpeed", props.attackSpeed);
+        Animator.SetBool("Hammer", props.hammer);
+        Animator.SetBool("Spear", props.spear);
+        Animator.SetBool("Bow", props.bow);
+        Animator.SetBool("OneHanded", props.oneHander);
+        Animator.SetBool("Stabbing", props.stabbing);
+        Animator.SetBool("Slashing", props.slashing);
         List<Vector2> points = new List<Vector2>();
-        weapon.sprite.GetPhysicsShape(0, points);
+        props.sprite.GetPhysicsShape(0, points);
         Collider.SetPath(0, points);
-        ProjectileSpawner.damage = weapon.damageProperties;
-        Bowstring.SetActive(weapon.bow);
-        ProjectileSpawner.gameObject.SetActive(weapon.bow);
+        ProjectileSpawner.damage = props.damageProperties;
+        Bowstring.SetActive(props.bow);
+        ProjectileSpawner.gameObject.SetActive(props.bow);
     }
 
     

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AnimationPhysics : MonoBehaviour
 {
+    public bool easyCancel;
+
     public PlatformingCharacter player;
     public Mobile mobile;
 

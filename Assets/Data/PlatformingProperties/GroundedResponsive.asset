@@ -74,7 +74,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   MaxSpeed: 12.72
   Traction: 0.92
-  AirControl: 0.603
+  AirControl: 1
   PeakAirControl: 1
   Gravity: 40
   JumpForce: 16.5
