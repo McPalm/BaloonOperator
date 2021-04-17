@@ -105,7 +105,7 @@ public class PlatformingCharacter : Mobile, IInputReader
 
         // horiontal movement
         var desiredSpeed = x * Properties.MaxSpeed;
-        var accelMultipler = desiredSpeed == 0f && !Grounded ? .1f : 1f; // keep momentum in air if stick is neutral.
+        var accelMultipler = 1f; //= desiredSpeed == 0f && !Grounded ? .1f : 1f; // keep momentum in air if stick is neutral.
         accelMultipler *= Friction;
         if(lowStamina)
         {
