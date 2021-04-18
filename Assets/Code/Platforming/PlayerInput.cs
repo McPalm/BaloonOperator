@@ -35,6 +35,9 @@ public class PlayerInput : MonoBehaviour
                     case "Slot4":
                         action.started += (a) => GetComponent<Inventory>().EquipSlot(3);
                         break;
+                    case "Dash":
+                        action.started += (a) => InputToken.PressDash();
+                        break;
                 }
             }
         }

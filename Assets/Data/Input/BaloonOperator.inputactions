@@ -30,7 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Climb",
+                    "name": "Dash",
                     "type": "Button",
                     "id": "4f539984-2573-419b-a2c1-ac1745648707",
                     "expectedControlType": "Button",
@@ -248,7 +248,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Climb",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -259,7 +259,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Climb",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

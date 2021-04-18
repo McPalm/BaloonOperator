@@ -51,6 +51,17 @@ public class PlayerAnimator : MonoBehaviour
 
     void Set(int x, int y)
     {
+        if(x == 5)
+        {
+            // set frames for specific interactions
+            switch(y)
+            {
+                case 1: // dashing
+                    Set(19);
+                    break;
+            }
+            return;
+        }
         if (y < 0)
             Set(12);
         if (y > 0)

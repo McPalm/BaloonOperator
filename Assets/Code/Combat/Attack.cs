@@ -9,6 +9,7 @@ public class Attack : MonoBehaviour, IInputReader
     public AnimationPhysics animationPhysics;
     PlatformingCharacter PC;
     float clearFlag = 0f;
+    float clearDash = 0f;
     Stamina Stamina { get; set; }
 
     readonly float inputBuffer = .25f;
@@ -35,11 +36,25 @@ public class Attack : MonoBehaviour, IInputReader
         }
         else if(clearFlag > 0f && clearFlag < Time.timeSinceLevelLoad)
         {
+            clearFlag = 0f;
             animator.ResetTrigger("Strike");
         }
         animator.SetBool("AttackHeld", InputToken.UseHeld);
         animator.SetBool("InputForward",  Mathf.RoundToInt(InputToken.Direction.x) == transform.Forward());
         animator.SetBool("InputUp", Mathf.RoundToInt(InputToken.Direction.y) > 0);
         animator.SetBool("InputDown", Mathf.RoundToInt(InputToken.Direction.y) < 0);
+        if(InputToken.DashPressed && Stamina.HasStamina)
+        {
+            animator.SetTrigger("Dash");
+            InputToken.ConsumeDash();
+            clearDash = Time.timeSinceLevelLoad + .1f;
+            if (InputToken.Direction.x != 0f)
+                transform.SetForward(InputToken.Direction.x);
+        }
+        if (clearDash > 0f && clearDash < Time.timeSinceLevelLoad)
+        {
+            clearDash = 0f;
+            animator.ResetTrigger("Dash");
+        }
     }
 }
