@@ -10,7 +10,7 @@ public class LootTable : ScriptableObject
 
     public ILoot GetRandomLoot()
     {
-        if (Random.value < .2f)
+        if (Random.value < .2f && UncommonWeapons.Count > 0)
             return UncommonWeapons[Random.Range(0, UncommonWeapons.Count)];
         return CommonWeapons[Random.Range(0, CommonWeapons.Count)];
     }

@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8c2a782db29a364591f60878c500f1b, type: 3}
-  m_Name: Katana
+  m_Name: RustySword
   m_EditorClassIdentifier: 
-  sprite: {fileID: -1368667520356147063, guid: 92373188b2e5c1a4696d1a555eb5e833, type: 3}
-  lenght: 1.5
-  attackSpeed: 0.6
-  durability: 23
-  hammer: 0
-  oneHander: 1
+  sprite: {fileID: 3274490417574866107, guid: 92373188b2e5c1a4696d1a555eb5e833, type: 3}
+  lenght: 2
+  attackSpeed: 1.25
+  durability: 10
+  hammer: 1
+  oneHander: 0
   bow: 0
   spear: 0
   slashing: 1
-  stabbing: 0
+  stabbing: 1
   breaksBlocks: 0
   damageProperties:
-    damage: 2
+    damage: 1
     terrainDamage: 0
-    stun: 0.75
+    stun: 1
   throwDamage:
-    damage: 4
+    damage: 2
     terrainDamage: 0
     stun: 0.5

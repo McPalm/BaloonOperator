@@ -27,3 +27,7 @@ MonoBehaviour:
     damage: 2
     terrainDamage: 0
     stun: 0.7
+  throwDamage:
+    damage: 4
+    terrainDamage: 0
+    stun: 0.5

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -56,5 +57,13 @@ public class Attack : MonoBehaviour, IInputReader
             clearDash = 0f;
             animator.ResetTrigger("Dash");
         }
+    }
+
+    public IEnumerator Throw(float y)
+    {
+        animator.SetTrigger("Throw");
+        yield return new WaitForSeconds(.1f);
+        animator.ResetTrigger("Throw");
+             
     }
 }

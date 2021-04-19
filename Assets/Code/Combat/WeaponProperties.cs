@@ -21,4 +21,5 @@ public class WeaponProperties : ScriptableObject, LootTable.ILoot
     // damage stats
     public bool breaksBlocks;
     public DamageProperties damageProperties;
+    public DamageProperties throwDamage;
 }

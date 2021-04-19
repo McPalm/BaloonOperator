@@ -38,8 +38,24 @@ public class PlayerInput : MonoBehaviour
                     case "Dash":
                         action.started += (a) => InputToken.PressDash();
                         break;
+                    case "Drop":
+                        action.started += DropThrow;
+                        break;
+
                 }
             }
+        }
+    }
+
+    private void DropThrow(InputAction.CallbackContext obj)
+    {
+        if(GetComponent<PlatformingCharacter>().Grounded && InputToken.Direction.y < -.5f)
+        {
+            GetComponent<Inventory>().DropCurrent();
+        }
+        else
+        {
+            StartCoroutine(GetComponent<Attack>().Throw(InputToken.Direction.y));
         }
     }
 

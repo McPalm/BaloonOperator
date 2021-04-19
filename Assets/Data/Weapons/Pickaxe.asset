@@ -15,6 +15,7 @@ MonoBehaviour:
   sprite: {fileID: -2170152249056553037, guid: 92373188b2e5c1a4696d1a555eb5e833, type: 3}
   lenght: 1
   attackSpeed: 1.1
+  durability: 15
   hammer: 1
   oneHander: 0
   bow: 0
@@ -26,3 +27,7 @@ MonoBehaviour:
     damage: 2
     terrainDamage: 1
     stun: 0.9
+  throwDamage:
+    damage: 4
+    terrainDamage: 0
+    stun: 0.5

@@ -114,6 +114,19 @@ MonoBehaviour:
   syncInterval: 0.1
   Animator: {fileID: 9066573154214057497}
   aimPoint: {x: 0, y: 0}
+--- !u!114 &8057481203561863991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6523573822970493736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f85d49d5bed81d469c978f1f95b34a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LootTable: {fileID: 11400000, guid: 9602093fd971fcc49a3a8985a2c1817f, type: 2}
 --- !u!1001 &2823289533123259334
 PrefabInstance:
   m_ObjectHideFlags: 0

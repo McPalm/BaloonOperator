@@ -15,6 +15,7 @@ MonoBehaviour:
   WeaponProperties:
   - {fileID: 11400000, guid: dcf3dc30d17c326408a60b1aff200f81, type: 2}
   - {fileID: 11400000, guid: 0e89474f976644740ab84c5976d41c65, type: 2}
+  - {fileID: 11400000, guid: 22f6bcdd37e107b499915ad3f152792b, type: 2}
   - {fileID: 11400000, guid: 55b6ff0fe2cc6174eb6923bad613bd4d, type: 2}
   - {fileID: 11400000, guid: e04a4dfc122c52942b3f7ebfa446f79c, type: 2}
   - {fileID: 11400000, guid: af2144cc85dc0cf4aa7b48378d20244a, type: 2}
@@ -24,6 +25,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bd5c28269798e884782e8346a218c4a0, type: 2}
   - {fileID: 11400000, guid: 96bbd77410be3e748a3d0b0d5a092697, type: 2}
   - {fileID: 11400000, guid: 24f82be77a74dce4aabf861247f9fa59, type: 2}
+  - {fileID: 11400000, guid: 6ee68cb5b5defc049abf61286b739bb1, type: 2}
+  - {fileID: 11400000, guid: 14a865a5d6a9c4746b5f96e63c3d2418, type: 2}
   - {fileID: 11400000, guid: 4b024f91b17acec4cb188c324c77743e, type: 2}
   - {fileID: 11400000, guid: 0c684cc040a531a4398fb1639dfd5940, type: 2}
   - {fileID: 11400000, guid: 8a18003f049a62243a4147be2e9dde3c, type: 2}

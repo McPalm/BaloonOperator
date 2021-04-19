@@ -62,6 +62,7 @@ public class WeaponEquiper : MonoBehaviour
         if (weapon == null)
         {
             spriteRenderer.sprite = null;
+            Bowstring.SetActive(false);
             return;
         }
         var props = weapon.WeaponProperties;

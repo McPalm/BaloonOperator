@@ -31,6 +31,18 @@ public class Inventory : NetworkBehaviour, IInputReader
         Clear();
         GetComponent<Health>().OnZeroHealth += Inventory_OnZeroHealth;
         WeaponEquiper.OnWeaponBreak += WeaponEquiper_OnWeaponBreak;
+        WeaponEquiper.GetComponentInChildren<WeaponToss>(true).OnThrow += Inventory_OnThrow;
+    }
+
+    private void Inventory_OnThrow(Weapon obj)
+    {
+        for (int i = 0; i < HeldWeapons.Length; i++)
+        {
+            if (obj == HeldWeapons[i])
+                HeldWeapons[i] = null;
+            WeaponEquiper.Equip(null);
+        }
+        OnWeaponChange(this);
     }
 
     private void WeaponEquiper_OnWeaponBreak(Weapon obj)

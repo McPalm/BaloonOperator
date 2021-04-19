@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bb60d035fe8594f84e297607f80f18, type: 3}
+  m_Name: EnemyMining
+  m_EditorClassIdentifier: 
+  CommonWeapons:
+  - {fileID: 11400000, guid: 6ee68cb5b5defc049abf61286b739bb1, type: 2}
+  UncommonWeapons:
+  - {fileID: 11400000, guid: ac16ec49f9c9fa3439af3fa1831b3e01, type: 2}
+  - {fileID: 11400000, guid: 24f82be77a74dce4aabf861247f9fa59, type: 2}
