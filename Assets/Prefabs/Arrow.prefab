@@ -128,7 +128,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 0}
   damage: 1
+  damagePropeties:
+    damage: 0
+    terrainDamage: 0
+    stun: 0.5
   OnHitSound: {fileID: 8300000, guid: 4039f37d23bd96a48817d244ec16ce69, type: 3}
+  hurtDead: 0
 --- !u!96 &5632811433274639860
 TrailRenderer:
   serializedVersion: 2
@@ -268,7 +273,33 @@ MonoBehaviour:
   speed: {x: 45, y: 1}
   randomness: {x: 0, y: 0}
   lifetime: 4
+  airFriction: 1
   fullRotation: 1
+  useGravityOverLifetime: 1
+  GravityOverLifetime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 9
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 36
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &7575103145525173222
 MonoBehaviour:
   m_ObjectHideFlags: 0

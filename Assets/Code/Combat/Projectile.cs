@@ -9,8 +9,14 @@ public class Projectile : MonoBehaviour
     public Vector2 randomness;
 
     public float lifetime = 60f;
+    float currentlife = 0f;
+
+    public float airFriction = 1f;
 
     public bool fullRotation = false;
+
+    public bool useGravityOverLifetime = false;
+    public AnimationCurve GravityOverLifetime;
 
     private void Awake()
     {
@@ -19,9 +25,11 @@ public class Projectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        lifetime -= Time.fixedDeltaTime;
-        if (lifetime < 0f)
+        currentlife += Time.fixedDeltaTime;
+        if (currentlife > lifetime)
             Destroy(gameObject);
+        if (useGravityOverLifetime)
+            gravity = GravityOverLifetime.Evaluate(currentlife);
         if (fullRotation)
         {
             speed = new Vector2(speed.x, speed.y - gravity * Time.fixedDeltaTime);
@@ -35,5 +43,6 @@ public class Projectile : MonoBehaviour
             speed = new Vector2(speed.x, speed.y - gravity * Time.fixedDeltaTime);
             transform.position += new Vector3(speed.x * transform.Forward(), speed.y) * Time.fixedDeltaTime;
         }
+        speed *= airFriction;
     }
 }

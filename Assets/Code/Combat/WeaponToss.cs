@@ -10,10 +10,14 @@ public class WeaponToss : MonoBehaviour
 
     public WeaponEquiper WeaponEquiper;
 
+    public float Y;
+
     private void OnEnable()
     {
         var projectile = ProjectileFactory();
-        projectile.transform.SetForward(transform.Forward());
+        projectile.transform.right = new Vector3(transform.Forward() * 1.5f, Y, 0f);
+
+        // projectile.transform.SetForward(transform.Forward());
     }
 
     Projectile ProjectileFactory()
@@ -24,7 +28,9 @@ public class WeaponToss : MonoBehaviour
         clone.GetComponent<SpriteRenderer>().sprite = properties.sprite;
         clone.GetComponent<ContactDamage>().damagePropeties = properties.throwDamage;
         clone.GetComponent<ContactDamage>().source = gameObject;
-        clone.speed = new Vector2(25, 3.5f);
+        clone.speed = new Vector2(25, 5f);
+        clone.gravity = 36f;
+        clone.airFriction = .99f;
 
         clone.GetComponent<ContactDamage>().OnHit += (h) =>
         {

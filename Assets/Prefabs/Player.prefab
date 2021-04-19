@@ -490,6 +490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4724798947534651903, guid: e2a38d2c606e6144b8371eab18e00d0e, type: 3}
   WeaponEquiper: {fileID: 8536587299217060638}
+  Y: 0
 --- !u!1 &1685681585755033785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,6 +1041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5415466755468457898}
   animationPhysics: {fileID: 3024048429158854682}
+  WeaponToss: {fileID: 6750668565745393297}
 --- !u!114 &1798536383502569831
 MonoBehaviour:
   m_ObjectHideFlags: 0

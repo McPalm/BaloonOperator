@@ -12,6 +12,7 @@ public class Attack : MonoBehaviour, IInputReader
     float clearFlag = 0f;
     float clearDash = 0f;
     Stamina Stamina { get; set; }
+    public WeaponToss WeaponToss;
 
     readonly float inputBuffer = .25f;
 
@@ -61,6 +62,7 @@ public class Attack : MonoBehaviour, IInputReader
 
     public IEnumerator Throw(float y)
     {
+        WeaponToss.Y = Mathf.Round(y);
         animator.SetTrigger("Throw");
         yield return new WaitForSeconds(.1f);
         animator.ResetTrigger("Throw");
