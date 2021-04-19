@@ -36,31 +36,26 @@ public class CameraFollow : MonoBehaviour
             average += Follow[i].transform.position;
         }
         average *= 1f / Follow.Length;
-            /*
-        if (Follow.Grounded || Follow.Suspend)
-            plane = Follow.Suspend ? Follow.transform.position.y : Follow.transform.position.y - Follow.radius;
-        else
-            plane = Mathf.Clamp(plane, Follow.transform.position.y - 3, Follow.transform.position.y);
-        var y = Mathf.Clamp(plane, transform.position.y - Time.fixedDeltaTime * 7f, transform.position.y + Time.fixedDeltaTime * 5f);
-        y = Mathf.Clamp(y, Follow.transform.position.y - 3, Follow.transform.position.y + 3f);
-
-        
-        y = Mathf.Clamp(y, MinY - Offset.y, MaxY - Offset.y);
-        var x = Mathf.Clamp(Follow.transform.position.x, MinX - Offset.x, MaxX - Offset.x);
-
-    */
+           
         transform.position = new Vector3(average.x, average.y);//Vector3.Lerp(transform.position,  new Vector3(x, y), Ease);
     }
 
-    IEnumerator ShiftFocusRoutine(Vector2 direction)
+    public void ShiftFocus(Vector2 direction, float duration = 1f)
     {
+        StopAllCoroutines();
+        StartCoroutine(ShiftFocusRoutine(direction, duration));
+    }
+
+    IEnumerator ShiftFocusRoutine(Vector3 direction, float duration = 1f)
+    {
+        direction.z = -10f;
         yield return null;
-        Vector2 start = CameraOffsetRoot.localPosition;
+        Vector3 start = CameraOffsetRoot.localPosition;
         
-        for(float f = 0; f < 1f; f += Time.deltaTime)
+        for(float f = 0; f < duration; f += Time.deltaTime)
         {
             yield return null;
-            DesiredOffset = Vector2.Lerp(start, direction, f * f);
+            DesiredOffset = Vector3.Lerp(start, direction, f / duration);
         }
         DesiredOffset = direction;
     }
