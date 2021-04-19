@@ -32,6 +32,7 @@ public class PlatformingCharacter : Mobile, IInputReader
     public bool lowStamina = false;
 
     public bool Disabled { get; set; }
+    public int DisabledFrames = 0;
 
     // Update is called once per frame
     new protected void FixedUpdate()
@@ -41,10 +42,11 @@ public class PlatformingCharacter : Mobile, IInputReader
             base.FixedUpdate();
             return;
         }
-        if(Disabled)
+        if(Disabled || DisabledFrames-- > 0)
         {
             base.FixedUpdate();
-            HMomentum *= .8f;
+            if(DisabledFrames > 0)
+                HMomentum *= .8f;
             return;
         }
 
