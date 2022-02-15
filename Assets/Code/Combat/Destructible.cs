@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Destructible : MonoBehaviour
 {
     public int damageResistance = 1;
+    public UnityEvent OnDestroy;
 
     // Start is called before the first frame update
     void Start()
@@ -30,5 +32,6 @@ public class Destructible : MonoBehaviour
     private void Kill()
     {
         gameObject.SetActive(false);
+        OnDestroy.Invoke();
     }
 }

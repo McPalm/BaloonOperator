@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyDeath : MonoBehaviour
 {
     public bool flipY = true;
+    public ParticleRef DeathParticles;
+    public AudioClip DeathSound;
 
     // Start is called before the first frame update
     void Start()
@@ -26,5 +28,9 @@ public class EnemyDeath : MonoBehaviour
         var flash = ren.GetComponent<SpriteColourFlash>();
         flash.enabled = false;
         GetComponentsInChildren<ContactDamage>().ForEach(cd => cd.enabled = false);
+        if (DeathParticles)
+            DeathParticles.Play(transform.position);
+        if (DeathSound)
+            AudioPool.PlaySound(transform.position, DeathSound);
     }
 }

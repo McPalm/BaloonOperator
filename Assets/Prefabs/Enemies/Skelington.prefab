@@ -455,6 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flipY: 1
+  DeathParticles: {fileID: 11400000, guid: e7a12bd67abc64243b8ea9a757aa227c, type: 2}
 --- !u!114 &5676324311962390059
 MonoBehaviour:
   m_ObjectHideFlags: 0
